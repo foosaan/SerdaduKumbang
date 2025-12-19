@@ -86,8 +86,13 @@
         </div>
     </div>
 
+    <!-- {{-- FOOTER --}}
+    @if (!Request::is('admin*') && !Request::is('*/admin/*'))
+        @include('layouts.partials.footer')
+    @endif -->
+
     {{-- FOOTER --}}
-    @if (!Request::is('admin*'))
+    @if (!str_starts_with(Route::currentRouteName(), 'admin.'))
         @include('layouts.partials.footer')
     @endif
     

@@ -170,7 +170,7 @@
             </div>
 
             <p class="text-center text-muted small mt-4">
-                <i class="fas fa-shield-alt me-1"></i> Sistem ini menggunakan API gateway resmi untuk pengiriman pesan.
+                <i class="fas fa-shield-alt me-1"></i> Sistem ini menggunakan API gateway untuk pengiriman pesan.
             </p>
         </div>
     </div>
