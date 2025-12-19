@@ -1,6 +1,80 @@
-WEBSITE PPDB PPTQ SAHABATQU
+PROJECT CAPSTONE WEBSITE PPDB PPTQ SAHABATQU
+
+<--USER-->
+
+Home Public
 
 <img width="2616" height="4777" alt="image" src="https://github.com/user-attachments/assets/0edb554f-521b-4428-afe5-861d836efb30" />
+
+Information Public
+
+<img width="2616" height="3120" alt="image" src="https://github.com/user-attachments/assets/f4377e64-bc06-49e2-b824-86fbcdd58bf3" />
+
+Registration Public
+
+<img width="2616" height="4214" alt="image" src="https://github.com/user-attachments/assets/363e399b-45c1-4ea1-9823-333e084e2393" />
+
+<img width="2616" height="4321" alt="image" src="https://github.com/user-attachments/assets/d3839cfa-ca0c-4244-be26-3994430ee848" />
+
+After Registration
+
+<img width="2616" height="2355" alt="image" src="https://github.com/user-attachments/assets/cea391de-f54a-4558-8b9f-b8b700df5227" />
+
+Contact Public
+
+<img width="2616" height="4791" alt="image" src="https://github.com/user-attachments/assets/aed2fc8a-4e12-40ab-a432-96c9f24ed7e9" />
+
+Dashboard User 
+
+<img width="2616" height="3191" alt="image" src="https://github.com/user-attachments/assets/d65f1bdb-2f08-4385-94a2-48be0c13a139" />
+
+LOGIN Admin & User
+
+<img width="2616" height="1488" alt="image" src="https://github.com/user-attachments/assets/6543e22e-7472-4fc5-bbec-6907e4c9ef61" />
+
+<--ADMIN-->
+
+Dashboard Admin
+
+<img width="2616" height="2248" alt="image" src="https://github.com/user-attachments/assets/cd8e6779-b2c8-45c7-ac33-bff5ab5a2d59" />
+
+Detail Pendaftar
+
+<img width="2616" height="1488" alt="image" src="https://github.com/user-attachments/assets/28a1c01a-6aca-4e9d-b87a-5dc1c25bd7dd" />
+
+<img width="2616" height="1488" alt="image" src="https://github.com/user-attachments/assets/5dd40892-8574-4e3b-897d-030f1bec283b" />
+
+Kirim Notifikasi
+
+<img width="2821" height="1621" alt="image" src="https://github.com/user-attachments/assets/ea100089-df76-4968-bcbb-52935218a9c2" />
+
+Status Formulir
+
+<img width="2616" height="1549" alt="image" src="https://github.com/user-attachments/assets/3403a3b4-3390-4fd3-8a93-7ca92960b1a2" />
+
+Kelola Informasi
+
+<img width="2616" height="1488" alt="image" src="https://github.com/user-attachments/assets/a8a34a46-80ac-4b88-83ed-104e61dab34e" />
+
+<img width="2616" height="1488" alt="image" src="https://github.com/user-attachments/assets/02fa1a63-e6a8-4d27-aaf6-3f7b3033da09" />
+
+<img width="2616" height="1488" alt="image" src="https://github.com/user-attachments/assets/0a93f24e-2aab-4195-af39-796bae344aea" />
+
+Kelola Kontak
+
+<img width="2616" height="1511" alt="image" src="https://github.com/user-attachments/assets/2f689b6f-c0fb-4556-9ed9-0536e549ff90" />
+
+Kelola akun admin
+
+<img width="2616" height="1488" alt="image" src="https://github.com/user-attachments/assets/1ad874c5-1732-40a4-b634-5a22b2b0bc96" />
+
+<img width="2616" height="1488" alt="image" src="https://github.com/user-attachments/assets/c6114d11-3aef-423c-b6b2-8fd1e25f4de3" />
+
+<img width="2616" height="1488" alt="image" src="https://github.com/user-attachments/assets/651adba6-3021-41ea-a860-9b3bec7c793c" />
+
+<img width="2835" height="1630" alt="image" src="https://github.com/user-attachments/assets/8985a89d-f109-4133-a6f8-997ef05e83f6" />
+
+
 
 
 
