@@ -160,7 +160,7 @@
 
                 <div class="warning-note">
                     <i class="fas fa-exclamation-triangle me-1"></i>
-                    Harap simpan password ini dengan aman.
+                    Password anda tersimpan ke email yang anda daftarkan.
                 </div>
             </div>
 

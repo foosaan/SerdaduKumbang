@@ -147,7 +147,7 @@
                 </div>
             </a>
             <form action="{{ route('admin.destroyAll') }}" method="POST" 
-                  onsubmit="return confirm('PERINGATAN!\n\nSemua data pendaftar akan DIHAPUS PERMANEN.\n\nApakah Anda yakin?')">
+                  onsubmit="return confirm('PERINGATAN!\n\nSemua data pendaftar akan DIHAPUS PERMANEN, PASTIKAN SELURUH DATA SUDAH DI BACKUP.\n\nApakah Anda yakin?')">
                 @csrf @method('DELETE')
                 <button class="btn btn-outline-danger w-100 btn-action py-3">
                     <i class="fas fa-trash-alt me-2"></i> Bersihkan Semua Data
