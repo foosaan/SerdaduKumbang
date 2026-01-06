@@ -20,7 +20,7 @@
         background: white;
         border-radius: 32px;
         padding: 60px 40px;
-        box-shadow: 0 25px 50px -12px rgba(37, 99, 235, 0.1);
+        box-shadow: 0 25px 50px -12px rgba(220, 38, 38, 0.1);
         border: 1px solid #f1f5f9;
         max-width: 550px;
         width: 100%;
@@ -36,7 +36,7 @@
         right: -50px;
         width: 150px;
         height: 150px;
-        background: rgba(37, 99, 235, 0.05);
+        background: rgba(220, 38, 38, 0.05);
         border-radius: 50%;
     }
 
@@ -70,8 +70,8 @@
     }
 
     .credential-card:hover {
-        border-color: #2563eb;
-        background: #f1f7ff;
+        border-color: #dc2626;
+        background: #fff1f1;
     }
 
     .credential-label {
@@ -92,7 +92,7 @@
 
     .password-display {
         background: white;
-        color: #2563eb;
+        color: #dc2626;
         padding: 10px 15px;
         border-radius: 12px;
         display: inline-block;
@@ -104,7 +104,7 @@
     }
 
     .btn-login-now {
-        background: #2563eb;
+        background: #dc2626;
         color: white;
         padding: 16px 40px;
         border-radius: 16px;
@@ -112,15 +112,15 @@
         border: none;
         width: 100%;
         transition: 0.3s;
-        box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3);
+        box-shadow: 0 10px 15px -3px rgba(220, 38, 38, 0.3);
         text-decoration: none;
         display: block;
     }
 
     .btn-login-now:hover {
-        background: #1d4ed8;
+        background: #b91c1c;
         transform: translateY(-3px);
-        box-shadow: 0 20px 25px -5px rgba(37, 99, 235, 0.4);
+        box-shadow: 0 20px 25px -5px rgba(220, 38, 38, 0.4);
         color: white;
     }
 
@@ -143,7 +143,7 @@
             </div>
 
             <h2 class="fw-bold text-dark mb-2">Pendaftaran Berhasil!</h2>
-            <p class="text-secondary">Ahlan wa Sahlan, <strong>{{ session('name') }}</strong>. Akun Anda telah siap digunakan.</p>
+            <p class="text-secondary">Selamat Datang, <strong>{{ session('name') }}</strong>. Akun Anda telah siap digunakan.</p>
 
             <div class="credential-card" data-aos="fade-up" data-aos-delay="600">
                 <div class="mb-4">

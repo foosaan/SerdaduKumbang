@@ -1,7 +1,8 @@
 <nav class="navbar navbar-expand-lg sticky-top navbar-custom">
     <div class="container">
-        <a class="navbar-brand fw-bold" href="{{ route('home') }}">
-            <span class="brand-accent">PPTQ</span> Portal
+        <a class="navbar-brand fw-bold d-flex align-items-center" href="{{ route('home') }}">
+            <img src="{{ asset('assets/img/serkum logo.png') }}" alt="Logo" width="40" height="40" class="me-2 rounded-circle object-fit-cover">
+            <span class="brand-accent">SerdaduKumbang</span>
         </a>
 
         <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -73,7 +74,7 @@
     }
 
     .navbar-brand { font-size: 1.5rem; color: #0f172a !important; letter-spacing: -1px; }
-    .brand-accent { color: #2563eb; }
+    .brand-accent { color: #dc2626; }
 
     .nav-link {
         color: #64748b !important;
@@ -82,31 +83,31 @@
         transition: all 0.2s ease;
         position: relative;
     }
-    .nav-link:hover, .nav-link.active { color: #2563eb !important; }
+    .nav-link:hover, .nav-link.active { color: #dc2626 !important; }
     
     /* Underline animation */
     .nav-link::after {
         content: ''; position: absolute; width: 0; height: 2px;
-        bottom: -2px; left: 8px; background: #2563eb; transition: width 0.3s;
+        bottom: -2px; left: 8px; background: #dc2626; transition: width 0.3s;
     }
     .nav-link:hover::after, .nav-link.active::after { width: calc(100% - 16px); }
 
     .nav-divider { width: 1px; height: 24px; background: #e2e8f0; }
 
     .btn-login-nav {
-        background: #2563eb;
+        background: #dc2626;
         color: white !important;
         border-radius: 50px;
         font-weight: 700;
         font-size: 0.9rem;
-        box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2);
+        box-shadow: 0 4px 10px rgba(220, 38, 38, 0.2);
         transition: all 0.3s ease;
         border: none;
     }
     .btn-login-nav:hover {
-        background: #1d4ed8;
+        background: #b91c1c;
         transform: translateY(-2px);
-        box-shadow: 0 6px 15px rgba(37, 99, 235, 0.3);
+        box-shadow: 0 6px 15px rgba(220, 38, 38, 0.3);
     }
 
     /* Perbaikan User Profile Dropdown */
@@ -131,7 +132,7 @@
     }
     .dropdown-item:hover {
         background-color: #f1f7ff;
-        color: #2563eb;
+        color: #dc2626;
     }
 
     @media (max-width: 991.98px) {

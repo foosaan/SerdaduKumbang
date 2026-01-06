@@ -20,7 +20,7 @@
     }
 
     .card-header-blue {
-        background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+        background: linear-gradient(135deg, #7f1d1d 0%, #dc2626 100%);
         padding: 30px;
         color: white;
     }
@@ -52,8 +52,8 @@
 
     /* Radio Button Custom Styling */
     .form-check-input:checked {
-        background-color: #2563eb;
-        border-color: #2563eb;
+        background-color: #dc2626;
+        border-color: #dc2626;
     }
 
     .status-pill {

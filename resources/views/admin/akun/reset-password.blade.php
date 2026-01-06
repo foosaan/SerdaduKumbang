@@ -6,7 +6,7 @@
     <div class="row justify-content-center">
         <div class="col-lg-5">
             <div class="card border-0 shadow-lg overflow-hidden" style="border-radius: 24px;">
-                <div class="card-header border-0 py-4 text-center text-white" style="background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);">
+                <div class="card-header border-0 py-4 text-center text-white" style="background: linear-gradient(135deg, #7f1d1d 0%, #dc2626 100%);">
                     <i class="fas fa-key fs-2 mb-3"></i>
                     <h5 class="fw-bold mb-0">Reset Kredensial Admin</h5>
                 </div>

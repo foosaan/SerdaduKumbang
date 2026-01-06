@@ -14,13 +14,13 @@
 
     /* Hero Section Modernization - Tanpa Background Image */
     .info-hero {
-        background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 64, 175, 0.75) 100%);
+        background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(185, 28, 28, 0.75) 100%);
         color: white;
         padding: 100px 20px;
         border-radius: 32px;
         position: relative;
         overflow: hidden;
-        box-shadow: 0 20px 50px rgba(37, 99, 235, 0.15);
+        box-shadow: 0 20px 50px rgba(220, 38, 38, 0.15);
         margin-bottom: 40px;
     }
 
@@ -52,8 +52,8 @@
 
     .info-card:hover {
         transform: translateY(-10px);
-        box-shadow: 0 30px 60px rgba(37, 99, 235, 0.1);
-        border-color: #dbeafe;
+        box-shadow: 0 30px 60px rgba(220, 38, 38, 0.1);
+        border-color: #fecaca;
     }
 
     .info-card::before {
@@ -61,11 +61,11 @@
         position: absolute;
         left: 0; top: 0; bottom: 0;
         width: 8px;
-        background: #2563eb;
+        background: #dc2626;
     }
 
     .info-title {
-        color: #1e3a8a;
+        color: #7f1d1d;
         font-weight: 800;
         font-size: 1.85rem;
         margin-bottom: 1.5rem;
@@ -91,31 +91,31 @@
     }
 
     .info-meta-icon {
-        color: #2563eb;
+        color: #dc2626;
         font-size: 1.2rem;
     }
 
     .btn-blue-primary {
-        background: #2563eb;
+        background: #dc2626;
         color: white;
         padding: 14px 36px;
         border-radius: 14px;
         font-weight: 700;
         border: none;
         transition: all 0.3s ease;
-        box-shadow: 0 10px 20px -5px rgba(37, 99, 235, 0.4);
+        box-shadow: 0 10px 20px -5px rgba(220, 38, 38, 0.4);
     }
 
     .btn-blue-primary:hover {
-        background: #1d4ed8;
+        background: #b91c1c;
         transform: translateY(-3px);
-        box-shadow: 0 15px 30px -5px rgba(37, 99, 235, 0.5);
+        box-shadow: 0 15px 30px -5px rgba(220, 38, 38, 0.5);
         color: white;
     }
 
     .empty-state {
         background: #f8faff;
-        border: 2px dashed #dbeafe;
+        border: 2px dashed #fecaca;
         border-radius: 32px;
         padding: 80px 40px;
         text-align: center;
@@ -124,7 +124,7 @@
     .empty-icon-circle {
         width: 100px; height: 100px;
         background: #eff6ff;
-        color: #3b82f6;
+        color: #dc2626;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -146,12 +146,25 @@
     <div class="info-hero text-center" data-aos="zoom-out" data-aos-duration="1000">
         <div class="position-relative" style="z-index: 2;">
             <div class="info-badge" data-aos="fade-down" data-aos-delay="400">
-                <i class="fas fa-info-circle me-2"></i> Update Informasi Mahasantri
+                <i class="fas fa-info-circle me-2"></i> Update Informasi SerdaduKumbang
             </div>
-            <h1 class="fw-bold display-4" data-aos="fade-up" data-aos-delay="600">Update Pendaftaran</h1>
+            <h1 class="fw-bold display-4" data-aos="fade-up" data-aos-delay="600">Update Informasi</h1>
             <p class="lead opacity-90 mx-auto" style="max-width: 700px;" data-aos="fade-up" data-aos-delay="800">
-                Simak informasi terbaru mengenai jadwal seleksi, persyaratan dokumen, dan pengumuman resmi PPTQ secara berkala.
+                Simak informasi terbaru mengenai jadwal seleksi, persyaratan dokumen, dan kegiatan resmi SerdaduKumbang secara berkala.
             </p>
+            
+            {{-- CATEGORY FILTER TABS --}}
+            <div class="d-flex justify-content-center gap-2 mt-4 flex-wrap" data-aos="fade-up" data-aos-delay="900">
+                @php
+                    $categories = ['Semua', 'Pendaftaran', 'Kegiatan', 'Lainnya'];
+                @endphp
+                @foreach($categories as $cat)
+                    <a href="{{ route('informasi', ['kategori' => $cat]) }}" 
+                       class="btn {{ ($selectedKategori ?? 'Semua') == $cat ? 'btn-light text-danger fw-bold' : 'btn-outline-light' }} rounded-pill px-4 py-2">
+                        {{ $cat }}
+                    </a>
+                @endforeach
+            </div>
         </div>
     </div>
 
@@ -163,6 +176,7 @@
                     <i class="fas fa-quote-right bg-decoration" style="top: 20px; right: 20px; font-size: 8rem;"></i>
                     
                     <div class="position-relative" style="z-index: 1;">
+                        <span class="badge bg-danger mb-2">{{ $item->kategori }}</span>
                         <h3 class="info-title">{{ $item->judul }}</h3>
                         
                         <div class="info-content">
@@ -177,9 +191,15 @@
                                 </span>
                             </div>
 
-                            <a href="{{ route('pendaftaran') }}" class="btn btn-blue-primary">
-                                <i class="fas fa-paper-plane me-2"></i> Daftar Sekarang
-                            </a>
+                            @if($item->kategori == 'Kegiatan' || $item->kategori == 'Lainnya')
+                                <a href="{{ route('informasi.show', $item->id) }}" class="btn btn-blue-primary">
+                                    <i class="fas fa-eye me-2"></i> Lihat Detail
+                                </a>
+                            @else
+                                <a href="{{ route('pendaftaran') }}" class="btn btn-blue-primary">
+                                    <i class="fas fa-paper-plane me-2"></i> Daftar Sekarang
+                                </a>
+                            @endif
                         </div>
                     </div>
                 </div>

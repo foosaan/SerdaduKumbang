@@ -46,7 +46,7 @@
     .hero-overlay {
         position: absolute;
         inset: 0;
-        background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 64, 175, 0.75) 100%);
+        background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(185, 28, 28, 0.75) 100%);
         z-index: 2;
     }
 
@@ -74,20 +74,20 @@
 
     /* 2. Buttons */
     .btn-primary-blue {
-        background: #2563eb;
+        background: #dc2626;
         color: white;
         border: none;
         padding: 16px 42px;
         border-radius: 14px;
         font-weight: 600;
         transition: all 0.3s ease;
-        box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.4);
+        box-shadow: 0 10px 25px -5px rgba(220, 38, 38, 0.4);
     }
 
     .btn-primary-blue:hover {
-        background: #1d4ed8;
+        background: #b91c1c;
         transform: translateY(-3px);
-        box-shadow: 0 20px 30px -10px rgba(37, 99, 235, 0.5);
+        box-shadow: 0 20px 30px -10px rgba(220, 38, 38, 0.5);
         color: white;
     }
 
@@ -106,7 +106,7 @@
     .stat-number { 
         font-size: 2.8rem; 
         font-weight: 800; 
-        color: #1e3a8a; 
+        color: #7f1d1d; 
         margin-bottom: 5px;
     }
     
@@ -132,20 +132,20 @@
     .feature-card:hover {
         transform: translateY(-12px);
         box-shadow: 0 30px 60px -12px rgba(0,0,0,0.08);
-        border-color: #dbeafe;
-        background: #fcfdff;
+        border-color: #fecaca;
+        background: #fffbfb;
     }
 
     .icon-box {
         width: 75px; height: 75px;
-        background: #eff6ff; color: #2563eb;
+        background: #fef2f2; color: #dc2626;
         display: flex; align-items: center; justify-content: center;
         border-radius: 20px; margin: 0 auto 25px; font-size: 2rem;
         transition: 0.3s ease;
     }
 
     .feature-card:hover .icon-box {
-        background: #2563eb;
+        background: #dc2626;
         color: white;
         transform: scale(1.1) rotate(5deg);
     }
@@ -165,7 +165,7 @@
         bottom: 0; left: 50%;
         transform: translateX(-50%);
         width: 60px; height: 5px;
-        background: #2563eb; 
+        background: #dc2626; 
         border-radius: 10px;
     }
 
@@ -186,7 +186,7 @@
         position: absolute;
         top: -50%; left: -10%;
         width: 400px; height: 400px;
-        background: rgba(37, 99, 235, 0.03);
+        background: rgba(220, 38, 38, 0.03);
         border-radius: 50%;
         z-index: 0;
     }
@@ -199,31 +199,35 @@
         <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
             <div class="carousel-indicators" style="z-index: 11;">
                 <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
-                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
-                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" class="active"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" class="active"></button>
             </div>
 
             <div class="carousel-inner">
-                <div class="carousel-item active" data-bs-interval="6000">
-                    <div class="carousel-background" style="background-image: url('https://images.unsplash.com/photo-1526045612212-70caf35c14df?auto=format&fit=crop&w=1500&q=80');"></div>
+                <div class="carousel-item active" data-bs-interval="2000">
+                    <div class="carousel-background" style="background-image: url('{{ asset('assets/img/serkum.jpg') }}');"></div>
                     <div class="hero-overlay"></div>
                 </div>
-                <div class="carousel-item" data-bs-interval="6000">
-                    <div class="carousel-background" style="background-image: url('https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?auto=format&fit=crop&w=1500&q=80');"></div>
+                <div class="carousel-item" data-bs-interval="2000">
+                    <div class="carousel-background" style="background-image: url('{{ asset('assets/img/serkum1.jpg') }}');"></div>
                     <div class="hero-overlay"></div>
                 </div>
-                <div class="carousel-item" data-bs-interval="6000">
-                    <div class="carousel-background" style="background-image: url('https://images.unsplash.com/photo-1542810634-71277d95dcbb?auto=format&fit=crop&w=1500&q=80');"></div>
+                <div class="carousel-item" data-bs-interval="2000">
+                    <div class="carousel-background" style="background-image: url('{{ asset('assets/img/serkum2.jpg') }}');"></div>
                     <div class="hero-overlay"></div>
                 </div>
             </div>
 
             <div class="hero-content-container text-center px-3">
                 <div style="max-width: 850px;">
-                    <span class="hero-badge fw-medium" data-aos="fade-down" data-aos-delay="300">Pendaftaran Mahasantri Baru TA 2025/2026</span>
-                    <h1 class="display-3 fw-bold mb-4" data-aos="fade-up" data-aos-delay="500">Mencetak Generasi <span style="color: #60a5fa;">Hafiz Qur'ani</span> & Berakhlak Mulia</h1>
+                    <span class="hero-badge fw-medium" data-aos="fade-down" data-aos-delay="300">
+                        Education Belongs to Every Child
+                    </span>
+                    <h1 class="display-3 fw-bold mb-4" data-aos="fade-up" data-aos-delay="500">
+                        Sekolah Rakyat <br> Serdadu Kumbang
+                    </h1>
                     <p class="fs-5 opacity-90 mb-5 mx-auto" style="max-width: 700px; line-height: 1.8;" data-aos="fade-up" data-aos-delay="700">
-                        Rumah TahfidzQu merupakan program nonformal yang dirancang khusus untuk mahasiswa yang ingin fokus menghafal Al-Qur'an sambil tetap menjalani perkuliahan.
+                        Sekolah Rakyat Serdadu Kumbang merupakan sebuah Non-Governmental Organization (NGO) yang bergerak di bidang pendidikan dan berfokus pada pengembangan karakter serta pemenuhan hak-hak anak.
                     </p>
                     <div class="d-flex flex-wrap justify-content-center gap-3" data-aos="fade-up" data-aos-delay="900">
                         <a href="{{ route('pendaftaran') }}" class="btn btn-primary-blue">
@@ -243,15 +247,15 @@
         <div class="row g-4 text-center">
             <div class="col-md-4 border-end border-light" data-aos="zoom-in" data-aos-delay="400">
                 <p class="stat-number">500+</p>
-                <p class="stat-label">Santri Aktif</p>
+                <p class="stat-label">Anggota Aktif</p>
             </div>
             <div class="col-md-4 border-end border-light" data-aos="zoom-in" data-aos-delay="600">
                 <p class="stat-number">50+</p>
-                <p class="stat-label">Asatidzah Bersanad</p>
+                <p class="stat-label">Pengurus</p>
             </div>
             <div class="col-md-4" data-aos="zoom-in" data-aos-delay="800">
-                <p class="stat-number">15+</p>
-                <p class="stat-label">Tahun Berkhidmat</p>
+                <p class="stat-number">2014</p>
+                <p class="stat-label">Tahun Berdiri</p>
             </div>
         </div>
     </div>
@@ -259,32 +263,53 @@
     {{-- FEATURES SECTION --}}
     <div class="py-5 mt-5" id="tentang">
         <div class="text-center mb-5" data-aos="fade-up">
-            <h2 class="section-title display-5 fw-bold mb-3">Keunggulan Kami</h2>
+            <h2 class="section-title display-5 fw-bold mb-3">Core Values</h2>
             <p class="text-secondary mt-3 fs-5 mx-auto" style="max-width: 650px;">
-                Kami berkomitmen memberikan ekosistem terbaik untuk melahirkan Hafiz yang cerdas dan mandiri.
+                Kami berkomitmen memberikan ekosistem yang cerdas dan mandiri.
             </p>
         </div>
 
         <div class="row g-4">
             <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
                 <div class="card feature-card border-0">
-                    <div class="icon-box"><i class="fas fa-book-quran"></i></div>
-                    <h4 class="fw-bold mb-3">Tahfidz Intensif</h4>
-                    <p class="text-secondary leading-relaxed">Metode setoran hafalan harian yang terstruktur dengan target mutqin (kuat).</p>
+                    <div class="icon-box"><i class="fas fa-shield-alt"></i></div>
+                    <h4 class="fw-bold mb-3">Integrity</h4>
+                    <p class="text-secondary leading-relaxed">Integrity adalah prinsip yang menjadi dasar dari setiap tindakan dan keputusan.</p>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="card feature-card border-0">
+                    <div class="icon-box"><i class="fas fa-bolt"></i></div>
+                    <h4 class="fw-bold mb-3">Proactive</h4>
+                    <p class="text-secondary leading-relaxed">Proactive adalah prinsip yang menjadi dasar dari setiap tindakan dan keputusan.</p>
                 </div>
             </div>
             <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
                 <div class="card feature-card border-0">
-                    <div class="icon-box"><i class="fas fa-mosque"></i></div>
-                    <h4 class="fw-bold mb-3">Lingkungan Islami</h4>
-                    <p class="text-secondary leading-relaxed">Fasilitas asrama yang bersih dan asri, mendukung fokus Mahasantri dalam beribadah.</p>
+                    <div class="icon-box"><i class="fas fa-handshake"></i></div>
+                    <h4 class="fw-bold mb-3">Sense of Belonging</h4>
+                    <p class="text-secondary leading-relaxed">Sense of Belonging adalah prinsip yang menjadi dasar dari setiap tindakan dan keputusan.</p>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="400">
+                <div class="card feature-card border-0">
+                    <div class="icon-box"><i class="fas fa-heart"></i></div>
+                    <h4 class="fw-bold mb-3">Dedicated</h4>
+                    <p class="text-secondary leading-relaxed">Dedicated adalah prinsip yang menjadi dasar dari setiap tindakan dan keputusan.</p>
                 </div>
             </div>
             <div class="col-md-4" data-aos="fade-up" data-aos-delay="500">
                 <div class="card feature-card border-0">
-                    <div class="icon-box"><i class="fas fa-user-graduate"></i></div>
-                    <h4 class="fw-bold mb-3">Karakter Unggul</h4>
-                    <p class="text-secondary leading-relaxed">Pembinaan adab dan kemandirian sebagai bekal Mahasantri menjadi pemimpin umat.</p>
+                    <div class="icon-box"><i class="fas fa-dove"></i></div>
+                    <h4 class="fw-bold mb-3">Peaceful</h4>
+                    <p class="text-secondary leading-relaxed">Peaceful adalah prinsip yang menjadi dasar dari setiap tindakan dan keputusan.</p>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="600">
+                <div class="card feature-card border-0">
+                    <div class="icon-box"><i class="fas fa-rocket"></i></div>
+                    <h4 class="fw-bold mb-3">Moving Forward</h4>
+                    <p class="text-secondary leading-relaxed">Moving Forward adalah prinsip yang menjadi dasar dari setiap tindakan dan keputusan.</p>
                 </div>
             </div>
         </div>
@@ -293,9 +318,9 @@
     {{-- CTA SECTION --}}
     <div class="cta-area shadow-sm" data-aos="flip-up" data-aos-duration="1000">
         <div class="position-relative z-index-10">
-            <h2 class="fw-bold display-6 mb-3 text-dark">Siap Memulai Langkah Keberkahan?</h2>
+            <h2 class="fw-bold display-6 mb-3 text-dark">Siap Memulai Langkah Berbe?</h2>
             <p class="text-secondary mb-5 fs-5 mx-auto" style="max-width: 700px;">
-                Pendaftaran santri baru sedang dibuka. Bergabunglah sekarang dan jadilah bagian dari keluarga besar penghafal Al-Qur'an.
+                Pendaftaran anggota baru sedang dibuka. Bergabunglah sekarang dan jadilah bagian dari keluarga besar SerdaduKumbang.
             </p>
             <a href="{{ route('pendaftaran') }}" class="btn btn-primary-blue btn-lg px-5">
                 Daftar Sekarang <i class="fas fa-arrow-right ms-2"></i>

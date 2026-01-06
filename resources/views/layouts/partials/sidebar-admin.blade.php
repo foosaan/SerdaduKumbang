@@ -3,7 +3,7 @@
         <div class="brand-icon">
             <i class="fas fa-user-shield text-white"></i>
         </div>
-        <h5 class="m-0 fw-bold text-white letter-spacing-1">Admin PPTQ</h5>
+        <h5 class="m-0 fw-bold text-white letter-spacing-1">Admin SERKUM</h5>
     </div>
 
     <hr class="border-secondary opacity-25 mb-4">
@@ -58,7 +58,7 @@
     /* Dasar Sidebar */
     .sidebar-admin {
         width: 270px;
-        background: linear-gradient(180deg, #0f172a 0%, #1e3a8a 100%); /* Navy to Dark Blue */
+        background: linear-gradient(180deg, #0f172a 0%, #7f1d1d 100%); /* Navy to Dark Red */
         box-shadow: 4px 0 15px rgba(0,0,0,0.1);
         transition: all 0.3s ease;
         position: sticky;
@@ -120,8 +120,8 @@
     /* Active State */
     .nav-link-admin.active {
         color: #ffffff;
-        background: #2563eb; /* Biru cerah sesuai tema */
-        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        background: #dc2626; /* Merah cerah sesuai tema */
+        box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
     }
 
     .nav-link-admin.active i {

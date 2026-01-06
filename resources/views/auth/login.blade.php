@@ -15,7 +15,7 @@
         .login-main-container {
             background: white;
             border-radius: 30px;
-            box-shadow: 0 25px 50px -12px rgba(37, 99, 235, 0.15);
+            box-shadow: 0 25px 50px -12px rgba(220, 38, 38, 0.15);
             display: flex;
             width: 1000px;
             max-width: 95%;
@@ -36,7 +36,7 @@
         /* Sisi Kanan: Panel Info (Biru sesuai gambar) */
         .login-right-panel {
             flex: 1;
-            background: linear-gradient(135deg, #2563eb 0%, #1e3a8a 100%);
+            background: linear-gradient(135deg, #dc2626 0%, #7f1d1d 100%);
             color: white;
             display: flex;
             flex-direction: column;
@@ -71,14 +71,14 @@
         }
 
         input:focus {
-            border-color: #2563eb !important;
-            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1) !important;
+            border-color: #dc2626 !important;
+            box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.1) !important;
             background-color: white !important;
         }
 
         /* Tombol Login (Biru) */
         .btn-custom-signin {
-            background-color: #2563eb !important;
+            background-color: #dc2626 !important;
             border-radius: 12px !important;
             padding: 1rem !important;
             font-weight: 700 !important;
@@ -92,9 +92,9 @@
         }
 
         .btn-custom-signin:hover {
-            background-color: #1d4ed8 !important;
+            background-color: #b91c1c !important;
             transform: translateY(-2px);
-            box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3) !important;
+            box-shadow: 0 10px 15px -3px rgba(220, 38, 38, 0.3) !important;
         }
 
         /* Teks Panel Kanan */
@@ -169,7 +169,7 @@
                 Belum mendaftarkan diri? Mari bergabung bersama kami untuk mencetak generasi Qur'ani yang berakhlak mulia.
             </p>
             <a href="{{ route('pendaftaran') }}" 
-               class="px-8 py-3 border-2 border-white rounded-full font-bold hover:bg-white hover:text-blue-600 transition-all duration-300 no-underline text-white"
+               class="px-8 py-3 border-2 border-white rounded-full font-bold hover:bg-white hover:text-red-600 transition-all duration-300 no-underline text-white"
                data-aos="fade-up" data-aos-delay="700">
                 DAFTAR SEKARANG
             </a>

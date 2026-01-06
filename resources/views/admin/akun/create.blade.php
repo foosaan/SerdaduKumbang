@@ -6,7 +6,7 @@
     body { background-color: #f4f7fa; }
     .form-card { background: white; border-radius: 24px; padding: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
     .form-control { border-radius: 12px; padding: 12px 16px; border: 1.5px solid #e2e8f0; background-color: #f8fafc; }
-    .form-control:focus { border-color: #2563eb; background-color: #fff; box-shadow: 0 0 0 4px rgba(37,99,235,0.1); }
+    .form-control:focus { border-color: #dc2626; background-color: #fff; box-shadow: 0 0 0 4px rgba(220,38,38,0.1); }
 </style>
 
 <div class="container py-5">
@@ -24,7 +24,7 @@
                     <div class="mb-3"><input class="form-control" name="password" type="password" placeholder="Password Utama" required></div>
                     <div class="mb-4"><input class="form-control" name="password_confirmation" type="password" placeholder="Konfirmasi Password"></div>
                     
-                    <button class="btn btn-primary w-100 py-3 rounded-3 fw-bold border-0 shadow-sm" style="background: #2563eb;">Simpan Akun Admin</button>
+                    <button class="btn btn-primary w-100 py-3 rounded-3 fw-bold border-0 shadow-sm" style="background: #dc2626;">Simpan Akun Admin</button>
                 </form>
             </div>
         </div>

@@ -3,10 +3,11 @@
         <div class="row g-4 justify-content-between">
             <div class="col-lg-4" data-aos="fade-up">
                 <a class="navbar-brand fw-bold fs-4 text-dark mb-3 d-block" href="{{ route('home') }}">
-                    <span class="text-primary">PPTQ</span> Portal
+                    <span class="text-primary">SERKUM</span> Portal
                 </a>
                 <p class="text-secondary small leading-relaxed">
-                    Mencetak generasi penghafal Al-Qur'an yang berakhlak mulia, cerdas, dan mandiri melalui sistem pendidikan Syariah terpadu.
+                    Education Belongs to Every Child <br>
+                    Micro Action, Huge Impact
                 </p>
                 <div class="social-links-footer d-flex gap-3 mt-4">
                     <a href="#"><i class="fab fa-instagram"></i></a>
@@ -32,7 +33,7 @@
                     @auth
                         <li><a href="{{ route('user.dashboard') }}">Dashboard</a></li>
                     @else
-                        <li><a href="{{ route('login') }}">Login Mahasantri</a></li>
+                        <li><a href="{{ route('login') }}">Login</a></li>
                         <li><a href="{{ route('pendaftaran') }}">Daftar</a></li>
                     @endauth
                     <li><a href="#">Bantuan</a></li>
@@ -54,10 +55,10 @@
 
         <div class="row align-items-center">
             <div class="col-md-6 text-center text-md-start">
-                <small class="text-muted">&copy; {{ date('Y') }} <strong>PPTQ</strong>. Semua Hak Dilindungi.</small>
+                <small class="text-muted">&copy; {{ date('Y') }} <strong>SerdaduKumbang</strong>. Semua Hak Dilindungi.</small>
             </div>
             <div class="col-md-6 text-center text-md-end mt-2 mt-md-0">
-                <small class="text-muted">Developed with <i class="fas fa-heart text-danger mx-1"></i> for Generation Qur'ani</small>
+                <small class="text-muted">Developed with <i class="fas fa-heart text-danger mx-1"></i> for SerdaduKumbang</small>
             </div>
         </div>
     </div>
@@ -72,7 +73,7 @@
 
     /* Styling Button Footer Baru */
     .btn-primary-footer {
-        background-color: #2563eb;
+        background-color: #dc2626;
         color: #ffffff;
         border-radius: 12px;
         padding: 12px 24px;
@@ -80,16 +81,16 @@
         font-size: 0.9rem;
         transition: all 0.3s ease;
         border: none;
-        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+        box-shadow: 0 4px 12px rgba(220, 38, 38, 0.2);
         display: inline-block;
         text-decoration: none;
     }
 
     .btn-primary-footer:hover {
-        background-color: #1d4ed8;
+        background-color: #b91c1c;
         color: #ffffff;
         transform: translateY(-3px);
-        box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
+        box-shadow: 0 8px 20px rgba(220, 38, 38, 0.3);
     }
 
     /* Styling Link Footer */
@@ -106,7 +107,7 @@
     }
 
     .footer-links a:hover {
-        color: #2563eb;
+        color: #dc2626;
         padding-left: 5px;
     }
 
@@ -115,7 +116,7 @@
         width: 38px;
         height: 38px;
         background-color: #f1f5f9;
-        color: #2563eb;
+        color: #dc2626;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -125,7 +126,7 @@
     }
 
     .social-links-footer a:hover {
-        background-color: #2563eb;
+        background-color: #dc2626;
         color: white;
         transform: translateY(-3px);
     }

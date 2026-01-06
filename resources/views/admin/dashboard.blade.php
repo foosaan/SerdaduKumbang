@@ -165,6 +165,21 @@
         </div>
     </div>
 
+    {{-- GELOMBANG TABS --}}
+    <div class="mb-4" data-aos="fade-up">
+        <div class="d-flex gap-2 flex-wrap">
+            <a href="{{ route('admin.dashboard') }}" class="btn {{ !$gelombang ? 'btn-danger' : 'btn-outline-danger' }} rounded-pill px-4">
+                <i class="fas fa-users me-2"></i>Semua Gelombang
+            </a>
+            <a href="{{ route('admin.dashboard', ['gelombang' => 1]) }}" class="btn {{ $gelombang == 1 ? 'btn-danger' : 'btn-outline-danger' }} rounded-pill px-4">
+                <i class="fas fa-1 me-2"></i>Gelombang 1
+            </a>
+            <a href="{{ route('admin.dashboard', ['gelombang' => 2]) }}" class="btn {{ $gelombang == 2 ? 'btn-danger' : 'btn-outline-danger' }} rounded-pill px-4">
+                <i class="fas fa-2 me-2"></i>Gelombang 2
+            </a>
+        </div>
+    </div>
+
     <div class="filter-card" data-aos="fade-up">
         <h6 class="fw-bold mb-3"><i class="fas fa-filter me-2 text-primary"></i> Filter Data</h6>
         <form method="GET" action="{{ route('admin.dashboard') }}" class="row g-3">
@@ -186,6 +201,13 @@
                     <option value="Perempuan" {{ request('jenis_kelamin')=='Perempuan' ? 'selected' : '' }}>Perempuan</option>
                 </select>
             </div>
+            <div class="col-md-2">
+                <select name="gelombang" class="form-select">
+                    <option value="">Semua Gelombang</option>
+                    <option value="1" {{ request('gelombang')=='1' ? 'selected' : '' }}>Gelombang 1</option>
+                    <option value="2" {{ request('gelombang')=='2' ? 'selected' : '' }}>Gelombang 2</option>
+                </select>
+            </div>
             <div class="col-md-2 d-flex gap-2">
                 <button class="btn btn-primary w-100 rounded-3">Filter</button>
                 <a href="{{ route('admin.dashboard') }}" class="btn btn-light border w-100 rounded-3 text-secondary">Reset</a>
@@ -202,6 +224,7 @@
                 <thead>
                     <tr>
                         <th>Nama Lengkap</th>
+                        <th>Gelombang</th>
                         <th>Gender</th>
                         <th>Kontak</th>
                         <th>Status</th>
@@ -214,6 +237,9 @@
                         <td>
                             <div class="fw-bold text-dark">{{ $p->nama_lengkap }}</div>
                             <small class="text-secondary">{{ $p->email }}</small>
+                        </td>
+                        <td>
+                            <span class="badge bg-{{ $p->gelombang == 1 ? 'primary' : 'success' }}">Gel. {{ $p->gelombang }}</span>
                         </td>
                         <td>
                             <span class="small">{{ $p->jenis_kelamin }}</span>
@@ -261,7 +287,7 @@
             labels: ['Laki-laki', 'Perempuan'],
             datasets: [{
                 data: [{{ $lakiLaki }}, {{ $perempuan }}],
-                backgroundColor: ['#3b82f6', '#ec4899'],
+                backgroundColor: ['#dc2626', '#ec4899'],
                 borderWidth: 0,
                 hoverOffset: 10
             }]

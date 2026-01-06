@@ -13,13 +13,13 @@
 
     /* Hero Section - Senada dengan Home/Informasi sebelumnya */
     .registration-hero {
-        background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 64, 175, 0.75) 100%);
+        background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(185, 28, 28, 0.75) 100%);
         color: white;
         padding: 80px 20px;
         border-radius: 32px;
         position: relative;
         overflow: hidden;
-        box-shadow: 0 20px 50px rgba(37, 99, 235, 0.15);
+        box-shadow: 0 20px 50px rgba(220, 38, 38, 0.15);
         margin-bottom: 40px; /* Overlap effect */
         z-index: 1;
     }
@@ -49,7 +49,7 @@
     }
 
     .form-title {
-        color: #1e3a8a;
+        color: #7f1d1d;
         font-weight: 800;
         letter-spacing: -0.5px;
     }
@@ -66,7 +66,7 @@
 
     .form-label i {
         width: 20px;
-        color: #2563eb;
+        color: #dc2626;
     }
 
     .form-control, .form-select {
@@ -79,8 +79,8 @@
 
     .form-control:focus, .form-select:focus {
         background-color: #ffffff;
-        border-color: #2563eb;
-        box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+        border-color: #dc2626;
+        box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.1);
         outline: none;
     }
 
@@ -94,7 +94,7 @@
 
     .section-divider span {
         background: #eff6ff;
-        color: #1d4ed8;
+        color: #b91c1c;
         padding: 8px 20px;
         border-radius: 10px;
         font-weight: 800;
@@ -125,32 +125,32 @@
     }
 
     .file-upload-label:hover {
-        border-color: #2563eb;
+        border-color: #dc2626;
         background: #f1f7ff;
     }
 
     .file-upload-label i {
         font-size: 2.5rem;
-        color: #2563eb;
+        color: #dc2626;
         margin-bottom: 15px;
     }
 
     /* Action Buttons */
     .btn-submit {
-        background: #2563eb;
+        background: #dc2626;
         color: white;
         padding: 16px 40px;
         border-radius: 14px;
         font-weight: 700;
         border: none;
-        box-shadow: 0 10px 20px -5px rgba(37, 99, 235, 0.4);
+        box-shadow: 0 10px 20px -5px rgba(220, 38, 38, 0.4);
         transition: 0.3s;
     }
 
     .btn-submit:hover {
-        background: #1d4ed8;
+        background: #b91c1c;
         transform: translateY(-2px);
-        box-shadow: 0 20px 30px -10px rgba(37, 99, 235, 0.5);
+        box-shadow: 0 20px 30px -10px rgba(220, 38, 38, 0.5);
     }
 
     .btn-back {
@@ -257,9 +257,9 @@
             <div class="registration-badge">
                 <i class="fas fa-file-signature me-2"></i> Jalur Pendaftaran Online
             </div>
-            <h1 class="fw-bold display-4">Daftar Mahasantri Baru</h1>
+            <h1 class="fw-bold display-4">Daftar SerdaduKumbang</h1>
             <p class="lead mt-3 opacity-90 mx-auto" style="max-width: 700px;">
-                Mulailah perjalanan spiritual dan pendidikan Anda bersama kami. Silakan isi formulir di bawah dengan data yang valid.
+                Mulailah perjalanan anda bersama kami. Silakan isi formulir di bawah dengan data yang valid.
             </p>
         </div>
     </div>
@@ -308,7 +308,7 @@
 
                 {{-- Section 1 --}}
                 <div class="section-divider">
-                    <span>Data Calon Mahasantri</span>
+                    <span>Data Calon SerdaduKumbang</span>
                 </div>
 
                 <div class="row g-4">
@@ -366,8 +366,8 @@
                     <div class="col-12">
                         <label class="file-upload-label" for="berkas">
                             <i class="fas fa-cloud-upload-alt"></i>
-                            <span class="fw-bold h5 mb-1">Klik untuk Upload Berkas</span>
-                            <span class="text-secondary small">Format: PDF, JPG, PNG (Maks. 2MB)</span>
+                            <span class="fw-bold h5 mb-1">Klik untuk Upload Dokumen</span>
+                            <span class="text-secondary small">Format: PDF, JPG, PNG (Maks. 5MB)</span>
                             <div id="fileNameDisplay" class="mt-3 p-2 bg-white rounded border d-none">
                                 <i class="fas fa-file-check text-success small me-2"></i>
                                 <span id="fileName" class="text-dark small"></span>

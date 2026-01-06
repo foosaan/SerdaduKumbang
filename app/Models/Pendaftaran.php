@@ -17,7 +17,8 @@ class Pendaftaran extends Model
         'no_hp',
         'alamat',
         'berkas',
-        'status'
+        'status',
+        'gelombang'
     ];
 
     public function user()

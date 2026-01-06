@@ -13,11 +13,11 @@
 
     /* Header Dashboard Modern */
     .dashboard-header {
-        background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 64, 175, 0.8) 100%);
+        background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(185, 28, 28, 0.8) 100%);
         color: white;
         padding: 50px 40px;
         border-radius: 30px;
-        box-shadow: 0 20px 40px rgba(30, 64, 175, 0.15);
+        box-shadow: 0 20px 40px rgba(185, 28, 28, 0.15);
         margin-bottom: 30px;
         position: relative;
         overflow: hidden;
@@ -56,7 +56,7 @@
 
     .stat-card:hover {
         transform: translateY(-5px);
-        box-shadow: 0 15px 30px rgba(30, 64, 175, 0.08);
+        box-shadow: 0 15px 30px rgba(185, 28, 28, 0.08);
     }
 
     .stat-icon-box {
@@ -72,7 +72,7 @@
 
     /* Status Colors Modernized */
     .status-accepted { border-top: 5px solid #10b981; }
-    .status-pending { border-top: 5px solid #3b82f6; }
+    .status-pending { border-top: 5px solid #dc2626; }
     .status-rejected { border-top: 5px solid #ef4444; }
 
     /* Data List Modernization */
@@ -94,15 +94,15 @@
     }
 
     .data-item:hover {
-        background: #f1f7ff;
-        border-color: #dbeafe;
+        background: #fff1f1;
+        border-color: #fecaca;
     }
 
     .data-icon {
         width: 42px;
         height: 42px;
-        background: #eff6ff;
-        color: #2563eb;
+        background: #fef2f2;
+        color: #dc2626;
         border-radius: 10px;
         display: flex;
         align-items: center;
@@ -127,18 +127,18 @@
     .badge-rejected { background: #fee2e2; color: #991b1b; }
 
     .btn-blue-action {
-        background: #2563eb;
+        background: #dc2626;
         color: white;
         padding: 12px 28px;
         border-radius: 12px;
         font-weight: 700;
         border: none;
         transition: 0.3s;
-        box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3);
+        box-shadow: 0 10px 15px -3px rgba(220, 38, 38, 0.3);
     }
 
     .btn-blue-action:hover {
-        background: #1d4ed8;
+        background: #b91c1c;
         transform: translateY(-2px);
         color: white;
     }
@@ -253,9 +253,9 @@
     <div class="dashboard-header" data-aos="fade-down">
         <div class="position-relative" style="z-index: 2;">
             <div class="welcome-badge">
-                <i class="fas fa-sparkles me-2"></i> Portal Calon Mahasantri
+                <i class="fas fa-sparkles me-2"></i> Portal Calon SerdaduKumbang
             </div>
-            <h1 class="dashboard-title">Ahlan wa Sahlan, {{ Auth::user()->name }}!</h1>
+            <h1 class="dashboard-title">Selamat Datang, {{ Auth::user()->name }}!</h1>
             <p class="mb-0 opacity-90">Pantau perkembangan status pendaftaran Anda secara real-time di sini.</p>
         </div>
     </div>

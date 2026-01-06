@@ -14,8 +14,8 @@
 
     /* Hero Section Tanpa Gambar - Selaras dengan desain Informasi & Pendaftaran */
     .contact-hero {
-        background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 64, 175, 0.75) 100%),
-                    radial-gradient(at 100% 100%, rgba(29, 78, 216, 0.1) 0, transparent 50%),
+        background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(185, 28, 28, 0.75) 100%),
+                    radial-gradient(at 100% 100%, rgba(220, 38, 38, 0.1) 0, transparent 50%),
                     #ffffff;
         padding: 80px 20px;
         border-radius: 40px;
@@ -30,7 +30,7 @@
     .hero-circle {
         position: absolute;
         border-radius: 50%;
-        background: linear-gradient(135deg, #2563eb, #1d4ed8);
+        background: linear-gradient(135deg, #dc2626, #b91c1c);
         filter: blur(80px);
         opacity: 0.07;
         z-index: 0;
@@ -72,15 +72,15 @@
 
     .contact-card:hover {
         transform: translateY(-12px);
-        box-shadow: 0 30px 60px -12px rgba(37, 99, 235, 0.15);
-        border-color: #dbeafe;
+        box-shadow: 0 30px 60px -12px rgba(220, 38, 38, 0.15);
+        border-color: #fecaca;
     }
 
     .contact-card::after {
         content: "";
         position: absolute;
         top: 0; left: 0; width: 100%; height: 6px;
-        background: #2563eb;
+        background: #dc2626;
         opacity: 0;
         transition: 0.3s;
     }
@@ -101,13 +101,13 @@
         transition: 0.5s ease;
     }
 
-    .icon-primary { background: #eff6ff; color: #2563eb; }
+    .icon-primary { background: #fef2f2; color: #dc2626; }
     .icon-success { background: #f0fdf4; color: #16a34a; }
     .icon-warning { background: #fffbeb; color: #d97706; }
 
     .contact-card:hover .contact-icon-wrapper {
         transform: scale(1.1) rotate(10deg);
-        background: #2563eb;
+        background: #dc2626;
         color: white;
     }
 
@@ -171,19 +171,19 @@
     }
 
     .btn-blue-cta {
-        background: #2563eb;
+        background: #dc2626;
         color: white;
         padding: 16px 48px;
         border-radius: 18px;
         font-weight: 700;
         text-decoration: none;
         display: inline-block;
-        box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3);
+        box-shadow: 0 10px 15px -3px rgba(220, 38, 38, 0.3);
         transition: 0.3s;
     }
 
     .btn-blue-cta:hover {
-        background: #1d4ed8;
+        background: #b91c1c;
         transform: scale(1.05);
         color: white;
     }
@@ -202,7 +202,7 @@
                 </div>
                 <h1 class="hero-title" data-aos="fade-up" data-aos-delay="500">Hubungi Kami</h1>
                 <p class="lead text-white mt-3 px-md-5 mx-auto" style="max-width: 750px;" data-aos="fade-up" data-aos-delay="700">
-                    Punya pertanyaan mengenai pendaftaran atau program Rumah TahfidzQu? Tim kami siap membantu Anda dengan ramah dan cepat.
+                    Punya pertanyaan mengenai pendaftaran atau program SerdaduKumbang? Tim kami siap membantu Anda dengan ramah dan cepat.
                 </p>
             </div>
         </div>
@@ -217,7 +217,7 @@
                         <div class="contact-icon-wrapper icon-primary">
                             <i class="fas fa-map-marker-alt"></i>
                         </div>
-                        <h4 class="text-center fw-bold mb-3">Lokasi PPTQ</h4>
+                        <h4 class="text-center fw-bold mb-3">Lokasi SERKUM</h4>
                         <p class="text-center text-secondary mb-0 px-2" style="line-height: 1.8;">
                             {{ $kontak->alamat }}
                         </p>
@@ -229,7 +229,7 @@
                         <div class="contact-icon-wrapper icon-success">
                             <i class="fas fa-phone-alt"></i>
                         </div>
-                        <h4 class="text-center fw-bold mb-3">Telepon / WA</h4>
+                        <h4 class="text-center fw-bold mb-3">WhatsApp</h4>
                         <div class="text-center">
                             <a href="tel:{{ $kontak->telepon }}" class="text-decoration-none h5 fw-bold text-dark d-block mb-1">
                                 {{ $kontak->telepon }}
@@ -263,8 +263,7 @@
                 <h4 class="fw-bold mb-4">Temukan Kami di Media Sosial</h4>
                 <div class="social-links">
                     <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', $kontak->telepon) }}" class="social-link social-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                    <a href="#" class="social-link social-instagram" target="_blank"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="social-link social-facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/sr_serdadukumbang?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="social-link social-instagram" target="_blank"><i class="fab fa-instagram"></i></a>
                     <a href="mailto:{{ $kontak->email }}" class="social-link social-email"><i class="fas fa-envelope"></i></a>
                 </div>
             </div>
@@ -275,7 +274,7 @@
                     <p class="text-secondary small">Navigasi langsung menggunakan Google Maps</p>
                 </div>
                 <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.0!2d106.8!3d-6.2!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwMTInMDAuMCJTIDEwNsKwNDgnMDAuMCJF!5e0!3m2!1sen!2sid!4v123456789" 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7436.156942153772!2d110.3545138285384!3d-7.793163600437046!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a58216dce1ec3%3A0x1779013e69ec67fe!2sPringgokusuman%2C%20Gedong%20Tengen%2C%20Kota%20Yogyakarta%2C%20Daerah%20Istimewa%20Yogyakarta!5e1!3m2!1sid!2sid!4v1767717126182!5m2!1sid!2sid" 
                     class="map-embed" 
                     allowfullscreen="" 
                     loading="lazy">
@@ -292,10 +291,7 @@
         @endif
 
         <div class="cta-section" data-aos="flip-up">
-            <h3 class="fw-bold mb-3">Mari Bergabung Menjadi Generasi Qur'ani</h3>
-            <p class="text-secondary mb-4 mx-auto" style="max-width: 600px;">
-                Jangan tunda niat baik Anda. Proses pendaftaran Mahasantri baru telah dibuka secara online.
-            </p>
+            <h3 class="fw-bold mb-3">Mari Bergabung Menjadi SerdaduKumbang</h3>
             <a href="{{ route('pendaftaran') }}" class="btn-blue-cta">
                 <i class="fas fa-user-plus me-2"></i> Daftar Sekarang
             </a>

@@ -9,6 +9,7 @@ class StatusForm extends Model
         protected $fillable = [
         'status',
         'tanggal_buka',
-        'tanggal_tutup'
+        'tanggal_tutup',
+        'gelombang_aktif'
     ];
 }

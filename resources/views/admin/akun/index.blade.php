@@ -17,13 +17,13 @@
     }
     .table tbody td { padding: 20px; vertical-align: middle; color: #334155; }
     .btn-add-admin {
-        background: #2563eb; color: white; padding: 12px 24px;
+        background: #dc2626; color: white; padding: 12px 24px;
         border-radius: 12px; font-weight: 700; border: none; transition: 0.3s;
     }
-    .btn-add-admin:hover { background: #1d4ed8; transform: translateY(-2px); color: white; }
+    .btn-add-admin:hover { background: #b91c1c; transform: translateY(-2px); color: white; }
     .user-avatar {
         width: 40px; height: 40px; background: #eff6ff;
-        color: #2563eb; border-radius: 10px;
+        color: #dc2626; border-radius: 10px;
         display: flex; align-items: center; justify-content: center; font-weight: 700;
     }
 </style>

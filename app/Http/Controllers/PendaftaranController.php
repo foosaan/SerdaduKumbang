@@ -20,10 +20,26 @@ class PendaftaranController extends Controller
         return view('public.home');
     }
 
-    public function informasi()
+    public function informasi(Request $request)
     {
-        $informasi = Informasi::latest()->get();
-        return view('public.informasi', compact('informasi'));
+        $kategori = $request->query('kategori');
+        
+        $query = Informasi::latest();
+        
+        if ($kategori && $kategori !== 'Semua') {
+            $query->where('kategori', $kategori);
+        }
+        
+        $informasi = $query->get();
+        $selectedKategori = $kategori ?? 'Semua';
+        
+        return view('public.informasi', compact('informasi', 'selectedKategori'));
+    }
+
+    public function showInformasi($id)
+    {
+        $informasi = Informasi::findOrFail($id);
+        return view('public.informasi-detail', compact('informasi'));
     }
 
     public function contact()
@@ -58,7 +74,7 @@ class PendaftaranController extends Controller
                 'max:15'
             ],
             'alamat' => 'required|string|max:255',
-            'berkas' => 'required|file|mimes:pdf,jpg,jpeg,png|max:2048',
+            'berkas' => 'required|file|mimes:pdf,jpg,jpeg,png|max:5120',
         ], [
             'nama_lengkap.required' => 'Nama lengkap wajib diisi.',
             'nama_lengkap.regex' => 'Nama hanya boleh berisi huruf dan spasi.',
@@ -96,6 +112,10 @@ class PendaftaranController extends Controller
             'status' => 'aktif',
         ]);
 
+        // 🔹 Get active gelombang
+        $statusForm = \App\Models\StatusForm::first();
+        $gelombangAktif = $statusForm ? ($statusForm->gelombang_aktif ?? 1) : 1;
+
         // 🔹 Simpan data pendaftaran
         Pendaftaran::create([
             'user_id' => $user->id,
@@ -106,6 +126,7 @@ class PendaftaranController extends Controller
             'alamat' => $request->alamat,
             'berkas' => $filePath,
             'status' => 'Menunggu',
+            'gelombang' => $gelombangAktif,
         ]);
 
         // Kirim email ke user

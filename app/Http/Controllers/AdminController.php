@@ -21,9 +21,15 @@ class AdminController extends Controller
         $search = $request->search;
         $status = $request->status;
         $jenis_kelamin = $request->jenis_kelamin;
+        $gelombang = $request->gelombang;
 
         // Query dasar
         $query = Pendaftaran::query();
+
+        // Filter berdasarkan gelombang
+        if ($gelombang) {
+            $query->where('gelombang', $gelombang);
+        }
 
         // Filter berdasarkan pencarian
         if ($search) {
@@ -49,10 +55,14 @@ class AdminController extends Controller
 
         // Ambil hasil dengan sort terbaru dan pagination
         $pendaftar = $query->latest()->paginate(10)->withQueryString();
-        // Total keseluruhan pendaftar
-        $total = Pendaftaran::count();
-
-        $menunggu = Pendaftaran::where('status', 'Menunggu')->count();
+        
+        // Total dan menunggu berdasarkan gelombang filter
+        $baseQuery = Pendaftaran::query();
+        if ($gelombang) {
+            $baseQuery->where('gelombang', $gelombang);
+        }
+        $total = (clone $baseQuery)->count();
+        $menunggu = (clone $baseQuery)->where('status', 'Menunggu')->count();
 
         return view('admin.dashboard', compact(
             'total', 
@@ -60,6 +70,7 @@ class AdminController extends Controller
             'pendaftar',
             'search',
             'status',
+            'gelombang',
             'lakiLaki',
             'perempuan'
         ));
@@ -81,7 +92,7 @@ class AdminController extends Controller
         $pesan = "Halo {$pendaftaran->nama_lengkap}, status pendaftaran Anda: {$pendaftaran->status}.\n\nTerima kasih telah mendaftar.";
         
         $response = Http::withHeaders([
-            'Authorization' => '',
+            'Authorization' => config('services.fonnte.token'),
         ])->post('https://api.fonnte.com/send', [
             'target' => $pendaftaran->no_hp,
             'message' => $pesan,
@@ -145,7 +156,7 @@ class AdminController extends Controller
 
         foreach ($pendaftar as $p) {
             Http::withHeaders([
-                'Authorization' => '',
+                'Authorization' => config('services.fonnte.token'),
             ])->post('https://api.fonnte.com/send', [
                 'target' => $p->no_hp,
                 'message' => $pesan,
@@ -187,6 +198,7 @@ class AdminController extends Controller
         $request->validate([
             'tanggal_buka' => 'required|date',
             'tanggal_tutup' => 'required|date|after_or_equal:tanggal_buka',
+            'gelombang_aktif' => 'required|in:1,2',
         ]);
 
         $statusForm = StatusForm::first();
@@ -194,6 +206,7 @@ class AdminController extends Controller
         $statusForm->update([
             'tanggal_buka' => $request->tanggal_buka,
             'tanggal_tutup' => $request->tanggal_tutup,
+            'gelombang_aktif' => $request->gelombang_aktif,
         ]);
 
         // Logika otomatis buka/tutup berdasarkan tanggal hari ini

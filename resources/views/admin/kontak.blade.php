@@ -20,7 +20,7 @@
     }
 
     .card-header-blue {
-        background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+        background: linear-gradient(135deg, #7f1d1d 0%, #dc2626 100%);
         padding: 30px;
         color: white;
         text-align: center;
@@ -43,7 +43,7 @@
     .input-group-custom i {
         position: absolute;
         left: 15px;
-        color: #2563eb;
+        color: #dc2626;
         z-index: 10;
         font-size: 1.1rem;
     }
@@ -59,28 +59,28 @@
 
     .form-control-custom:focus {
         background-color: #ffffff;
-        border-color: #2563eb;
-        box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+        border-color: #dc2626;
+        box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.1);
         outline: none;
     }
 
     /* Button Styling */
     .btn-save {
-        background: #2563eb;
+        background: #dc2626;
         color: white;
         padding: 14px 30px;
         border-radius: 14px;
         font-weight: 700;
         border: none;
         transition: all 0.3s ease;
-        box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3);
+        box-shadow: 0 10px 15px -3px rgba(220, 38, 38, 0.3);
         width: 100%;
     }
 
     .btn-save:hover {
-        background: #1d4ed8;
+        background: #b91c1c;
         transform: translateY(-2px);
-        box-shadow: 0 20px 25px -5px rgba(37, 99, 235, 0.4);
+        box-shadow: 0 20px 25px -5px rgba(220, 38, 38, 0.4);
         color: white;
     }
 
@@ -125,7 +125,7 @@
                         @method('PUT')
 
                         <div class="mb-4">
-                            <label class="form-label">Alamat Instansi / Pondok</label>
+                            <label class="form-label">Alamat Instansi</label>
                             <div class="input-group-custom">
                                 <i class="fas fa-map-marker-alt"></i>
                                 <input type="text" name="alamat" class="form-control-custom" 

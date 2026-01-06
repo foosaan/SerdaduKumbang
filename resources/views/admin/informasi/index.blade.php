@@ -29,7 +29,7 @@
         color: #334155;
     }
     .btn-add {
-        background: #2563eb;
+        background: #dc2626;
         color: white;
         padding: 10px 24px;
         border-radius: 12px;
@@ -38,7 +38,7 @@
         border: none;
     }
     .btn-add:hover {
-        background: #1d4ed8;
+        background: #b91c1c;
         transform: translateY(-2px);
         color: white;
     }

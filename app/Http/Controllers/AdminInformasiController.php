@@ -22,13 +22,32 @@ class AdminInformasiController extends Controller
     {
         $request->validate([
             'judul' => 'required',
+            'kategori' => 'required|in:Pendaftaran,Kegiatan,Lainnya',
             'isi' => 'required',
+            'gambar' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:5120',
+            'galeri' => 'nullable|array|max:3',
+            'galeri.*' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:5120',
         ]);
 
-        Informasi::create([
+        $data = [
             'judul' => $request->judul,
+            'kategori' => $request->kategori,
             'isi' => $request->isi,
-        ]);
+        ];
+
+        if ($request->hasFile('gambar')) {
+            $data['gambar'] = $request->file('gambar')->store('informasi', 'public');
+        }
+
+        if ($request->hasFile('galeri')) {
+            $galeriPaths = [];
+            foreach ($request->file('galeri') as $file) {
+                $galeriPaths[] = $file->store('informasi/galeri', 'public');
+            }
+            $data['galeri'] = $galeriPaths;
+        }
+
+        Informasi::create($data);
 
         return redirect()->route('admin.informasi.index')->with('success', 'Informasi berhasil ditambahkan.');
     }
@@ -43,15 +62,38 @@ class AdminInformasiController extends Controller
     {
         $request->validate([
             'judul' => 'required',
+            'kategori' => 'required|in:Pendaftaran,Kegiatan,Lainnya',
             'isi' => 'required',
+            'gambar' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:5120',
+            'galeri' => 'nullable|array|max:3',
+            'galeri.*' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:5120',
         ]);
 
         $informasi = Informasi::findOrFail($id);
 
-        $informasi->update([
+        $data = [
             'judul' => $request->judul,
+            'kategori' => $request->kategori,
             'isi' => $request->isi,
-        ]);
+        ];
+
+        if ($request->hasFile('gambar')) {
+            // Delete old image if exists
+            if ($informasi->gambar && \Storage::disk('public')->exists($informasi->gambar)) {
+                \Storage::disk('public')->delete($informasi->gambar);
+            }
+            $data['gambar'] = $request->file('gambar')->store('informasi', 'public');
+        }
+
+        if ($request->hasFile('galeri')) {
+            $existingGaleri = $informasi->galeri ?? [];
+            foreach ($request->file('galeri') as $file) {
+                $existingGaleri[] = $file->store('informasi/galeri', 'public');
+            }
+            $data['galeri'] = $existingGaleri;
+        }
+
+        $informasi->update($data);
 
         return redirect()->route('admin.informasi.index')->with('success', 'Informasi berhasil diperbarui.');
     }

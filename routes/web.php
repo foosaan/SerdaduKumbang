@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 // ===== HALAMAN UMUM =====
 Route::get('/', [PendaftaranController::class, 'home'])->name('home');
 Route::get('/informasi', [PendaftaranController::class, 'informasi'])->name('informasi');
+Route::get('/informasi/{id}', [PendaftaranController::class, 'showInformasi'])->name('informasi.show');
 Route::get('/contact', [PendaftaranController::class, 'contact'])->name('contact');
 
 // ===== FORM PENDAFTARAN =====

@@ -20,7 +20,7 @@
     }
 
     .card-header-blue {
-        background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+        background: linear-gradient(135deg, #7f1d1d 0%, #dc2626 100%);
         padding: 30px;
         color: white;
     }
@@ -66,8 +66,8 @@
 
     .form-control:focus {
         background-color: #ffffff;
-        border-color: #2563eb;
-        box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+        border-color: #dc2626;
+        box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.1);
     }
 
     .form-control:disabled {
@@ -78,20 +78,20 @@
 
     /* Action Buttons */
     .btn-save {
-        background: #2563eb;
+        background: #dc2626;
         color: white;
         padding: 14px 30px;
         border-radius: 14px;
         font-weight: 700;
         border: none;
         transition: all 0.3s ease;
-        box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3);
+        box-shadow: 0 10px 15px -3px rgba(220, 38, 38, 0.3);
     }
 
     .btn-save:hover {
-        background: #1d4ed8;
+        background: #b91c1c;
         transform: translateY(-2px);
-        box-shadow: 0 20px 25px -5px rgba(37, 99, 235, 0.4);
+        box-shadow: 0 20px 25px -5px rgba(220, 38, 38, 0.4);
         color: white;
     }
 
@@ -167,6 +167,19 @@
                             </div>
                         </div>
 
+                        <div class="row g-4 mt-2">
+                            <div class="col-12">
+                                <label class="form-label d-flex align-items-center">
+                                    <i class="fas fa-layer-group text-success me-2"></i> Gelombang Aktif
+                                </label>
+                                <select name="gelombang_aktif" class="form-control shadow-sm">
+                                    <option value="1" {{ ($statusForm->gelombang_aktif ?? 1) == 1 ? 'selected' : '' }}>Gelombang 1</option>
+                                    <option value="2" {{ ($statusForm->gelombang_aktif ?? 1) == 2 ? 'selected' : '' }}>Gelombang 2</option>
+                                </select>
+                                <div class="form-text mt-2 small">Pendaftar baru akan masuk ke gelombang ini.</div>
+                            </div>
+                        </div>
+
                         <hr class="my-5 opacity-50">
 
                         <div class="text-center">
@@ -179,7 +192,7 @@
             </div>
 
             <p class="text-center text-muted small mt-4">
-                <i class="fas fa-info-circle me-1"></i> Perubahan jadwal akan langsung berdampak pada akses halaman pendaftaran bagi calon santri.
+                <i class="fas fa-info-circle me-1"></i> Perubahan jadwal akan langsung berdampak pada akses halaman pendaftaran bagi calon pendaftar.
             </p>
         </div>
     </div>

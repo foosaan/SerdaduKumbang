@@ -20,7 +20,7 @@
     }
 
     .card-header-blue {
-        background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+        background: linear-gradient(135deg, #7f1d1d 0%, #dc2626 100%);
         padding: 30px;
         color: white;
     }
@@ -43,8 +43,8 @@
 
     .form-control:focus, .form-select:focus {
         background-color: #ffffff;
-        border-color: #2563eb;
-        box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+        border-color: #dc2626;
+        box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.1);
         outline: none;
     }
 
@@ -57,26 +57,26 @@
     }
 
     .progress-bar {
-        background: linear-gradient(90deg, #2563eb, #60a5fa);
+        background: linear-gradient(90deg, #dc2626, #f87171);
         border-radius: 50px;
     }
 
     /* Button Styling */
     .btn-send {
-        background: #2563eb;
+        background: #dc2626;
         color: white;
         padding: 14px 30px;
         border-radius: 14px;
         font-weight: 700;
         border: none;
         transition: all 0.3s ease;
-        box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3);
+        box-shadow: 0 10px 15px -3px rgba(220, 38, 38, 0.3);
     }
 
     .btn-send:hover {
-        background: #1d4ed8;
+        background: #b91c1c;
         transform: translateY(-2px);
-        box-shadow: 0 20px 25px -5px rgba(37, 99, 235, 0.4);
+        box-shadow: 0 20px 25px -5px rgba(220, 38, 38, 0.4);
     }
 
     .btn-send:disabled {
@@ -86,8 +86,8 @@
 
     /* Info Box */
     .info-box {
-        background: #eff6ff;
-        border-left: 4px solid #2563eb;
+        background: #fef2f2;
+        border-left: 4px solid #dc2626;
         padding: 15px;
         border-radius: 0 12px 12px 0;
         margin-bottom: 25px;
@@ -147,7 +147,7 @@
                                 <i class="fas fa-comment-alt text-primary me-2"></i> Isi Pesan Notifikasi
                             </label>
                             <textarea name="pesan" id="pesan" class="form-control" rows="6" 
-                                      placeholder="Contoh: Assalamualaikum, ..." required></textarea>
+                                      placeholder="Contoh: Halo..." required></textarea>
                             <div class="form-text mt-2 small">Gunakan bahasa yang sopan dan informatif.</div>
                         </div>
 
