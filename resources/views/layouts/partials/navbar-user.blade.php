@@ -137,13 +137,14 @@
 
     @media (max-width: 991.98px) {
         .navbar-collapse {
-            background: white; margin-top: 15px; padding: 20px;
-            border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            background: white; margin-top: 10px; padding: 15px;
+            border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.08);
         }
         .nav-link::after { display: none; }
-        .navbar-nav .nav-item { margin-bottom: 10px; width: 100%; }
-        .user-profile-link { background: transparent; padding: 10px 0 !important; }
-        .btn-login-nav { width: 100%; margin-top: 10px; }
+        .navbar-nav .nav-item { margin-bottom: 5px; width: 100%; }
+        .nav-link { font-size: 0.9rem !important; padding: 8px 10px !important; }
+        .user-profile-link { background: transparent; padding: 8px 0 !important; }
+        .btn-login-nav { width: 100%; margin-top: 8px; font-size: 0.85rem !important; padding: 10px !important; }
     }
 
     @media (max-width: 576px) {
@@ -161,6 +162,13 @@
         .navbar-custom {
             padding: 8px 0;
         }
+        .navbar-collapse {
+            padding: 12px;
+            margin-top: 8px;
+        }
+        .nav-link { font-size: 0.85rem !important; padding: 6px 8px !important; }
+        .navbar-nav .nav-item { margin-bottom: 3px; }
+        .btn-login-nav { font-size: 0.8rem !important; padding: 8px !important; }
     }
 
     @media (max-width: 400px) {
@@ -174,5 +182,10 @@
         .navbar-brand {
             font-size: 1rem !important;
         }
+        .navbar-collapse {
+            padding: 10px;
+        }
+        .nav-link { font-size: 0.8rem !important; padding: 5px 6px !important; }
+        .btn-login-nav { font-size: 0.75rem !important; padding: 7px !important; }
     }
 </style>
