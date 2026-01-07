@@ -1,6 +1,7 @@
 <footer class="footer-custom mt-5">
-    <div class="container py-5">
-        <div class="row g-4 justify-content-between">
+    <div class="container py-4 py-md-5">
+        <!-- Desktop Layout -->
+        <div class="row g-4 justify-content-between d-none d-md-flex">
             <div class="col-lg-4" data-aos="fade-up">
                 <a class="navbar-brand fw-bold fs-4 text-dark mb-3 d-block" href="{{ route('home') }}">
                     <span class="text-primary">SERKUM</span> Portal
@@ -51,15 +52,41 @@
             </div>
         </div>
 
-        <hr class="mt-5 mb-4 opacity-50">
+        <!-- Mobile Layout - Compact -->
+        <div class="d-md-none">
+            <div class="text-center mb-3">
+                <a class="navbar-brand fw-bold text-dark" href="{{ route('home') }}" style="font-size: 1rem;">
+                    <span class="text-primary">SERKUM</span> Portal
+                </a>
+            </div>
+            
+            <div class="d-flex justify-content-center gap-2 mb-3 social-links-footer">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+            </div>
 
-        <div class="row align-items-center">
-            <div class="col-md-6 text-center text-md-start">
-                <small class="text-muted">&copy; {{ date('Y') }} <strong>SerdaduKumbang</strong>. Semua Hak Dilindungi.</small>
+            <div class="row g-2 text-center mb-3">
+                <div class="col-6">
+                    <a href="{{ route('home') }}" class="footer-link-mobile">Home</a>
+                </div>
+                <div class="col-6">
+                    <a href="{{ route('informasi') }}" class="footer-link-mobile">Informasi</a>
+                </div>
+                <div class="col-6">
+                    <a href="{{ route('pendaftaran') }}" class="footer-link-mobile">Pendaftaran</a>
+                </div>
+                <div class="col-6">
+                    <a href="{{ route('contact') }}" class="footer-link-mobile">Kontak</a>
+                </div>
             </div>
-            <div class="col-md-6 text-center text-md-end mt-2 mt-md-0">
-                <small class="text-muted">Developed with <i class="fas fa-heart text-danger mx-1"></i> for SerdaduKumbang</small>
-            </div>
+        </div>
+
+        <hr class="mt-3 mt-md-5 mb-3 mb-md-4 opacity-50">
+
+        <div class="text-center">
+            <small class="text-muted" style="font-size: 0.7rem;">&copy; {{ date('Y') }} <strong>SerdaduKumbang</strong>. Semua Hak Dilindungi.</small>
         </div>
     </div>
 </footer>
@@ -69,6 +96,22 @@
         background-color: #ffffff;
         border-top: 1px solid #f1f5f9;
         color: #334155;
+    }
+
+    .footer-link-mobile {
+        color: #64748b;
+        text-decoration: none;
+        font-size: 0.75rem;
+        font-weight: 500;
+        display: block;
+        padding: 6px 8px;
+        border-radius: 8px;
+        transition: all 0.2s;
+    }
+
+    .footer-link-mobile:hover {
+        color: #dc2626;
+        background: #fef2f2;
     }
 
     /* Styling Button Footer Baru */

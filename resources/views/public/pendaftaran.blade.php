@@ -193,25 +193,35 @@
 @media (max-width: 768px) {
     /* Menyesuaikan Hero Section di HP */
     .registration-hero {
-        padding: 60px 15px;
+        padding: 40px 15px;
         border-radius: 20px;
     }
 
     .registration-hero h1 {
-        font-size: 1.8rem !important; /* Ukuran judul lebih kecil di HP */
+        font-size: 1.6rem !important; /* Ukuran judul lebih kecil di HP */
+    }
+    
+    .registration-badge {
+        font-size: 0.75rem;
+        padding: 6px 16px;
     }
 
     /* Mengurangi padding container form agar input lebih luas */
     .form-container {
-        padding: 30px 20px; /* Padding lebih tipis di HP */
+        padding: 25px 15px; /* Padding lebih tipis di HP */
         border-radius: 20px;
+        margin-top: 2rem !important;
     }
 
     .form-title {
-        font-size: 1.5rem !important;
+        font-size: 1.3rem !important;
     }
 
     /* Menyesuaikan divider seksi */
+    .section-divider {
+        margin: 30px 0 20px;
+    }
+    
     .section-divider span {
         font-size: 0.7rem;
         padding: 6px 12px;
@@ -219,29 +229,60 @@
 
     /* Menyesuaikan label upload file */
     .file-upload-label {
-        padding: 25px 15px;
+        padding: 20px 15px;
+        border-radius: 12px;
     }
 
     .file-upload-label i {
         font-size: 2rem;
+        margin-bottom: 10px;
+    }
+    
+    .file-upload-label .h5 {
+        font-size: 1rem !important;
     }
 
     /* Memastikan tombol navigasi (Beranda & Kirim) tidak bertumpuk */
     .d-flex.justify-content-between {
-        flex-direction: column; /* Tombol jadi atas-bawah di HP */
-        gap: 15px;
+        flex-direction: column-reverse; /* Tombol jadi atas-bawah di HP */
+        gap: 12px;
     }
 
     .btn-submit, .btn-back {
         width: 100%; /* Tombol lebar penuh agar mudah ditekan */
         text-align: center;
         padding: 12px;
+        font-size: 0.9rem;
+    }
+    
+    .form-control, .form-select {
+        font-size: 0.9rem !important;
+        padding: 10px 14px;
     }
 
     /* Info card warning di atas form */
     .info-card {
         padding: 15px;
         font-size: 0.85rem;
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .registration-hero h1 {
+        font-size: 1.4rem !important;
+    }
+    .registration-hero .lead {
+        font-size: 0.85rem !important;
+    }
+    .form-container {
+        padding: 20px 12px;
+    }
+    .form-label {
+        font-size: 0.85rem;
+    }
+    .file-upload-label {
+        padding: 15px 10px;
     }
 }
 
