@@ -15,8 +15,10 @@ return new class extends Migration
         // First update existing 'Agenda' records to 'Kegiatan'
         DB::table('informasis')->where('kategori', 'Agenda')->update(['kategori' => 'Kegiatan']);
         
-        // Then modify the enum column
-        DB::statement("ALTER TABLE informasis MODIFY kategori ENUM('Pendaftaran', 'Kegiatan', 'Lainnya') DEFAULT 'Pendaftaran'");
+        // Only run MODIFY for MySQL (SQLite doesn't support ENUM)
+        if (DB::connection()->getDriverName() === 'mysql') {
+            DB::statement("ALTER TABLE informasis MODIFY kategori ENUM('Pendaftaran', 'Kegiatan', 'Lainnya') DEFAULT 'Pendaftaran'");
+        }
     }
 
     /**
@@ -24,6 +26,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        DB::statement("ALTER TABLE informasis MODIFY kategori ENUM('Pendaftaran', 'Kegiatan', 'Agenda', 'Lainnya') DEFAULT 'Pendaftaran'");
+        if (DB::connection()->getDriverName() === 'mysql') {
+            DB::statement("ALTER TABLE informasis MODIFY kategori ENUM('Pendaftaran', 'Kegiatan', 'Agenda', 'Lainnya') DEFAULT 'Pendaftaran'");
+        }
     }
 };
