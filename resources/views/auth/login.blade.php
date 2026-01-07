@@ -117,45 +117,73 @@
                 flex-direction: column-reverse; 
                 width: 95%;
                 min-height: auto;
-                margin: 1rem;
+                margin: 0.5rem;
+                border-radius: 20px;
             }
             .login-right-panel { 
-                border-radius: 0 0 30px 30px; 
-                padding: 2rem 1.5rem;
+                border-radius: 0 0 20px 20px; 
+                padding: 1.5rem 1rem;
             }
             .login-left-side {
-                padding: 2rem 1.5rem;
+                padding: 1.5rem 1rem;
             }
             .login-title {
-                font-size: 1.75rem;
+                font-size: 1.4rem;
             }
             .right-panel-title {
-                font-size: 1.5rem;
+                font-size: 1.2rem;
             }
             .right-panel-text {
-                font-size: 0.95rem;
+                font-size: 0.85rem;
             }
             .btn-custom-signin {
-                padding: 0.85rem !important;
+                padding: 0.7rem !important;
+                font-size: 0.85rem !important;
+            }
+            .input-hint {
+                font-size: 0.8rem;
             }
         }
 
         @media (max-width: 480px) {
             .login-main-container {
-                margin: 0.5rem;
-                border-radius: 20px;
+                margin: 0.25rem;
+                border-radius: 16px;
             }
             .login-left-side {
-                padding: 1.5rem 1rem;
+                padding: 1.25rem 0.875rem;
             }
             .login-right-panel {
-                padding: 1.5rem 1rem;
+                padding: 1.25rem 0.875rem;
             }
             .login-title {
-                font-size: 1.5rem;
+                font-size: 1.25rem;
             }
             .right-panel-title {
-                font-size: 1.3rem;
+                font-size: 1.1rem;
+            }
+            .right-panel-text {
+                font-size: 0.8rem;
+                margin-bottom: 1rem;
+            }
+            input[type="email"], input[type="password"] {
+                padding: 0.65rem 0.75rem !important;
+                font-size: 14px !important;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .login-title {
+                font-size: 1.1rem;
+            }
+            .right-panel-title {
+                font-size: 1rem;
+            }
+            .right-panel-text {
+                font-size: 0.75rem;
+            }
+            .login-left-side, .login-right-panel {
+                padding: 1rem 0.75rem;
             }
         }
     </style>
