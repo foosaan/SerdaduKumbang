@@ -1,12 +1,15 @@
 [build]
-builder = "DOCKERFILE"
-dockerfilePath = "Dockerfile"
+builder = "NIXPACKS"
+buildCommand = "npm ci && npm run build && composer install --no-dev --optimize-autoloader"
+
+[build.env]
+NIXPACKS_PHP_VERSION = "8.2"
+NIXPACKS_NODE_VERSION = "20"
 
 [deploy]
-startCommand = "php artisan migrate --force && php artisan config:clear && echo 'Starting server...' && php artisan serve --host=0.0.0.0 --port=$PORT"
+startCommand = "php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=$PORT"
 
 [env]
 APP_ENV = "production"
 APP_DEBUG = "true"
 LOG_CHANNEL = "stderr"
-PORT = "8080"
