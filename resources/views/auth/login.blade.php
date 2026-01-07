@@ -111,9 +111,52 @@
             margin-bottom: 2rem;
         }
 
+        /* Mobile Responsive */
         @media (max-width: 768px) {
-            .login-main-container { flex-direction: column-reverse; }
-            .login-right-panel { border-radius: 0 0 50px 50px; padding: 2rem; }
+            .login-main-container { 
+                flex-direction: column-reverse; 
+                width: 95%;
+                min-height: auto;
+                margin: 1rem;
+            }
+            .login-right-panel { 
+                border-radius: 0 0 30px 30px; 
+                padding: 2rem 1.5rem;
+            }
+            .login-left-side {
+                padding: 2rem 1.5rem;
+            }
+            .login-title {
+                font-size: 1.75rem;
+            }
+            .right-panel-title {
+                font-size: 1.5rem;
+            }
+            .right-panel-text {
+                font-size: 0.95rem;
+            }
+            .btn-custom-signin {
+                padding: 0.85rem !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .login-main-container {
+                margin: 0.5rem;
+                border-radius: 20px;
+            }
+            .login-left-side {
+                padding: 1.5rem 1rem;
+            }
+            .login-right-panel {
+                padding: 1.5rem 1rem;
+            }
+            .login-title {
+                font-size: 1.5rem;
+            }
+            .right-panel-title {
+                font-size: 1.3rem;
+            }
         }
     </style>
 

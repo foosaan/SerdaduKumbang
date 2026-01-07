@@ -51,6 +51,79 @@
             from { opacity: 0; }
             to { opacity: 1; }
         }
+
+        /* ========== MOBILE RESPONSIVE STYLES ========== */
+        @media (max-width: 768px) {
+            /* Typography scaling */
+            h1 { font-size: 1.75rem !important; }
+            h2 { font-size: 1.5rem !important; }
+            h3 { font-size: 1.25rem !important; }
+            h4 { font-size: 1.1rem !important; }
+            p, span, label { font-size: 0.95rem !important; }
+            
+            /* Container padding */
+            .container { padding-left: 15px !important; padding-right: 15px !important; }
+            
+            /* Cards mobile */
+            .card { margin-bottom: 1rem !important; }
+            .card-body { padding: 1rem !important; }
+            
+            /* Buttons mobile */
+            .btn { padding: 0.6rem 1rem !important; font-size: 0.9rem !important; }
+            .btn-lg { padding: 0.75rem 1.25rem !important; }
+            
+            /* Forms mobile */
+            .form-control, .form-select { font-size: 16px !important; padding: 0.75rem !important; }
+            
+            /* Tables mobile */
+            .table-responsive { font-size: 0.85rem; }
+            .table th, .table td { padding: 0.5rem !important; white-space: nowrap; }
+            
+            /* Hero sections */
+            .hero-section h1 { font-size: 1.75rem !important; }
+            .hero-section p { font-size: 1rem !important; }
+            
+            /* Stat cards */
+            .stat-card-admin { padding: 15px !important; gap: 10px !important; }
+            .stat-icon { width: 45px !important; height: 45px !important; font-size: 1.1rem !important; }
+            
+            /* Filter cards */
+            .filter-card { padding: 15px !important; }
+            .filter-card .row { gap: 10px; }
+            
+            /* Global alert mobile */
+            .global-alert { 
+                min-width: auto !important; 
+                left: 15px; 
+                right: 15px; 
+                font-size: 0.9rem;
+            }
+            
+            /* Navbar mobile */
+            .navbar-brand img { height: 35px !important; }
+            .navbar { padding: 0.5rem 1rem !important; }
+            
+            /* Section spacing */
+            section { padding: 2rem 0 !important; }
+            .py-5 { padding-top: 2rem !important; padding-bottom: 2rem !important; }
+            .mb-5 { margin-bottom: 2rem !important; }
+        }
+
+        @media (max-width: 576px) {
+            /* Extra small devices */
+            h1 { font-size: 1.5rem !important; }
+            h2 { font-size: 1.3rem !important; }
+            
+            /* Full width buttons on small */
+            .btn-action { width: 100% !important; margin-bottom: 0.5rem; }
+            
+            /* Stack columns */
+            .d-flex.gap-2 { flex-wrap: wrap; }
+            
+            /* Reduce padding */
+            .p-4 { padding: 1rem !important; }
+            .p-5 { padding: 1.5rem !important; }
+        }
     </style>
 </head>
 <body>

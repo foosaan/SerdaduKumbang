@@ -190,6 +190,115 @@
         border-radius: 50%;
         z-index: 0;
     }
+
+    /* ========== MOBILE RESPONSIVE HOME ========== */
+    @media (max-width: 768px) {
+        .hero-wrapper {
+            margin-top: 10px;
+            border-radius: 20px;
+        }
+        
+        .carousel-item {
+            height: 500px;
+            min-height: 400px;
+        }
+        
+        .hero-content-container h1 {
+            font-size: 1.75rem !important;
+            line-height: 1.3;
+        }
+        
+        .hero-content-container p {
+            font-size: 0.95rem !important;
+            margin-bottom: 1.5rem !important;
+        }
+        
+        .hero-badge {
+            font-size: 0.75rem;
+            padding: 6px 15px;
+            margin-bottom: 15px;
+        }
+        
+        .btn-primary-blue {
+            padding: 12px 24px;
+            font-size: 0.9rem;
+        }
+        
+        .stats-section {
+            margin: -40px 15px 0 15px;
+            padding: 25px 20px;
+            border-radius: 18px;
+        }
+        
+        .stat-number {
+            font-size: 1.8rem;
+        }
+        
+        .stat-label {
+            font-size: 0.65rem;
+        }
+        
+        .stats-section .border-end {
+            border: none !important;
+        }
+        
+        .feature-card {
+            padding: 30px 20px;
+            border-radius: 20px;
+        }
+        
+        .icon-box {
+            width: 60px;
+            height: 60px;
+            font-size: 1.5rem;
+        }
+        
+        .section-title {
+            font-size: 1.5rem !important;
+        }
+        
+        .cta-area {
+            padding: 50px 20px;
+            border-radius: 20px;
+            margin: 40px 0;
+        }
+        
+        .cta-area h2 {
+            font-size: 1.4rem !important;
+        }
+        
+        .cta-area p {
+            font-size: 0.95rem !important;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .carousel-item {
+            height: 450px;
+        }
+        
+        .hero-content-container h1 {
+            font-size: 1.5rem !important;
+        }
+        
+        .hero-content-container .d-flex {
+            flex-direction: column;
+            gap: 0.75rem !important;
+        }
+        
+        .btn-primary-blue, .btn-outline-light {
+            width: 100%;
+            text-align: center;
+        }
+        
+        .stats-section {
+            margin: -30px 10px 0 10px;
+        }
+        
+        .stat-number {
+            font-size: 1.5rem;
+        }
+    }
 </style>
 
 <div class="container pb-5">
