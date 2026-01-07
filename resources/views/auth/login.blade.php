@@ -164,9 +164,9 @@
         </div>
 
         <div class="login-right-panel">
-            <h2 class="right-panel-title" data-aos="fade-left" data-aos-delay="300">Ahlan, Sahabat!</h2>
+            <h2 class="right-panel-title" data-aos="fade-left" data-aos-delay="300">Halo SerKum Muda</h2>
             <p class="right-panel-text" data-aos="fade-left" data-aos-delay="500">
-                Belum mendaftarkan diri? Mari bergabung bersama kami untuk mencetak generasi Qur'ani yang berakhlak mulia.
+                Belum mendaftarkan diri? Mari bergabung bersama kami 
             </p>
             <a href="{{ route('pendaftaran') }}" 
                class="px-8 py-3 border-2 border-white rounded-full font-bold hover:bg-white hover:text-red-600 transition-all duration-300 no-underline text-white"

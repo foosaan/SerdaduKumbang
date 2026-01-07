@@ -7,12 +7,13 @@
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="font-sans text-gray-900 antialiased">
+    <body class="text-gray-900 antialiased" style="font-family: 'Plus Jakarta Sans', sans-serif;">
         {{-- 
            Hapus semua div pembungkus (min-h-screen, flex, bg-gray, dll) 
            dan sisakan hanya $slot agar desain custom di login.blade.php 
