@@ -1,11 +1,9 @@
 [build]
-builder = "NIXPACKS"
-
-[build.env]
-NIXPACKS_PHP_VERSION = "8.2"
+builder = "DOCKERFILE"
 
 [deploy]
-startCommand = "php artisan migrate --force && php artisan db:seed --force && php artisan config:cache && php artisan route:cache && php artisan view:cache && php artisan serve --host=0.0.0.0 --port=$PORT"
+healthcheckPath = "/"
+healthcheckTimeout = 300
 
 [env]
 APP_ENV = "production"
