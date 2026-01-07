@@ -10,4 +10,4 @@ healthcheckTimeout = 300
 APP_ENV = "production"
 APP_DEBUG = "false"
 LOG_CHANNEL = "stderr"
-PORT = "80"
+PORT = "8080"

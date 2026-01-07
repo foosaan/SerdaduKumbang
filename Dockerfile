@@ -18,8 +18,8 @@ COPY postcss.config.js ./
 # Build assets
 RUN npm run build
 
-# PHP stage
-FROM php:8.4-fpm-alpine
+# PHP stage - using official Laravel Sail image base
+FROM php:8.3-cli-alpine
 
 # Install system dependencies
 RUN apk add --no-cache \
@@ -30,14 +30,14 @@ RUN apk add --no-cache \
     zip \
     unzip \
     oniguruma-dev \
-    nginx \
-    supervisor
+    icu-dev \
+    libzip-dev
 
 # Install PHP extensions
-RUN docker-php-ext-install pdo pdo_mysql mbstring exif pcntl bcmath gd xml
+RUN docker-php-ext-install pdo pdo_mysql mbstring exif pcntl bcmath gd intl zip
 
 # Install Composer
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 # Set working directory
 WORKDIR /var/www/html
@@ -45,7 +45,7 @@ WORKDIR /var/www/html
 # Copy composer files first for caching
 COPY composer.json composer.lock ./
 
-# Install PHP dependencies
+# Install PHP dependencies (without scripts to avoid artisan errors)
 RUN composer install --no-dev --optimize-autoloader --no-interaction --no-scripts
 
 # Copy application files
@@ -54,22 +54,20 @@ COPY . .
 # Copy built assets from node builder
 COPY --from=node-builder /app/public/build ./public/build
 
-# Run composer scripts after copy
+# Run composer dump-autoload
 RUN composer dump-autoload --optimize
 
-# Set permissions
-RUN chown -R www-data:www-data /var/www/html \
-    && chmod -R 755 /var/www/html/storage \
-    && chmod -R 755 /var/www/html/bootstrap/cache
+# Create storage directories and set permissions
+RUN mkdir -p storage/framework/cache storage/framework/sessions storage/framework/views storage/logs bootstrap/cache \
+    && chmod -R 777 storage bootstrap/cache
 
-# Copy nginx config
-COPY docker/nginx.conf /etc/nginx/http.d/default.conf
-
-# Copy supervisor config
-COPY docker/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+# Cache Laravel config
+RUN php artisan config:clear || true
+RUN php artisan route:clear || true
+RUN php artisan view:clear || true
 
 # Expose port
-EXPOSE 80
+EXPOSE 8080
 
-# Start supervisor
-CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
+# Start Laravel
+CMD php artisan serve --host=0.0.0.0 --port=${PORT:-8080}
