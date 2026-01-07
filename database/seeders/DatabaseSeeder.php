@@ -16,21 +16,36 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // === ADMIN ===
-        User::create([
-            'name' => 'Admin',
-            'email' => 'admin@example.com',
-            'password' => bcrypt('password'),
-            'role' => 'admin',
-            'status' => 'active',
-        ]);
+        User::firstOrCreate(
+            ['email' => 'admin@example.com'],
+            [
+                'name' => 'Admin',
+                'password' => bcrypt('password'),
+                'role' => 'admin',
+                'status' => 'active',
+            ]
+        );
 
         // === USER BIASA ===
-        User::create([
-            'name' => 'User Biasa',
-            'email' => 'user@example.com',
-            'password' => bcrypt('password'),
-            'role' => 'user',
-            'status' => 'active',
-        ]);
+        User::firstOrCreate(
+            ['email' => 'user@example.com'],
+            [
+                'name' => 'User Biasa',
+                'password' => bcrypt('password'),
+                'role' => 'user',
+                'status' => 'active',
+            ]
+        );
+
+        // === STATUS FORM ===
+        \App\Models\StatusForm::firstOrCreate(
+            ['id' => 1],
+            [
+                'status' => 'Buka',
+                'tanggal_buka' => now()->format('Y-m-d'),
+                'tanggal_tutup' => now()->addMonths(3)->format('Y-m-d'),
+                'gelombang_aktif' => 1,
+            ]
+        );
     }
 }
