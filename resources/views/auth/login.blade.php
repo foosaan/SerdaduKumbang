@@ -186,17 +186,34 @@
                 padding: 1rem 0.75rem;
             }
         }
+        /* Custom Register Button to fix Deploy issues */
+        .btn-register-outline {
+            border: 2px solid #ffffff !important;
+            color: #ffffff !important;
+            padding: 12px 32px !important;
+            border-radius: 50px !important;
+            font-weight: 700 !important;
+            text-decoration: none !important;
+            transition: all 0.3s ease !important;
+            display: inline-block;
+            background: transparent !important;
+        }
+        
+        .btn-register-outline:hover {
+            background-color: #ffffff !important;
+            color: #dc2626 !important;
+        }
     </style>
 
-    <div class="login-main-container" data-aos="zoom-in" data-aos-duration="1000">
+    <div class="login-main-container shadow-2xl overflow-hidden bg-white" data-aos="zoom-in" data-aos-duration="1000">
         
-        <div class="login-left-side">
+        <div class="login-left-side relative">
             <div class="text-center">
-                <h2 class="login-title">Sign In</h2>
-                <p class="input-hint">Gunakan email dan password akun Anda</p>
+                <h2 class="login-title mb-2 text-gray-800" data-aos="fade-right">Sign In</h2>
+                <p class="text-gray-500 mb-8" data-aos="fade-right" data-aos-delay="100">Gunakan email dan password akun Anda</p>
             </div>
 
-            <x-auth-session-status class="mb-4" :status="session('status')" />
+            
             @if (session('success'))
                 <div class="p-3 mb-4 text-sm text-green-700 bg-green-100 rounded-lg" role="alert">
                     {{ session('success') }}
@@ -228,8 +245,8 @@
                     <span class="ml-2 text-sm text-gray-600">{{ __('Ingat saya') }}</span>
                 </div>
 
-                <button type="submit" class="btn-custom-signin">
-                    Sign In
+                <button type="submit" class="btn-custom-signin text-white shadow-lg transform hover:scale-105" data-aos="fade-up" data-aos-delay="200">
+                    SIGN IN <i class="fas fa-sign-in-alt ms-2"></i>
                 </button>
             </form>
         </div>
@@ -240,7 +257,7 @@
                 Belum mendaftarkan diri? Mari bergabung bersama kami 
             </p>
             <a href="{{ route('pendaftaran') }}" 
-               class="px-8 py-3 border-2 border-white rounded-full font-bold hover:bg-white hover:text-red-600 transition-all duration-300 no-underline text-white"
+               class="btn-register-outline"
                data-aos="fade-up" data-aos-delay="700">
                 DAFTAR SEKARANG
             </a>
