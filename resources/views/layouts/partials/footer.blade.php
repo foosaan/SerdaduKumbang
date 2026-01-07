@@ -139,11 +139,68 @@
         .footer-custom {
             text-align: center;
         }
+        .footer-custom .container {
+            padding-top: 2rem !important;
+            padding-bottom: 2rem !important;
+        }
         .footer-links a:hover {
             padding-left: 0;
         }
         .social-links-footer {
             justify-content: center;
+        }
+        .footer-links li {
+            margin-bottom: 8px;
+        }
+        .footer-links a {
+            font-size: 0.8rem;
+        }
+        .navbar-brand.fs-4 {
+            font-size: 1.1rem !important;
+        }
+        .footer-custom h6 {
+            font-size: 0.75rem !important;
+            margin-bottom: 0.75rem !important;
+        }
+        .footer-custom p.small {
+            font-size: 0.75rem !important;
+        }
+        .btn-primary-footer {
+            padding: 10px 20px;
+            font-size: 0.8rem;
+        }
+        .social-links-footer a {
+            width: 32px;
+            height: 32px;
+            font-size: 0.85rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .footer-custom .container {
+            padding: 1.5rem 0.75rem !important;
+        }
+        .footer-links a {
+            font-size: 0.75rem;
+        }
+        .footer-custom h6 {
+            font-size: 0.7rem !important;
+        }
+        .footer-custom p.small {
+            font-size: 0.7rem !important;
+        }
+        .btn-primary-footer {
+            padding: 8px 16px;
+            font-size: 0.75rem;
+        }
+        .social-links-footer a {
+            width: 30px;
+            height: 30px;
+            font-size: 0.8rem;
+            border-radius: 8px;
+        }
+        .footer-custom small {
+            font-size: 0.65rem !important;
         }
     }
 </style>

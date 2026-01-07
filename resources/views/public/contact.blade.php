@@ -187,6 +187,104 @@
         transform: scale(1.05);
         color: white;
     }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+        .contact-hero {
+            padding: 40px 15px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+        }
+        .hero-title {
+            font-size: 1.5rem !important;
+        }
+        .contact-badge {
+            font-size: 0.7rem;
+            padding: 6px 16px;
+        }
+        .contact-hero .lead {
+            font-size: 0.85rem !important;
+        }
+        .contact-card {
+            padding: 25px 20px;
+            border-radius: 20px;
+        }
+        .contact-icon-wrapper {
+            width: 50px;
+            height: 50px;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+        .contact-card h4 {
+            font-size: 1rem !important;
+        }
+        .contact-card p, .contact-card a {
+            font-size: 0.85rem !important;
+        }
+        .social-link {
+            width: 40px;
+            height: 40px;
+            font-size: 1rem;
+        }
+        .map-container {
+            padding: 20px 15px;
+            border-radius: 20px;
+            margin-top: 30px;
+        }
+        .map-embed {
+            height: 250px;
+            border-radius: 16px;
+        }
+        .cta-section {
+            padding: 30px 20px;
+            border-radius: 20px;
+            margin-top: 40px;
+        }
+        .cta-section h3 {
+            font-size: 1.1rem !important;
+        }
+        .btn-blue-cta {
+            padding: 12px 30px;
+            font-size: 0.85rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .contact-hero {
+            padding: 30px 12px;
+        }
+        .hero-title {
+            font-size: 1.25rem !important;
+        }
+        .contact-badge {
+            font-size: 0.65rem;
+            padding: 5px 12px;
+        }
+        .contact-card {
+            padding: 20px 15px;
+        }
+        .contact-icon-wrapper {
+            width: 45px;
+            height: 45px;
+            font-size: 1.1rem;
+        }
+        .social-link {
+            width: 36px;
+            height: 36px;
+            font-size: 0.9rem;
+            border-radius: 10px;
+        }
+        .map-embed {
+            height: 200px;
+        }
+        .cta-section h3 {
+            font-size: 1rem !important;
+        }
+        .btn-blue-cta {
+            padding: 10px 24px;
+            font-size: 0.8rem;
+        }
+    }
 </style>
 
 <div class="container-fluid px-0">
