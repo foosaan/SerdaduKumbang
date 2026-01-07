@@ -145,4 +145,34 @@
         .user-profile-link { background: transparent; padding: 10px 0 !important; }
         .btn-login-nav { width: 100%; margin-top: 10px; }
     }
+
+    @media (max-width: 576px) {
+        .navbar-brand img {
+            width: 32px !important;
+            height: 32px !important;
+            object-fit: contain;
+        }
+        .brand-accent {
+            font-size: 0.9rem !important;
+        }
+        .navbar-brand {
+            font-size: 1.1rem !important;
+        }
+        .navbar-custom {
+            padding: 8px 0;
+        }
+    }
+
+    @media (max-width: 400px) {
+        .navbar-brand img {
+            width: 28px !important;
+            height: 28px !important;
+        }
+        .brand-accent {
+            font-size: 0.8rem !important;
+        }
+        .navbar-brand {
+            font-size: 1rem !important;
+        }
+    }
 </style>

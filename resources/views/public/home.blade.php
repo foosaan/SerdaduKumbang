@@ -430,16 +430,16 @@
 
     {{-- STATS SECTION --}}
     <div class="stats-section" data-aos="fade-up" data-aos-delay="200">
-        <div class="row g-4 text-center">
-            <div class="col-md-4 border-end border-light" data-aos="zoom-in" data-aos-delay="400">
+        <div class="row g-2 g-md-4 text-center">
+            <div class="col-4" data-aos="zoom-in" data-aos-delay="400">
                 <p class="stat-number">500+</p>
                 <p class="stat-label">Anggota Aktif</p>
             </div>
-            <div class="col-md-4 border-end border-light" data-aos="zoom-in" data-aos-delay="600">
+            <div class="col-4" data-aos="zoom-in" data-aos-delay="600">
                 <p class="stat-number">50+</p>
                 <p class="stat-label">Pengurus</p>
             </div>
-            <div class="col-md-4" data-aos="zoom-in" data-aos-delay="800">
+            <div class="col-4" data-aos="zoom-in" data-aos-delay="800">
                 <p class="stat-number">2014</p>
                 <p class="stat-label">Tahun Berdiri</p>
             </div>
