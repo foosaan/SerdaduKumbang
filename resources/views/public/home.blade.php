@@ -195,108 +195,185 @@
     @media (max-width: 768px) {
         .hero-wrapper {
             margin-top: 10px;
-            border-radius: 20px;
+            border-radius: 16px;
         }
         
         .carousel-item {
-            height: 500px;
-            min-height: 400px;
+            height: 400px;
+            min-height: 350px;
         }
         
         .hero-content-container h1 {
-            font-size: 1.75rem !important;
-            line-height: 1.3;
+            font-size: 1.4rem !important;
+            line-height: 1.2;
         }
         
         .hero-content-container p {
-            font-size: 0.95rem !important;
-            margin-bottom: 1.5rem !important;
+            font-size: 0.8rem !important;
+            margin-bottom: 1rem !important;
+            line-height: 1.5;
         }
         
         .hero-badge {
-            font-size: 0.75rem;
-            padding: 6px 15px;
-            margin-bottom: 15px;
+            font-size: 0.65rem;
+            padding: 5px 12px;
+            margin-bottom: 10px;
         }
         
         .btn-primary-blue {
-            padding: 12px 24px;
-            font-size: 0.9rem;
+            padding: 10px 20px;
+            font-size: 0.8rem;
+        }
+        
+        .btn-outline-light {
+            padding: 8px 16px !important;
+            font-size: 0.8rem !important;
         }
         
         .stats-section {
-            margin: -40px 15px 0 15px;
-            padding: 25px 20px;
-            border-radius: 18px;
+            margin: 20px 10px 0 10px;
+            padding: 20px 15px;
+            border-radius: 16px;
         }
         
         .stat-number {
-            font-size: 1.8rem;
+            font-size: 1.4rem;
         }
         
         .stat-label {
-            font-size: 0.65rem;
+            font-size: 0.6rem;
         }
         
         .stats-section .border-end {
             border: none !important;
         }
         
+        .stats-section .col-md-4 {
+            padding: 8px 0;
+        }
+        
         .feature-card {
-            padding: 30px 20px;
-            border-radius: 20px;
+            padding: 20px 15px;
+            border-radius: 16px;
         }
         
         .icon-box {
-            width: 60px;
-            height: 60px;
-            font-size: 1.5rem;
+            width: 50px;
+            height: 50px;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
         }
         
         .section-title {
-            font-size: 1.5rem !important;
+            font-size: 1.2rem !important;
         }
         
         .cta-area {
-            padding: 50px 20px;
-            border-radius: 20px;
-            margin: 40px 0;
+            padding: 30px 15px;
+            border-radius: 16px;
+            margin: 30px 0;
         }
         
         .cta-area h2 {
-            font-size: 1.4rem !important;
+            font-size: 1.1rem !important;
         }
         
         .cta-area p {
-            font-size: 0.95rem !important;
+            font-size: 0.8rem !important;
         }
     }
 
     @media (max-width: 480px) {
         .carousel-item {
-            height: 450px;
+            height: 350px;
+            min-height: 300px;
         }
         
         .hero-content-container h1 {
-            font-size: 1.5rem !important;
+            font-size: 1.2rem !important;
+        }
+        
+        .hero-content-container p {
+            font-size: 0.75rem !important;
+            padding: 0 10px;
         }
         
         .hero-content-container .d-flex {
             flex-direction: column;
-            gap: 0.75rem !important;
+            gap: 0.5rem !important;
         }
         
         .btn-primary-blue, .btn-outline-light {
             width: 100%;
             text-align: center;
+            padding: 8px 16px !important;
+            font-size: 0.75rem !important;
         }
         
         .stats-section {
-            margin: -30px 10px 0 10px;
+            margin: 15px 8px 0 8px;
+            padding: 15px 10px;
         }
         
         .stat-number {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .stat-label {
+            font-size: 0.55rem;
+        }
+        
+        .feature-card {
+            padding: 15px 12px;
+        }
+        
+        .feature-card h4 {
+            font-size: 0.95rem !important;
+        }
+        
+        .feature-card p {
+            font-size: 0.75rem !important;
+        }
+        
+        .icon-box {
+            width: 45px;
+            height: 45px;
+            font-size: 1rem;
+        }
+        
+        .section-title {
+            font-size: 1rem !important;
+        }
+        
+        .cta-area {
+            padding: 25px 12px;
+        }
+    }
+
+    @media (max-width: 375px) {
+        .carousel-item {
+            height: 320px;
+        }
+        
+        .hero-content-container h1 {
+            font-size: 1rem !important;
+        }
+        
+        .hero-content-container p {
+            font-size: 0.7rem !important;
+        }
+        
+        .hero-badge {
+            font-size: 0.55rem;
+            padding: 4px 10px;
+        }
+        
+        .stat-number {
+            font-size: 1rem;
+        }
+        
+        .stat-label {
+            font-size: 0.5rem;
         }
     }
 </style>
