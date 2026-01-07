@@ -18,8 +18,8 @@ COPY postcss.config.js ./
 # Build assets
 RUN npm run build
 
-# PHP stage - using official Laravel Sail image base
-FROM php:8.3-cli-alpine
+# PHP stage - using PHP 8.4 CLI
+FROM php:8.4-cli-alpine
 
 # Install system dependencies
 RUN apk add --no-cache \
@@ -31,7 +31,8 @@ RUN apk add --no-cache \
     unzip \
     oniguruma-dev \
     icu-dev \
-    libzip-dev
+    libzip-dev \
+    linux-headers
 
 # Install PHP extensions
 RUN docker-php-ext-install pdo pdo_mysql mbstring exif pcntl bcmath gd intl zip
@@ -60,11 +61,6 @@ RUN composer dump-autoload --optimize
 # Create storage directories and set permissions
 RUN mkdir -p storage/framework/cache storage/framework/sessions storage/framework/views storage/logs bootstrap/cache \
     && chmod -R 777 storage bootstrap/cache
-
-# Cache Laravel config
-RUN php artisan config:clear || true
-RUN php artisan route:clear || true
-RUN php artisan view:clear || true
 
 # Expose port
 EXPOSE 8080
