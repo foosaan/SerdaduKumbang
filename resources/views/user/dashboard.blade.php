@@ -168,20 +168,34 @@
 @media (max-width: 768px) {
     /* Mengurangi padding luar container */
     .container.py-4 {
-        padding-top: 1.5rem !important;
-        padding-bottom: 1.5rem !important;
+        padding-top: 1rem !important;
+        padding-bottom: 1rem !important;
+        padding-left: 12px !important;
+        padding-right: 12px !important;
     }
 
     /* Penyesuaian Header Dashboard */
     .dashboard-header {
-        padding: 35px 25px; /* Padding lebih kecil di HP */
-        border-radius: 20px;
-        margin-bottom: 20px;
+        padding: 25px 18px;
+        border-radius: 16px;
+        margin-bottom: 15px;
         text-align: center;
     }
 
+    .welcome-badge {
+        font-size: 0.6rem;
+        padding: 4px 12px;
+        margin-bottom: 10px;
+    }
+
     .dashboard-title {
-        font-size: 1.6rem; /* Ukuran font judul lebih kecil */
+        font-size: 1.2rem;
+        letter-spacing: 0;
+    }
+
+    .dashboard-header p {
+        font-size: 0.75rem;
+        line-height: 1.4;
     }
 
     /* Menyembunyikan breadcrumb di layar sangat kecil agar tidak penuh */
@@ -191,60 +205,236 @@
 
     /* Penyesuaian Card Statistik */
     .stat-card {
-        padding: 20px;
+        padding: 15px 12px;
         text-align: center;
+        border-radius: 14px;
     }
     
     .stat-icon-box {
-        margin: 0 auto 10px; /* Ikon ke tengah */
+        margin: 0 auto 8px;
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+        border-radius: 10px;
+    }
+
+    .stat-card p.text-muted {
+        font-size: 0.6rem !important;
+        margin-bottom: 2px !important;
+    }
+
+    .stat-card h4 {
+        font-size: 0.85rem !important;
     }
 
     /* Penyesuaian Kontainer Data Utama */
     .data-card {
-        padding: 25px 20px;
-        border-radius: 20px;
+        padding: 18px 15px;
+        border-radius: 16px;
     }
 
-    /* Penyesuaian Baris Judul dalam Card */
-    .data-card .d-flex {
-        text-align: center;
-        align-items: center !important;
+    .data-card h3 {
+        font-size: 1rem !important;
+    }
+
+    .data-card p.small {
+        font-size: 0.7rem !important;
     }
 
     /* Penyesuaian Data Item agar teks tidak bertumpuk dengan ikon */
     .data-item {
-        padding: 12px;
-        flex-direction: column; /* Ikon di atas teks pada mobile */
-        text-align: center;
+        padding: 10px 8px;
+        flex-direction: row;
+        text-align: left;
+        border-radius: 12px;
     }
 
     .data-icon {
-        margin-right: 0;
-        margin-bottom: 10px;
+        width: 35px;
+        height: 35px;
+        font-size: 0.9rem;
+        margin-right: 12px;
+        margin-bottom: 0;
+        border-radius: 8px;
     }
 
-    /* Status Badge Center */
+    .data-item .text-muted {
+        font-size: 0.55rem !important;
+    }
+
+    .data-item .fw-bold {
+        font-size: 0.75rem !important;
+    }
+
+    /* Status Badge */
     .status-badge-modern {
-        width: 100%;
-        justify-content: center;
+        padding: 5px 12px;
+        font-size: 0.65rem;
         margin-top: 10px;
     }
 
-    /* Tombol Lebar Penuh agar mudah ditekan jari */
+    /* Tombol */
     .btn-blue-action {
         width: 100%;
-        padding: 14px;
+        padding: 12px;
+        font-size: 0.8rem;
+        border-radius: 10px;
+    }
+
+    /* Empty State */
+    .empty-state-card {
+        padding: 40px 20px;
+        border-radius: 20px;
+    }
+
+    .empty-icon-circle {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+    }
+
+    .empty-state-card h2 {
+        font-size: 1.1rem !important;
+    }
+
+    .empty-state-card p {
+        font-size: 0.75rem !important;
     }
 
     /* Modal penyesuaian untuk layar HP */
     .modal-dialog-centered {
         margin: 10px;
     }
+
+    .modal-body {
+        height: 60vh !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .container.py-4 {
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+    }
+
+    .dashboard-header {
+        padding: 20px 15px;
+        border-radius: 14px;
+    }
+
+    .welcome-badge {
+        font-size: 0.55rem;
+        padding: 3px 10px;
+    }
+
+    .dashboard-title {
+        font-size: 1rem;
+    }
+
+    .dashboard-header p {
+        font-size: 0.7rem;
+    }
+
+    .stat-card {
+        padding: 12px 10px;
+    }
+
+    .stat-icon-box {
+        width: 35px;
+        height: 35px;
+        font-size: 0.9rem;
+    }
+
+    .stat-card p.text-muted {
+        font-size: 0.55rem !important;
+    }
+
+    .stat-card h4 {
+        font-size: 0.75rem !important;
+    }
+
+    .data-card {
+        padding: 15px 12px;
+    }
+
+    .data-card h3 {
+        font-size: 0.9rem !important;
+    }
+
+    .data-icon {
+        width: 30px;
+        height: 30px;
+        font-size: 0.8rem;
+        margin-right: 10px;
+    }
+
+    .data-item .text-muted {
+        font-size: 0.5rem !important;
+    }
+
+    .data-item .fw-bold {
+        font-size: 0.7rem !important;
+    }
+
+    .status-badge-modern {
+        padding: 4px 10px;
+        font-size: 0.6rem;
+    }
+
+    .btn-blue-action {
+        padding: 10px;
+        font-size: 0.75rem;
+    }
+
+    .empty-state-card {
+        padding: 30px 15px;
+    }
+
+    .empty-icon-circle {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
+
+    .empty-state-card h2 {
+        font-size: 1rem !important;
+    }
+
+    .empty-state-card p {
+        font-size: 0.7rem !important;
+    }
+}
+
+@media (max-width: 375px) {
+    .dashboard-header {
+        padding: 18px 12px;
+    }
+
+    .dashboard-title {
+        font-size: 0.9rem;
+    }
+
+    .dashboard-header p {
+        font-size: 0.65rem;
+    }
+
+    .stat-card h4 {
+        font-size: 0.7rem !important;
+    }
+
+    .data-card h3 {
+        font-size: 0.85rem !important;
+    }
+
+    .data-item .fw-bold {
+        font-size: 0.65rem !important;
+    }
 }
 
 /* Memperbaiki jarak Row agar tidak terlalu rapat di mobile */
 .row.g-4, .row.g-3 {
-    --bs-gutter-y: 1rem;
+    --bs-gutter-y: 0.75rem;
 }
 </style>
 
