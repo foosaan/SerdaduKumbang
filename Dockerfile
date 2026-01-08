@@ -1,7 +1,7 @@
 # ======================
 # FRONTEND BUILD (Vite)
 # ======================
-FROM node:20-alpine AS frontend
+FROM node:22-alpine AS frontend
 WORKDIR /app
 
 COPY package*.json ./
@@ -14,7 +14,7 @@ RUN npm run build
 # ======================
 # BACKEND DEPENDENCIES (Composer + GD)
 # ======================
-FROM php:8.3-cli AS vendor
+FROM php:8.4-cli AS vendor
 WORKDIR /app
 
 RUN apt-get update && apt-get install -y \
@@ -38,7 +38,7 @@ RUN composer install \
 # ======================
 # FINAL IMAGE (RAILWAY SAFE)
 # ======================
-FROM php:8.3-cli
+FROM php:8.4-cli
 WORKDIR /app
 
 RUN apt-get update && apt-get install -y \
