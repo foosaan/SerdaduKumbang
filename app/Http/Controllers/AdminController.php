@@ -88,17 +88,29 @@ class AdminController extends Controller
         $pendaftaran->status = $request->status;
         $pendaftaran->save();
 
-        // Kirim notifikasi WhatsApp (gunakan WhatsApp Gateway)
-        $pesan = "Halo {$pendaftaran->nama_lengkap}, status pendaftaran Anda: {$pendaftaran->status}.\n\nTerima kasih telah mendaftar.";
-        
-        $response = Http::withHeaders([
-            'Authorization' => config('services.fonnte.token'),
-        ])->post('https://api.fonnte.com/send', [
-            'target' => $pendaftaran->no_hp,
-            'message' => $pesan,
-        ]);
+        // Kirim notifikasi WhatsApp (optional - jangan gagalkan jika error)
+        $waSuccess = false;
+        try {
+            if (config('services.fonnte.token')) {
+                $pesan = "Halo {$pendaftaran->nama_lengkap}, status pendaftaran Anda: {$pendaftaran->status}.\n\nTerima kasih telah mendaftar.";
+                
+                $response = Http::withHeaders([
+                    'Authorization' => config('services.fonnte.token'),
+                ])->post('https://api.fonnte.com/send', [
+                    'target' => $pendaftaran->no_hp,
+                    'message' => $pesan,
+                ]);
+                $waSuccess = $response->successful();
+            }
+        } catch (\Exception $e) {
+            \Log::warning('Failed to send WhatsApp notification: ' . $e->getMessage());
+        }
 
-        return redirect()->route('admin.dashboard')->with('success', 'Status pendaftaran diperbarui dan notifikasi telah dikirim!');
+        $message = 'Status pendaftaran diperbarui.';
+        if ($waSuccess) {
+            $message .= ' Notifikasi WhatsApp terkirim!';
+        }
+        return redirect()->route('admin.dashboard')->with('success', $message);
     }
 
     public function destroy($id)
@@ -154,13 +166,23 @@ class AdminController extends Controller
 
         $pesan = $request->pesan;
 
+        $sent = 0;
         foreach ($pendaftar as $p) {
-            Http::withHeaders([
-                'Authorization' => config('services.fonnte.token'),
-            ])->post('https://api.fonnte.com/send', [
-                'target' => $p->no_hp,
-                'message' => $pesan,
-            ]);
+            try {
+                if (config('services.fonnte.token')) {
+                    $response = Http::withHeaders([
+                        'Authorization' => config('services.fonnte.token'),
+                    ])->post('https://api.fonnte.com/send', [
+                        'target' => $p->no_hp,
+                        'message' => $pesan,
+                    ]);
+                    if ($response->successful()) {
+                        $sent++;
+                    }
+                }
+            } catch (\Exception $e) {
+                \Log::warning('Failed to send WA to ' . $p->no_hp . ': ' . $e->getMessage());
+            }
         }
 
         return back()->with('success', 'Notifikasi berhasil dikirim ke pendaftar!');

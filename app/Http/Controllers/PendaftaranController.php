@@ -129,12 +129,17 @@ class PendaftaranController extends Controller
             'gelombang' => $gelombangAktif,
         ]);
 
-        // Kirim email ke user
-        Mail::to($user->email)->send(new RegisterSuccessMail(
-            $user->name,
-            $user->email,
-            $plainPassword
-        ));
+        // Kirim email ke user (optional - jangan gagalkan registrasi jika email error)
+        try {
+            Mail::to($user->email)->send(new RegisterSuccessMail(
+                $user->name,
+                $user->email,
+                $plainPassword
+            ));
+        } catch (\Exception $e) {
+            // Email gagal dikirim, tapi registrasi tetap sukses
+            \Log::warning('Failed to send registration email to ' . $user->email . ': ' . $e->getMessage());
+        }
 
         // 🔹 Arahkan ke halaman sukses
         return redirect()->route('register.success')->with([
