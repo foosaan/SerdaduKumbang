@@ -67,5 +67,5 @@ CMD mkdir -p \
     bootstrap/cache \
     && chmod -R 775 storage bootstrap/cache \
     && php artisan storage:link || true \
-    && php artisan migrate:fresh --seed --force || true \
+    && php artisan migrate --force \
     && php artisan serve --host=0.0.0.0 --port=${PORT:-8080}
