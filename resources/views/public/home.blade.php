@@ -271,6 +271,11 @@
             border-radius: 10px;
         }
         
+        .feature-desc {
+            font-size: 0.55rem !important;
+            line-height: 1.3;
+        }
+        
         .section-title {
             font-size: 1.2rem !important;
         }
@@ -464,42 +469,42 @@
                 <div class="card feature-card border-0">
                     <div class="icon-box"><i class="fas fa-shield-alt"></i></div>
                     <h4 class="fw-bold mb-1 mb-md-3">Integrity</h4>
-                    <p class="text-secondary leading-relaxed d-none d-md-block">Integrity adalah prinsip yang menjadi dasar dari setiap tindakan dan keputusan.</p>
+                    <p class="text-secondary feature-desc mb-0">Prinsip dasar dalam setiap tindakan.</p>
                 </div>
             </div>
             <div class="col-6 col-md-4" data-aos="fade-up" data-aos-delay="200">
                 <div class="card feature-card border-0">
                     <div class="icon-box"><i class="fas fa-bolt"></i></div>
                     <h4 class="fw-bold mb-1 mb-md-3">Proactive</h4>
-                    <p class="text-secondary leading-relaxed d-none d-md-block">Proactive adalah prinsip yang menjadi dasar dari setiap tindakan dan keputusan.</p>
+                    <p class="text-secondary feature-desc mb-0">Bertindak sebelum masalah muncul.</p>
                 </div>
             </div>
             <div class="col-6 col-md-4" data-aos="fade-up" data-aos-delay="300">
                 <div class="card feature-card border-0">
                     <div class="icon-box"><i class="fas fa-handshake"></i></div>
                     <h4 class="fw-bold mb-1 mb-md-3">Belonging</h4>
-                    <p class="text-secondary leading-relaxed d-none d-md-block">Sense of Belonging adalah prinsip yang menjadi dasar dari setiap tindakan dan keputusan.</p>
+                    <p class="text-secondary feature-desc mb-0">Rasa memiliki dalam komunitas.</p>
                 </div>
             </div>
             <div class="col-6 col-md-4" data-aos="fade-up" data-aos-delay="400">
                 <div class="card feature-card border-0">
                     <div class="icon-box"><i class="fas fa-heart"></i></div>
                     <h4 class="fw-bold mb-1 mb-md-3">Dedicated</h4>
-                    <p class="text-secondary leading-relaxed d-none d-md-block">Dedicated adalah prinsip yang menjadi dasar dari setiap tindakan dan keputusan.</p>
+                    <p class="text-secondary feature-desc mb-0">Berdedikasi tinggi untuk misi.</p>
                 </div>
             </div>
             <div class="col-6 col-md-4" data-aos="fade-up" data-aos-delay="500">
                 <div class="card feature-card border-0">
                     <div class="icon-box"><i class="fas fa-dove"></i></div>
                     <h4 class="fw-bold mb-1 mb-md-3">Peaceful</h4>
-                    <p class="text-secondary leading-relaxed d-none d-md-block">Peaceful adalah prinsip yang menjadi dasar dari setiap tindakan dan keputusan.</p>
+                    <p class="text-secondary feature-desc mb-0">Menciptakan lingkungan damai.</p>
                 </div>
             </div>
             <div class="col-6 col-md-4" data-aos="fade-up" data-aos-delay="600">
                 <div class="card feature-card border-0">
                     <div class="icon-box"><i class="fas fa-rocket"></i></div>
                     <h4 class="fw-bold mb-1 mb-md-3">Forward</h4>
-                    <p class="text-secondary leading-relaxed d-none d-md-block">Moving Forward adalah prinsip yang menjadi dasar dari setiap tindakan dan keputusan.</p>
+                    <p class="text-secondary feature-desc mb-0">Selalu bergerak maju.</p>
                 </div>
             </div>
         </div>
