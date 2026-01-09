@@ -73,6 +73,118 @@
         color: white;
         transform: translateY(-2px);
     }
+
+    /* ========== MOBILE RESPONSIVE ========== */
+    @media (max-width: 768px) {
+        .detail-hero {
+            padding: 30px 15px;
+            border-radius: 16px;
+            margin-bottom: 15px;
+        }
+        
+        .detail-hero h1 {
+            font-size: 1.1rem !important;
+        }
+        
+        .detail-hero p {
+            font-size: 0.7rem !important;
+        }
+        
+        .badge-kategori {
+            padding: 5px 14px;
+            font-size: 0.65rem;
+        }
+        
+        .detail-card {
+            padding: 20px 16px;
+            border-radius: 16px;
+        }
+        
+        .poster-wrapper {
+            margin: 0 auto 20px;
+        }
+        
+        .poster-img {
+            max-height: 300px;
+            border-radius: 12px;
+        }
+        
+        .content-text {
+            font-size: 0.8rem;
+            line-height: 1.6;
+        }
+        
+        .btn-back {
+            padding: 10px 20px;
+            font-size: 0.75rem;
+            border-radius: 10px;
+        }
+        
+        .gallery-section h4 {
+            font-size: 0.9rem !important;
+        }
+        
+        .gallery-img {
+            height: 120px !important;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .detail-hero {
+            padding: 25px 12px;
+            border-radius: 14px;
+        }
+        
+        .detail-hero h1 {
+            font-size: 1rem !important;
+        }
+        
+        .detail-hero p {
+            font-size: 0.65rem !important;
+        }
+        
+        .badge-kategori {
+            padding: 4px 12px;
+            font-size: 0.6rem;
+        }
+        
+        .detail-card {
+            padding: 16px 14px;
+        }
+        
+        .poster-img {
+            max-height: 200px;
+        }
+        
+        .content-text {
+            font-size: 0.75rem;
+        }
+        
+        .btn-back {
+            padding: 8px 16px;
+            font-size: 0.7rem;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .gallery-section h4 {
+            font-size: 0.8rem !important;
+        }
+        
+        .gallery-img {
+            height: 100px !important;
+        }
+    }
+
+    @media (max-width: 375px) {
+        .detail-hero h1 {
+            font-size: 0.9rem !important;
+        }
+        
+        .content-text {
+            font-size: 0.7rem;
+        }
+    }
 </style>
 
 <div class="container py-4">
