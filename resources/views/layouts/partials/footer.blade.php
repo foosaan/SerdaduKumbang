@@ -155,15 +155,18 @@
         .footer-links a {
             font-size: 0.8rem;
         }
-        .navbar-brand.fs-4 {
-            font-size: 1.1rem !important;
+        .navbar-brand.fs-4,
+        .navbar-brand.fs-4 span {
+            font-size: 1rem !important;
         }
         .footer-custom h6 {
             font-size: 0.75rem !important;
             margin-bottom: 0.75rem !important;
         }
-        .footer-custom p.small {
-            font-size: 0.75rem !important;
+        .footer-custom p.small,
+        .footer-custom p.leading-relaxed {
+            font-size: 0.7rem !important;
+            line-height: 1.5;
         }
         .btn-primary-footer {
             padding: 10px 20px;
@@ -178,29 +181,51 @@
 
     @media (max-width: 480px) {
         .footer-custom .container {
-            padding: 1.5rem 0.75rem !important;
+            padding: 1.25rem 0.625rem !important;
+        }
+        .navbar-brand.fs-4,
+        .navbar-brand.fs-4 span {
+            font-size: 0.9rem !important;
         }
         .footer-links a {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
         }
         .footer-custom h6 {
-            font-size: 0.7rem !important;
+            font-size: 0.65rem !important;
         }
-        .footer-custom p.small {
-            font-size: 0.7rem !important;
+        .footer-custom p.small,
+        .footer-custom p.leading-relaxed {
+            font-size: 0.65rem !important;
         }
         .btn-primary-footer {
-            padding: 8px 16px;
-            font-size: 0.75rem;
+            padding: 7px 14px;
+            font-size: 0.7rem;
         }
         .social-links-footer a {
-            width: 30px;
-            height: 30px;
-            font-size: 0.8rem;
+            width: 28px;
+            height: 28px;
+            font-size: 0.75rem;
             border-radius: 8px;
         }
         .footer-custom small {
-            font-size: 0.65rem !important;
+            font-size: 0.6rem !important;
+        }
+    }
+
+    @media (max-width: 375px) {
+        .navbar-brand.fs-4,
+        .navbar-brand.fs-4 span {
+            font-size: 0.85rem !important;
+        }
+        .footer-links a {
+            font-size: 0.65rem;
+        }
+        .footer-custom h6 {
+            font-size: 0.6rem !important;
+        }
+        .footer-custom p.small,
+        .footer-custom p.leading-relaxed {
+            font-size: 0.6rem !important;
         }
     }
 </style>
