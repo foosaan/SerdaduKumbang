@@ -277,7 +277,13 @@
         }
         
         .section-title {
-            font-size: 1.2rem !important;
+            font-size: 1rem !important;
+        }
+        
+        .section-subtitle {
+            font-size: 0.7rem !important;
+            line-height: 1.4;
+            margin-top: 0.5rem !important;
         }
         
         .cta-area {
@@ -351,11 +357,25 @@
         }
         
         .section-title {
-            font-size: 1rem !important;
+            font-size: 0.9rem !important;
+        }
+        
+        .section-subtitle {
+            font-size: 0.65rem !important;
         }
         
         .cta-area {
-            padding: 25px 12px;
+            padding: 20px 10px;
+            margin: 15px 0 !important;
+        }
+        
+        .cta-area h2 {
+            font-size: 0.9rem !important;
+        }
+        
+        .cta-area p {
+            font-size: 0.65rem !important;
+            margin-bottom: 1rem !important;
         }
     }
 
@@ -456,10 +476,10 @@
     </div>
 
     {{-- FEATURES SECTION --}}
-    <div class="py-5 mt-5" id="tentang">
-        <div class="text-center mb-5" data-aos="fade-up">
-            <h2 class="section-title display-5 fw-bold mb-3">Core Values</h2>
-            <p class="text-secondary mt-3 fs-5 mx-auto" style="max-width: 650px;">
+    <div class="py-3 py-md-5 mt-2 mt-md-5" id="tentang">
+        <div class="text-center mb-3 mb-md-5" data-aos="fade-up">
+            <h2 class="section-title display-5 fw-bold mb-2 mb-md-3">Core Values</h2>
+            <p class="text-secondary mt-2 section-subtitle mx-auto" style="max-width: 650px;">
                 Kami berkomitmen memberikan ekosistem yang cerdas dan mandiri.
             </p>
         </div>
