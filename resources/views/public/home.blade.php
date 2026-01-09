@@ -253,15 +253,22 @@
         }
         
         .feature-card {
-            padding: 20px 15px;
-            border-radius: 16px;
+            padding: 12px 10px;
+            border-radius: 12px;
+            text-align: center;
+        }
+        
+        .feature-card h4 {
+            font-size: 0.7rem !important;
+            margin-bottom: 0 !important;
         }
         
         .icon-box {
-            width: 50px;
-            height: 50px;
-            font-size: 1.2rem;
-            margin-bottom: 15px;
+            width: 36px;
+            height: 36px;
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+            border-radius: 10px;
         }
         
         .section-title {
@@ -324,21 +331,18 @@
         }
         
         .feature-card {
-            padding: 15px 12px;
+            padding: 10px 8px;
         }
         
         .feature-card h4 {
-            font-size: 0.95rem !important;
-        }
-        
-        .feature-card p {
-            font-size: 0.75rem !important;
+            font-size: 0.65rem !important;
         }
         
         .icon-box {
-            width: 45px;
-            height: 45px;
-            font-size: 1rem;
+            width: 32px;
+            height: 32px;
+            font-size: 0.8rem;
+            margin-bottom: 6px;
         }
         
         .section-title {
@@ -455,47 +459,47 @@
             </p>
         </div>
 
-        <div class="row g-4">
-            <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="row g-2 g-md-4">
+            <div class="col-6 col-md-4" data-aos="fade-up" data-aos-delay="100">
                 <div class="card feature-card border-0">
                     <div class="icon-box"><i class="fas fa-shield-alt"></i></div>
-                    <h4 class="fw-bold mb-3">Integrity</h4>
-                    <p class="text-secondary leading-relaxed">Integrity adalah prinsip yang menjadi dasar dari setiap tindakan dan keputusan.</p>
+                    <h4 class="fw-bold mb-1 mb-md-3">Integrity</h4>
+                    <p class="text-secondary leading-relaxed d-none d-md-block">Integrity adalah prinsip yang menjadi dasar dari setiap tindakan dan keputusan.</p>
                 </div>
             </div>
-            <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="col-6 col-md-4" data-aos="fade-up" data-aos-delay="200">
                 <div class="card feature-card border-0">
                     <div class="icon-box"><i class="fas fa-bolt"></i></div>
-                    <h4 class="fw-bold mb-3">Proactive</h4>
-                    <p class="text-secondary leading-relaxed">Proactive adalah prinsip yang menjadi dasar dari setiap tindakan dan keputusan.</p>
+                    <h4 class="fw-bold mb-1 mb-md-3">Proactive</h4>
+                    <p class="text-secondary leading-relaxed d-none d-md-block">Proactive adalah prinsip yang menjadi dasar dari setiap tindakan dan keputusan.</p>
                 </div>
             </div>
-            <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+            <div class="col-6 col-md-4" data-aos="fade-up" data-aos-delay="300">
                 <div class="card feature-card border-0">
                     <div class="icon-box"><i class="fas fa-handshake"></i></div>
-                    <h4 class="fw-bold mb-3">Sense of Belonging</h4>
-                    <p class="text-secondary leading-relaxed">Sense of Belonging adalah prinsip yang menjadi dasar dari setiap tindakan dan keputusan.</p>
+                    <h4 class="fw-bold mb-1 mb-md-3">Belonging</h4>
+                    <p class="text-secondary leading-relaxed d-none d-md-block">Sense of Belonging adalah prinsip yang menjadi dasar dari setiap tindakan dan keputusan.</p>
                 </div>
             </div>
-            <div class="col-md-4" data-aos="fade-up" data-aos-delay="400">
+            <div class="col-6 col-md-4" data-aos="fade-up" data-aos-delay="400">
                 <div class="card feature-card border-0">
                     <div class="icon-box"><i class="fas fa-heart"></i></div>
-                    <h4 class="fw-bold mb-3">Dedicated</h4>
-                    <p class="text-secondary leading-relaxed">Dedicated adalah prinsip yang menjadi dasar dari setiap tindakan dan keputusan.</p>
+                    <h4 class="fw-bold mb-1 mb-md-3">Dedicated</h4>
+                    <p class="text-secondary leading-relaxed d-none d-md-block">Dedicated adalah prinsip yang menjadi dasar dari setiap tindakan dan keputusan.</p>
                 </div>
             </div>
-            <div class="col-md-4" data-aos="fade-up" data-aos-delay="500">
+            <div class="col-6 col-md-4" data-aos="fade-up" data-aos-delay="500">
                 <div class="card feature-card border-0">
                     <div class="icon-box"><i class="fas fa-dove"></i></div>
-                    <h4 class="fw-bold mb-3">Peaceful</h4>
-                    <p class="text-secondary leading-relaxed">Peaceful adalah prinsip yang menjadi dasar dari setiap tindakan dan keputusan.</p>
+                    <h4 class="fw-bold mb-1 mb-md-3">Peaceful</h4>
+                    <p class="text-secondary leading-relaxed d-none d-md-block">Peaceful adalah prinsip yang menjadi dasar dari setiap tindakan dan keputusan.</p>
                 </div>
             </div>
-            <div class="col-md-4" data-aos="fade-up" data-aos-delay="600">
+            <div class="col-6 col-md-4" data-aos="fade-up" data-aos-delay="600">
                 <div class="card feature-card border-0">
                     <div class="icon-box"><i class="fas fa-rocket"></i></div>
-                    <h4 class="fw-bold mb-3">Moving Forward</h4>
-                    <p class="text-secondary leading-relaxed">Moving Forward adalah prinsip yang menjadi dasar dari setiap tindakan dan keputusan.</p>
+                    <h4 class="fw-bold mb-1 mb-md-3">Forward</h4>
+                    <p class="text-secondary leading-relaxed d-none d-md-block">Moving Forward adalah prinsip yang menjadi dasar dari setiap tindakan dan keputusan.</p>
                 </div>
             </div>
         </div>
