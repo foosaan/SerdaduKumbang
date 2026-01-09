@@ -139,6 +139,149 @@
         opacity: 0.05;
         pointer-events: none;
     }
+
+    /* ========== MOBILE RESPONSIVE ========== */
+    @media (max-width: 768px) {
+        .info-hero {
+            padding: 40px 15px;
+            border-radius: 16px;
+            margin-bottom: 20px;
+        }
+        
+        .info-hero h1 {
+            font-size: 1.2rem !important;
+        }
+        
+        .info-hero .lead {
+            font-size: 0.75rem !important;
+            line-height: 1.4;
+        }
+        
+        .info-badge {
+            padding: 5px 14px;
+            font-size: 0.65rem;
+            margin-bottom: 12px;
+        }
+        
+        .info-card {
+            padding: 20px 16px;
+            border-radius: 16px;
+            margin-bottom: 12px !important;
+        }
+        
+        .info-card::before {
+            width: 4px;
+        }
+        
+        .info-title {
+            font-size: 1rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        .info-content {
+            font-size: 0.75rem;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+        
+        .info-meta {
+            padding: 8px 12px;
+            border-radius: 10px;
+            gap: 8px;
+        }
+        
+        .info-meta-icon {
+            font-size: 0.9rem;
+        }
+        
+        .info-meta span {
+            font-size: 0.65rem !important;
+        }
+        
+        .btn-blue-primary {
+            padding: 10px 20px;
+            font-size: 0.75rem;
+            border-radius: 10px;
+        }
+        
+        .badge {
+            font-size: 0.6rem;
+            padding: 4px 10px;
+        }
+        
+        .bg-decoration {
+            font-size: 4rem !important;
+        }
+        
+        /* Category filter buttons */
+        .info-hero .btn {
+            padding: 6px 14px !important;
+            font-size: 0.65rem !important;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .info-hero {
+            padding: 30px 12px;
+            border-radius: 14px;
+        }
+        
+        .info-hero h1 {
+            font-size: 1rem !important;
+        }
+        
+        .info-hero .lead {
+            font-size: 0.7rem !important;
+        }
+        
+        .info-badge {
+            padding: 4px 12px;
+            font-size: 0.6rem;
+        }
+        
+        .info-card {
+            padding: 16px 14px;
+            border-radius: 14px;
+        }
+        
+        .info-title {
+            font-size: 0.9rem;
+        }
+        
+        .info-content {
+            font-size: 0.7rem;
+        }
+        
+        .btn-blue-primary {
+            padding: 8px 16px;
+            font-size: 0.7rem;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .info-hero .btn {
+            padding: 5px 12px !important;
+            font-size: 0.6rem !important;
+        }
+    }
+
+    @media (max-width: 375px) {
+        .info-hero h1 {
+            font-size: 0.9rem !important;
+        }
+        
+        .info-hero .lead {
+            font-size: 0.65rem !important;
+        }
+        
+        .info-title {
+            font-size: 0.85rem;
+        }
+        
+        .info-content {
+            font-size: 0.65rem;
+        }
+    }
 </style>
 
 <div class="container py-4">
