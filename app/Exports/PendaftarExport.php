@@ -8,16 +8,30 @@ use Maatwebsite\Excel\Concerns\WithHeadings;
 
 class PendaftarExport implements FromCollection, WithHeadings
 {
+    protected $gelombang;
+
+    public function __construct($gelombang = null)
+    {
+        $this->gelombang = $gelombang;
+    }
+
     public function collection()
     {
-        return Pendaftaran::select(
+        $query = Pendaftaran::select(
             'nama_lengkap',
             'jenis_kelamin',
             'email',
             'no_hp',
             'alamat',
+            'gelombang',
             'status'
-        )->get();
+        );
+
+        if ($this->gelombang) {
+            $query->where('gelombang', $this->gelombang);
+        }
+
+        return $query->get();
     }
 
     public function headings(): array
@@ -28,6 +42,7 @@ class PendaftarExport implements FromCollection, WithHeadings
             'Email',
             'No HP',
             'Alamat',
+            'Gelombang',
             'Status'
         ];
     }

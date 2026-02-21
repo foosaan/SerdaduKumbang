@@ -109,10 +109,10 @@
             <p class="text-secondary mb-0">Selamat datang kembali, <strong>{{ Auth::user()->name }}</strong></p>
         </div>
         <div class="mt-3 mt-md-0 d-flex gap-2">
-            <a href="{{ route('admin.export.excel') }}" class="btn btn-success btn-action border-0 shadow-sm">
+            <a href="{{ route('admin.export.excel', ['gelombang' => request('gelombang')]) }}" class="btn btn-success btn-action border-0 shadow-sm">
                 <i class="fas fa-file-excel me-2"></i> Export Excel
             </a>
-            <a href="{{ route('admin.export.pdf') }}" class="btn btn-danger btn-action border-0 shadow-sm">
+            <a href="{{ route('admin.export.pdf', ['gelombang' => request('gelombang')]) }}" class="btn btn-danger btn-action border-0 shadow-sm">
                 <i class="fas fa-file-pdf me-2"></i> Export PDF
             </a>
         </div>

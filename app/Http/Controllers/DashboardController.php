@@ -29,14 +29,4 @@ class DashboardController extends Controller
             return view('user.dashboard', compact('user', 'pendaftaran'));
         }
     }
-
-    public function verifikasi($id)
-    {
-        $user = User::find($id);
-        if ($user) {
-            $user->status = 'Terverifikasi';
-            $user->save();
-        }
-        return redirect()->back()->with('success', 'Pendaftar berhasil diverifikasi!');
-    }
 }

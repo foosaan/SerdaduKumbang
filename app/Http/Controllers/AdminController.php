@@ -84,15 +84,25 @@ class AdminController extends Controller
     
     public function verifikasi(Request $request, $id)
     {
+        $request->validate([
+            'status' => 'required|string',
+            'alasan' => 'nullable|string|max:500',
+        ]);
+
         $pendaftaran = Pendaftaran::findOrFail($id);
         $pendaftaran->status = $request->status;
+        $pendaftaran->alasan = $request->alasan;
         $pendaftaran->save();
 
         // Kirim notifikasi WhatsApp (optional - jangan gagalkan jika error)
         $waSuccess = false;
         try {
             if (config('services.fonnte.token')) {
-                $pesan = "Halo {$pendaftaran->nama_lengkap}, status pendaftaran Anda: {$pendaftaran->status}.\n\nTerima kasih telah mendaftar.";
+                $pesan = "Halo {$pendaftaran->nama_lengkap}, status pendaftaran Anda: {$pendaftaran->status}.";
+                if ($pendaftaran->alasan) {
+                    $pesan .= "\nKeterangan: {$pendaftaran->alasan}";
+                }
+                $pesan .= "\n\nTerima kasih telah mendaftar.";
                 
                 $response = Http::withHeaders([
                     'Authorization' => config('services.fonnte.token'),
@@ -133,15 +143,21 @@ class AdminController extends Controller
         return redirect()->route('admin.dashboard')->with('success', 'Data pendaftar berhasil dihapus.');
     }
 
-    public function exportExcel()
+    public function exportExcel(Request $request)
     {
-        return Excel::download(new PendaftarExport, 'pendaftar.xlsx');
+        $gelombang = $request->query('gelombang');
+        return Excel::download(new PendaftarExport($gelombang), 'pendaftar.xlsx');
     }
     
-    public function exportPDF()
+    public function exportPDF(Request $request)
     {
-        $data = Pendaftaran::all();
-        $pdf = Pdf::loadView('admin.export_pdf', compact('data'));
+        $gelombang = $request->query('gelombang');
+        $query = Pendaftaran::query();
+        if ($gelombang) {
+            $query->where('gelombang', $gelombang);
+        }
+        $data = $query->get();
+        $pdf = Pdf::loadView('admin.export_pdf', compact('data', 'gelombang'));
         return $pdf->download('data_pendaftar.pdf');
     }
 

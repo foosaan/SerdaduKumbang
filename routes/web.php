@@ -41,6 +41,8 @@ Route::middleware('auth')->group(function () {
     // ===== DASHBOARD USER =====
     Route::middleware('role:user')->group(function () {
         Route::get('/user/dashboard', [UserController::class, 'dashboard'])->name('user.dashboard');
+        Route::get('/user/pendaftaran/edit', [UserController::class, 'editPendaftaran'])->name('user.pendaftaran.edit');
+        Route::put('/user/pendaftaran/update', [UserController::class, 'updatePendaftaran'])->name('user.pendaftaran.update');
     });
 
     // ===== DASHBOARD ADMIN =====
@@ -56,12 +58,12 @@ Route::middleware('auth')->group(function () {
         Route::post('/admin/notifikasi', [AdminController::class, 'kirimNotifikasi'])->name('admin.kirimNotifikasi');
         Route::get('/admin/status-form', [AdminController::class, 'statusForm'])->name('admin.statusForm');
         Route::post('/admin/status-form', [AdminController::class, 'updateStatusForm'])->name('admin.updateStatusForm');
-        Route::get('/admin/informasi', [\App\Http\Controllers\AdminInformasiController::class, 'index'])->name('admin.informasi.index');
-        Route::get('/admin/informasi/create', [\App\Http\Controllers\AdminInformasiController::class, 'create'])->name('admin.informasi.create');
-        Route::post('/admin/informasi', [\App\Http\Controllers\AdminInformasiController::class, 'store'])->name('admin.informasi.store');
-        Route::get('/admin/informasi/{id}/edit', [\App\Http\Controllers\AdminInformasiController::class, 'edit'])->name('admin.informasi.edit');
-        Route::put('/admin/informasi/{id}', [\App\Http\Controllers\AdminInformasiController::class, 'update'])->name('admin.informasi.update');
-        Route::delete('/informasi/{id}', [\App\Http\Controllers\AdminInformasiController::class, 'destroy'])->name('admin.informasi.destroy');
+        Route::get('/admin/informasi', [AdminInformasiController::class, 'index'])->name('admin.informasi.index');
+        Route::get('/admin/informasi/create', [AdminInformasiController::class, 'create'])->name('admin.informasi.create');
+        Route::post('/admin/informasi', [AdminInformasiController::class, 'store'])->name('admin.informasi.store');
+        Route::get('/admin/informasi/{id}/edit', [AdminInformasiController::class, 'edit'])->name('admin.informasi.edit');
+        Route::put('/admin/informasi/{id}', [AdminInformasiController::class, 'update'])->name('admin.informasi.update');
+        Route::delete('/admin/informasi/{id}', [AdminInformasiController::class, 'destroy'])->name('admin.informasi.destroy');
         Route::get('/admin/kontak', [AdminKontakController::class, 'edit'])->name('admin.kontak');
         Route::put('/admin/kontak', [AdminKontakController::class, 'update'])->name('admin.kontak.update');
         Route::get('/admin/akun', [AdminController::class, 'adminIndex'])->name('admin.akun.index');
@@ -70,8 +72,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/admin/akun/{id}/edit', [AdminController::class, 'adminEdit'])->name('admin.akun.edit');
         Route::put('/admin/akun/{id}', [AdminController::class, 'adminUpdate'])->name('admin.akun.update');
         Route::delete('/admin/akun/{id}', [AdminController::class, 'adminDestroy'])->name('admin.akun.destroy');
-        Route::get('/akun/{id}/reset-password', [AdminController::class, 'resetPasswordForm'])->name('admin.akun.reset');
-        Route::post('/akun/{id}/reset-password', [AdminController::class, 'resetPasswordUpdate'])->name('admin.akun.reset.update');
+        Route::get('/admin/akun/{id}/reset-password', [AdminController::class, 'resetPasswordForm'])->name('admin.akun.reset');
+        Route::post('/admin/akun/{id}/reset-password', [AdminController::class, 'resetPasswordUpdate'])->name('admin.akun.reset.update');
     });
 
     // ===== PROFILE =====

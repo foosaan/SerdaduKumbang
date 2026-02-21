@@ -440,6 +440,18 @@
 
 <div class="container py-4">
 
+    @if (session('success'))
+        <div class="alert alert-success border-0 shadow-sm rounded-4 p-3 mb-4" data-aos="zoom-in">
+            <i class="fas fa-check-circle me-2"></i> {{ session('success') }}
+        </div>
+    @endif
+
+    @if (session('error'))
+        <div class="alert alert-danger border-0 shadow-sm rounded-4 p-3 mb-4" data-aos="zoom-in">
+            <i class="fas fa-exclamation-circle me-2"></i> {{ session('error') }}
+        </div>
+    @endif
+
     <div class="dashboard-header" data-aos="fade-down">
         <div class="position-relative" style="z-index: 2;">
             <div class="welcome-badge">
@@ -528,10 +540,25 @@
                 @endforeach
             </div>
 
-            <div class="mt-5 pt-4 border-top">
+            @if($pendaftaran->status == 'Tidak Lulus' && $pendaftaran->alasan)
+            <div class="mt-4 p-4 rounded-4" style="background: #fef2f2; border: 1px solid #fecaca;" data-aos="fade-up" data-aos-delay="600">
+                <h6 class="fw-bold text-danger mb-2"><i class="fas fa-info-circle me-2"></i>Keterangan dari Admin</h6>
+                <p class="mb-0 text-dark">{{ $pendaftaran->alasan }}</p>
+            </div>
+            @endif
+
+            <div class="mt-5 pt-4 border-top d-flex flex-wrap gap-3">
                 <button type="button" class="btn btn-blue-action px-5" data-bs-toggle="modal" data-bs-target="#modalBerkasUser">
                     <i class="fas fa-file-pdf me-2"></i> Pratinjau Berkas Saya
                 </button>
+                @if($pendaftaran->status === 'Menunggu')
+                <a href="{{ route('user.pendaftaran.edit') }}" class="btn btn-outline-warning px-4" style="border-radius: 12px; font-weight: 700;">
+                    <i class="fas fa-edit me-2"></i> Edit Data Pendaftaran
+                </a>
+                @endif
+                <a href="{{ route('profile.edit') }}" class="btn btn-outline-secondary px-4" style="border-radius: 12px; font-weight: 700;">
+                    <i class="fas fa-key me-2"></i> Ganti Password
+                </a>
             </div>
         </div>
 

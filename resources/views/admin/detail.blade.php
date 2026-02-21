@@ -141,17 +141,22 @@
                             @csrf
                             <div class="mb-4">
                                 <div class="form-check mb-3 p-3 border rounded-3 bg-white hover-shadow transition">
-                                    <input class="form-check-input ms-0 me-3" type="radio" name="status" id="statusLulus" value="Lulus" {{ $pendaftar->status == 'Lulus' ? 'checked' : '' }}>
+                                    <input class="form-check-input ms-0 me-3" type="radio" name="status" id="statusLulus" value="Lulus" {{ $pendaftar->status == 'Lulus' ? 'checked' : '' }} onchange="toggleAlasan()">
                                     <label class="form-check-label fw-bold text-success" for="statusLulus">
                                         <i class="fas fa-check-circle me-1"></i> Nyatakan Lulus
                                     </label>
                                 </div>
                                 <div class="form-check p-3 border rounded-3 bg-white hover-shadow transition">
-                                    <input class="form-check-input ms-0 me-3" type="radio" name="status" id="statusGagal" value="Tidak Lulus" {{ $pendaftar->status == 'Tidak Lulus' ? 'checked' : '' }}>
+                                    <input class="form-check-input ms-0 me-3" type="radio" name="status" id="statusGagal" value="Tidak Lulus" {{ $pendaftar->status == 'Tidak Lulus' ? 'checked' : '' }} onchange="toggleAlasan()">
                                     <label class="form-check-label fw-bold text-danger" for="statusGagal">
                                         <i class="fas fa-times-circle me-1"></i> Nyatakan Tidak Lulus
                                     </label>
                                 </div>
+                            </div>
+
+                            <div class="mb-4" id="alasanBox" style="{{ $pendaftar->status == 'Tidak Lulus' ? '' : 'display:none;' }}">
+                                <label for="alasan" class="form-label fw-bold text-dark small text-uppercase">Alasan / Keterangan</label>
+                                <textarea name="alasan" id="alasan" class="form-control" rows="3" placeholder="Tuliskan alasan penolakan..." style="border-radius: 12px;">{{ $pendaftar->alasan }}</textarea>
                             </div>
 
                             <button type="submit" class="btn btn-success btn-action w-100 shadow-sm mb-2">
@@ -196,5 +201,13 @@
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
     AOS.init({ duration: 800, once: true });
+
+    function toggleAlasan() {
+        const gagal = document.getElementById('statusGagal').checked;
+        document.getElementById('alasanBox').style.display = gagal ? '' : 'none';
+        if (!gagal) {
+            document.getElementById('alasan').value = '';
+        }
+    }
 </script>
 @endsection

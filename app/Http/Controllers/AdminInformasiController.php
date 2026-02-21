@@ -100,6 +100,21 @@ class AdminInformasiController extends Controller
     public function destroy($id)
     {
         $informasi = Informasi::findOrFail($id);
+
+        // Hapus gambar utama dari storage
+        if ($informasi->gambar && \Storage::disk('public')->exists($informasi->gambar)) {
+            \Storage::disk('public')->delete($informasi->gambar);
+        }
+
+        // Hapus semua file galeri dari storage
+        if ($informasi->galeri && is_array($informasi->galeri)) {
+            foreach ($informasi->galeri as $galeriPath) {
+                if (\Storage::disk('public')->exists($galeriPath)) {
+                    \Storage::disk('public')->delete($galeriPath);
+                }
+            }
+        }
+
         $informasi->delete();
 
         return redirect()->route('admin.informasi.index')

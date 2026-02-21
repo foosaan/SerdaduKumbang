@@ -18,6 +18,7 @@ class Pendaftaran extends Model
         'alamat',
         'berkas',
         'status',
+        'alasan',
         'gelombang'
     ];
 
