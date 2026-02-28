@@ -62,8 +62,24 @@
 
             @if($kegiatan->gambar)
             <div class="bg-white rounded-2xl border border-slate-100 shadow-sm p-6 sm:p-8">
-                <h5 class="font-bold text-slate-900 mb-4">Dokumentasi</h5>
+                <h5 class="font-bold text-slate-900 mb-4">Poster</h5>
                 <img src="{{ asset('storage/' . $kegiatan->gambar) }}" class="w-full rounded-2xl" alt="{{ $kegiatan->judul }}">
+            </div>
+            @endif
+
+            @if($kegiatan->dokumentasi && count($kegiatan->dokumentasi) > 0)
+            <div class="bg-white rounded-2xl border border-slate-100 shadow-sm p-6 sm:p-8">
+                <h5 class="font-bold text-slate-900 mb-4">
+                    <i class="fas fa-images text-red-500 mr-2"></i>Dokumentasi
+                    <span class="text-sm font-normal text-slate-400 ml-2">({{ count($kegiatan->dokumentasi) }} foto)</span>
+                </h5>
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                    @foreach($kegiatan->dokumentasi as $dok)
+                    <a href="{{ asset('storage/' . $dok) }}" target="_blank" class="block overflow-hidden rounded-xl border border-slate-100 hover:shadow-lg transition-shadow duration-300 group">
+                        <img src="{{ asset('storage/' . $dok) }}" class="w-full h-40 object-cover transform transition duration-300 group-hover:scale-105" alt="Dokumentasi {{ $kegiatan->judul }}">
+                    </a>
+                    @endforeach
+                </div>
             </div>
             @endif
         </div>

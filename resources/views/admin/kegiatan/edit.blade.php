@@ -69,6 +69,33 @@
                             </div>
                         @endif
                     </div>
+                    <div class="col-md-6">
+                        <label class="form-label fw-bold">Tambah Foto Dokumentasi</label>
+                        <input type="file" name="dokumentasi[]" class="form-control rounded-3 @error('dokumentasi.*') is-invalid @enderror" accept="image/*" multiple>
+                        @error('dokumentasi.*')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                        <small class="text-muted">Bisa pilih banyak foto baru. Maks 10 total, masing-masing 5MB</small>
+                    </div>
+                    @if($kegiatan->dokumentasi && count($kegiatan->dokumentasi) > 0)
+                    <div class="col-12">
+                        <label class="form-label fw-bold">Foto Dokumentasi Saat Ini</label>
+                        <div class="row g-3">
+                            @foreach($kegiatan->dokumentasi as $idx => $dok)
+                            <div class="col-4 col-md-3 col-lg-2">
+                                <div class="position-relative border rounded-3 overflow-hidden">
+                                    <img src="{{ asset('storage/' . $dok) }}" class="w-100" style="height:100px; object-fit:cover;">
+                                    <div class="position-absolute top-0 end-0 p-1">
+                                        <label class="btn btn-sm btn-danger rounded-circle" style="width:24px; height:24px; padding:0; line-height:24px; font-size:12px;" title="Hapus foto ini">
+                                            <input type="checkbox" name="hapus_dokumentasi[]" value="{{ $dok }}" class="d-none" onchange="this.closest('div').closest('div').closest('div').style.opacity = this.checked ? '0.4' : '1'">
+                                            &times;
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
+                        </div>
+                        <small class="text-muted mt-1 d-block">Klik tombol <span class="text-danger fw-bold">&times;</span> untuk menandai foto yang ingin dihapus.</small>
+                    </div>
+                    @endif
                 </div>
                 <div class="mt-4 pt-3 border-top">
                     <button type="submit" class="btn btn-danger px-5 rounded-3">

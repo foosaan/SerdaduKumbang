@@ -70,6 +70,12 @@
                         @error('gambar')<div class="invalid-feedback">{{ $message }}</div>@enderror
                         <small class="text-muted">Format: JPG, PNG, WebP. Maks: 5MB</small>
                     </div>
+                    <div class="col-md-6">
+                        <label class="form-label fw-bold">Foto Dokumentasi</label>
+                        <input type="file" name="dokumentasi[]" class="form-control rounded-3 @error('dokumentasi.*') is-invalid @enderror" accept="image/*" multiple>
+                        @error('dokumentasi.*')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                        <small class="text-muted">Bisa pilih banyak foto sekaligus. Maks 10 foto, masing-masing 5MB</small>
+                    </div>
                 </div>
                 <div class="mt-4 pt-3 border-top">
                     <button type="submit" class="btn btn-danger px-5 rounded-3">

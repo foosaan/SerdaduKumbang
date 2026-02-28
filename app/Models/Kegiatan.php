@@ -14,6 +14,7 @@ class Kegiatan extends Model
         'judul',
         'deskripsi',
         'gambar',
+        'dokumentasi',
         'lokasi',
         'tanggal',
         'waktu_mulai',
@@ -24,6 +25,7 @@ class Kegiatan extends Model
 
     protected $casts = [
         'tanggal' => 'date',
+        'dokumentasi' => 'array',
     ];
 
     // Auto-calculate status from date
