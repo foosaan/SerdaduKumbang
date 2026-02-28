@@ -19,6 +19,11 @@ class CheckFormStatus
             return $next($request);
         }
 
+        // Jika tanggal belum dikonfigurasi, lewati pengecekan
+        if (!$status->tanggal_buka || !$status->tanggal_tutup) {
+            return $next($request);
+        }
+
         $now = Carbon::now();
 
         // Jika sekarang berada di luar rentang buka–tutup

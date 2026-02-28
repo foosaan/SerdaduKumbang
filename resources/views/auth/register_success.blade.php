@@ -1,12 +1,12 @@
-@extends('layouts.app')
+@extends('layouts.public')
 
 @section('content')
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
 <style>
     body {
-        background-color: #f8fafc;
-        color: #334155;
+        background-color: var(--bg-body, #f8fafc);
+        color: var(--text-body, #334155);
     }
 
     .success-container {
@@ -17,11 +17,11 @@
     }
 
     .success-card {
-        background: white;
+        background: var(--bg-card, white);
         border-radius: 32px;
         padding: 60px 40px;
         box-shadow: 0 25px 50px -12px rgba(220, 38, 38, 0.1);
-        border: 1px solid #f1f5f9;
+        border: 1px solid var(--border-color, #f1f5f9);
         max-width: 550px;
         width: 100%;
         position: relative;
@@ -61,8 +61,8 @@
     }
 
     .credential-card {
-        background: #f8fafc;
-        border: 1.5px dashed #cbd5e1;
+        background: var(--bg-muted, #f8fafc);
+        border: 1.5px dashed var(--border-color, #cbd5e1);
         border-radius: 20px;
         padding: 25px;
         margin: 30px 0;
@@ -71,7 +71,6 @@
 
     .credential-card:hover {
         border-color: #dc2626;
-        background: #fff1f1;
     }
 
     .credential-label {
@@ -79,25 +78,25 @@
         text-transform: uppercase;
         letter-spacing: 1px;
         font-weight: 800;
-        color: #64748b;
+        color: var(--text-muted, #64748b);
         margin-bottom: 5px;
     }
 
     .credential-value {
         font-size: 1.1rem;
         font-weight: 700;
-        color: #1e293b;
+        color: var(--text-heading, #1e293b);
         word-break: break-all;
     }
 
     .password-display {
-        background: white;
+        background: var(--bg-card, white);
         color: #dc2626;
         padding: 10px 15px;
         border-radius: 12px;
         display: inline-block;
         font-family: 'Monaco', 'Consolas', monospace;
-        border: 1px solid #e2e8f0;
+        border: 1px solid var(--border-color, #e2e8f0);
         margin-top: 10px;
         font-size: 1.5rem;
         box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
@@ -127,40 +126,44 @@
     .warning-note {
         font-size: 0.85rem;
         color: #ef4444;
-        background: #fef2f2;
+        background: var(--bg-muted, #fef2f2);
         padding: 12px;
         border-radius: 12px;
         display: inline-block;
         margin-top: 15px;
     }
+
+    /* Dark mode overrides */
+    html.dark .text-dark { color: var(--text-heading) !important; }
+    html.dark .text-secondary { color: var(--text-muted) !important; }
 </style>
 
-<div class="container success-container">
-    <div class="success-card text-center" data-aos="zoom-in" data-aos-duration="800">
+<div class="max-w-7xl mx-auto px-4 success-container">
+    <div class="success-card text-center">
         <div class="position-relative" style="z-index: 2;">
-            <div class="icon-box" data-aos="scale-up" data-aos-delay="400">
+            <div class="icon-box">
                 <i class="fas fa-check"></i>
             </div>
 
             <h2 class="fw-bold text-dark mb-2">Pendaftaran Berhasil!</h2>
-            <p class="text-secondary">Selamat Datang, <strong>{{ session('name') }}</strong>. Akun Anda telah siap digunakan.</p>
+            <p class="text-secondary">Selamat Datang, <strong>{{ $regName }}</strong>. Akun Anda telah siap digunakan.</p>
 
-            <div class="credential-card" data-aos="fade-up" data-aos-delay="600">
+            <div class="credential-card">
                 <div class="mb-4">
                     <p class="credential-label">Email Anda</p>
-                    <p class="credential-value">{{ session('email') }}</p>
+                    <p class="credential-value">{{ $regEmail }}</p>
                 </div>
                 
                 <div>
-                    <p class="credential-label">Password Anda</p>
+                    <p class="credential-label">Password Sementara</p>
                     <div class="password-display">
-                        {{ session('password') }}
+                        {{ $regPassword }}
                     </div>
                 </div>
 
                 <div class="warning-note">
                     <i class="fas fa-exclamation-triangle me-1"></i>
-                    Password anda tersimpan ke email yang anda daftarkan.
+                    Simpan password ini sekarang! Password juga dikirim ke email pendaftaran.
                 </div>
             </div>
 
@@ -176,14 +179,4 @@
         </div>
     </div>
 </div>
-
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        AOS.init({
-            once: true,
-            duration: 1000
-        });
-    });
-</script>
 @endsection

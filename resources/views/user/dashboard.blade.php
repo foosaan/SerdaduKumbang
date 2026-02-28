@@ -7,8 +7,8 @@
 
 <style>
     body {
-        background-color: #f8fafc; /* Abu-abu sangat muda agar card putih lebih kontras */
-        color: #334155;
+        background-color: var(--bg-body, #f8fafc);
+        color: var(--text-body, #334155);
     }
 
     /* Header Dashboard Modern */
@@ -45,10 +45,10 @@
 
     /* Stats & Info Cards */
     .stat-card {
-        background: white;
+        background: var(--bg-card, white);
         border-radius: 20px;
         padding: 25px;
-        border: 1px solid #f1f5f9;
+        border: 1px solid var(--border-color, #f1f5f9);
         box-shadow: 0 10px 20px rgba(0,0,0,0.02);
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         height: 100%;
@@ -77,10 +77,10 @@
 
     /* Data List Modernization */
     .data-card {
-        background: white;
+        background: var(--bg-card, white);
         border-radius: 24px;
         padding: 40px;
-        border: 1px solid #f1f5f9;
+        border: 1px solid var(--border-color, #f1f5f9);
         box-shadow: 0 10px 30px rgba(0,0,0,0.03);
     }
 
@@ -94,14 +94,14 @@
     }
 
     .data-item:hover {
-        background: #fff1f1;
-        border-color: #fecaca;
+        background: var(--bg-muted, #fff1f1);
+        border-color: var(--border-color, #fecaca);
     }
 
     .data-icon {
         width: 42px;
         height: 42px;
-        background: #fef2f2;
+        background: var(--bg-muted, #fef2f2);
         color: #dc2626;
         border-radius: 10px;
         display: flex;
@@ -145,17 +145,17 @@
 
     /* Empty State Modern */
     .empty-state-card {
-        background: white;
+        background: var(--bg-card, white);
         border-radius: 30px;
         padding: 80px 40px;
         text-align: center;
-        border: 2px dashed #e2e8f0;
+        border: 2px dashed var(--border-color, #e2e8f0);
     }
 
     .empty-icon-circle {
         width: 90px; height: 90px;
-        background: #f1f5f9;
-        color: #94a3b8;
+        background: var(--bg-muted, #f1f5f9);
+        color: var(--text-muted, #94a3b8);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -436,6 +436,41 @@
 .row.g-4, .row.g-3 {
     --bs-gutter-y: 0.75rem;
 }
+
+/* ===== DARK MODE (dashboard-specific) ===== */
+html.dark .stat-card {
+    background: var(--bg-card);
+    border-color: var(--border-color);
+}
+
+html.dark .stat-card:hover {
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+html.dark .data-card {
+    background: var(--bg-card);
+    border-color: var(--border-color);
+}
+
+html.dark .data-item:hover {
+    background: var(--bg-muted);
+    border-color: var(--border-color);
+}
+
+html.dark .data-icon {
+    background: var(--bg-muted);
+    color: #f87171;
+}
+
+html.dark .empty-state-card {
+    background: var(--bg-card);
+    border-color: var(--border-color);
+}
+
+html.dark .empty-icon-circle {
+    background: var(--bg-muted);
+    color: var(--text-muted);
+}
 </style>
 
 <div class="container py-4">
@@ -551,11 +586,6 @@
                 <button type="button" class="btn btn-blue-action px-5" data-bs-toggle="modal" data-bs-target="#modalBerkasUser">
                     <i class="fas fa-file-pdf me-2"></i> Pratinjau Berkas Saya
                 </button>
-                @if($pendaftaran->status === 'Menunggu')
-                <a href="{{ route('user.pendaftaran.edit') }}" class="btn btn-outline-warning px-4" style="border-radius: 12px; font-weight: 700;">
-                    <i class="fas fa-edit me-2"></i> Edit Data Pendaftaran
-                </a>
-                @endif
                 <a href="{{ route('profile.edit') }}" class="btn btn-outline-secondary px-4" style="border-radius: 12px; font-weight: 700;">
                     <i class="fas fa-key me-2"></i> Ganti Password
                 </a>
@@ -569,7 +599,7 @@
             </div>
             <h2 class="fw-bold text-dark">Belum Ada Data Pendaftaran</h2>
             <p class="text-secondary mx-auto mb-5" style="max-width: 500px;">
-                Anda belum mengisi formulir pendaftaran. Silakan tekan tombol di bawah untuk memulai proses pendaftaran santri baru.
+                Anda belum mengisi formulir pendaftaran. Silakan tekan tombol di bawah untuk memulai proses pendaftaran baru.
             </p>
             <a href="{{ route('pendaftaran') }}" class="btn btn-blue-action py-3 px-5 rounded-pill shadow-lg">
                 Mulai Daftar Sekarang <i class="fas fa-arrow-right ms-2"></i>
@@ -587,25 +617,63 @@
                 <h5 class="modal-title fw-bold"><i class="fas fa-file-alt me-2"></i>Preview Dokumen</h5>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
             </div>
-            <div class="modal-body p-0 bg-light" style="height: 75vh;">
-                @php $ext = strtolower(pathinfo($pendaftaran->berkas, PATHINFO_EXTENSION)); @endphp
-                @if($ext === 'pdf')
-                    <iframe src="{{ asset('storage/' . $pendaftaran->berkas) }}" width="100%" height="100%" class="border-0"></iframe>
-                @elseif(in_array($ext, ['jpg','jpeg','png']))
-                    <div class="h-100 d-flex align-items-center justify-content-center p-4">
-                        <img src="{{ asset('storage/' . $pendaftaran->berkas) }}" class="img-fluid rounded shadow-sm" style="max-height: 100%;">
+            <div class="modal-body p-0">
+                @php
+                    $dokumen = collect([
+                        ['label' => 'CV', 'icon' => 'fa-file-pdf', 'file' => $pendaftaran->cv],
+                        ['label' => 'Follow Instagram', 'icon' => 'fa-instagram', 'file' => $pendaftaran->follow_ig],
+                        ['label' => 'Follow TikTok', 'icon' => 'fa-music', 'file' => $pendaftaran->follow_tiktok],
+                        ['label' => 'Portofolio', 'icon' => 'fa-briefcase', 'file' => $pendaftaran->portofolio],
+                        ['label' => 'Berkas Lainnya', 'icon' => 'fa-paperclip', 'file' => $pendaftaran->berkas],
+                    ])->filter(fn($d) => !empty($d['file']));
+                @endphp
+
+                @if($dokumen->isEmpty())
+                    <div class="text-center py-5">
+                        <i class="fas fa-folder-open fa-4x text-muted mb-3"></i>
+                        <p class="text-muted fw-semibold">Belum ada dokumen yang diunggah.</p>
                     </div>
                 @else
-                    <div class="text-center py-5">
-                        <i class="fas fa-file-download fa-4x text-muted mb-3"></i>
-                        <p>Format file tidak didukung untuk pratinjau. Silakan unduh file.</p>
+                    {{-- Tab Navigation --}}
+                    <ul class="nav nav-tabs px-4 pt-3" id="berkasTab" role="tablist">
+                        @foreach($dokumen->values() as $i => $doc)
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link {{ $i === 0 ? 'active' : '' }} fw-semibold" 
+                                    id="berkas-tab-{{ $i }}" data-bs-toggle="tab" 
+                                    data-bs-target="#berkas-pane-{{ $i }}" type="button" role="tab">
+                                <i class="fas {{ $doc['icon'] }} me-1"></i> {{ $doc['label'] }}
+                            </button>
+                        </li>
+                        @endforeach
+                    </ul>
+
+                    {{-- Tab Content --}}
+                    <div class="tab-content" id="berkasTabContent">
+                        @foreach($dokumen->values() as $i => $doc)
+                        <div class="tab-pane fade {{ $i === 0 ? 'show active' : '' }}" 
+                             id="berkas-pane-{{ $i }}" role="tabpanel" style="height: 65vh;">
+                            @php $ext = strtolower(pathinfo($doc['file'], PATHINFO_EXTENSION)); @endphp
+                            @if($ext === 'pdf')
+                                <iframe src="{{ asset('storage/' . $doc['file']) }}" width="100%" height="100%" class="border-0"></iframe>
+                            @elseif(in_array($ext, ['jpg','jpeg','png','webp']))
+                                <div class="h-100 d-flex align-items-center justify-content-center p-4 bg-light">
+                                    <img src="{{ asset('storage/' . $doc['file']) }}" class="img-fluid rounded shadow-sm" style="max-height: 100%; object-fit: contain;">
+                                </div>
+                            @else
+                                <div class="text-center py-5">
+                                    <i class="fas fa-file-download fa-4x text-muted mb-3"></i>
+                                    <p>Format file tidak didukung untuk pratinjau.</p>
+                                    <a href="{{ asset('storage/' . $doc['file']) }}" target="_blank" class="btn btn-primary rounded-pill px-4">
+                                        <i class="fas fa-download me-2"></i>Unduh File
+                                    </a>
+                                </div>
+                            @endif
+                        </div>
+                        @endforeach
                     </div>
                 @endif
             </div>
             <div class="modal-footer border-0 p-4">
-                <a href="{{ asset('storage/' . $pendaftaran->berkas) }}" target="_blank" class="btn btn-primary fw-bold px-4 rounded-pill">
-                    <i class="fas fa-external-link-alt me-2"></i> Buka Fullscreen
-                </a>
                 <button type="button" class="btn btn-light fw-bold px-4 rounded-pill" data-bs-dismiss="modal">Tutup</button>
             </div>
         </div>

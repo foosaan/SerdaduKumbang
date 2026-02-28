@@ -2,6 +2,8 @@
 @section('title', 'Tambah Admin')
 
 @section('content')
+@section('page-title', 'Tambah Akun Admin')
+@section('breadcrumb-sub', 'Buat akun admin baru')
 <style>
     body { background-color: #f4f7fa; }
     .form-card { background: white; border-radius: 24px; padding: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }

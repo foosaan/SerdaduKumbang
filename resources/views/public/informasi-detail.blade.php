@@ -1,255 +1,80 @@
-@extends('layouts.app')
+@extends('layouts.public')
 
 @section('title', $informasi->judul)
 
 @section('content')
-<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
-<style>
-    body {
-        background-color: #f8fafc;
-    }
-
-    .detail-hero {
-        background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(185, 28, 28, 0.75) 100%);
-        color: white;
-        padding: 60px 20px;
-        border-radius: 24px;
-        position: relative;
-        overflow: hidden;
-        margin-bottom: 30px;
-    }
-
-    .detail-card {
-        background: white;
-        border-radius: 24px;
-        padding: 40px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-    }
-
-    .poster-wrapper {
-        max-width: 900px;
-        margin: 0 auto 40px;
-        text-align: center;
-    }
-
-    .poster-img {
-        max-width: 100%;
-        max-height: 600px;
-        object-fit: contain;
-        border-radius: 20px;
-        box-shadow: 0 15px 40px rgba(0,0,0,0.1);
-    }
-
-    .badge-kategori {
-        background: #dc2626;
-        color: white;
-        padding: 8px 20px;
-        border-radius: 50px;
-        font-size: 0.85rem;
-        font-weight: 600;
-    }
-
-    .content-text {
-        font-size: 1.1rem;
-        line-height: 2;
-        color: #475569;
-        max-width: 800px;
-        margin: 0 auto;
-    }
-
-    .btn-back {
-        background: #dc2626;
-        color: white;
-        padding: 12px 28px;
-        border-radius: 12px;
-        font-weight: 700;
-        border: none;
-        transition: all 0.3s ease;
-    }
-
-    .btn-back:hover {
-        background: #b91c1c;
-        color: white;
-        transform: translateY(-2px);
-    }
-
-    /* ========== MOBILE RESPONSIVE ========== */
-    @media (max-width: 768px) {
-        .detail-hero {
-            padding: 30px 15px;
-            border-radius: 16px;
-            margin-bottom: 15px;
-        }
-        
-        .detail-hero h1 {
-            font-size: 1.1rem !important;
-        }
-        
-        .detail-hero p {
-            font-size: 0.7rem !important;
-        }
-        
-        .badge-kategori {
-            padding: 5px 14px;
-            font-size: 0.65rem;
-        }
-        
-        .detail-card {
-            padding: 20px 16px;
-            border-radius: 16px;
-        }
-        
-        .poster-wrapper {
-            margin: 0 auto 20px;
-        }
-        
-        .poster-img {
-            max-height: 300px;
-            border-radius: 12px;
-        }
-        
-        .content-text {
-            font-size: 0.8rem;
-            line-height: 1.6;
-        }
-        
-        .btn-back {
-            padding: 10px 20px;
-            font-size: 0.75rem;
-            border-radius: 10px;
-        }
-        
-        .gallery-section h4 {
-            font-size: 0.9rem !important;
-        }
-        
-        .gallery-img {
-            height: 120px !important;
-        }
-    }
-
-    @media (max-width: 480px) {
-        .detail-hero {
-            padding: 25px 12px;
-            border-radius: 14px;
-        }
-        
-        .detail-hero h1 {
-            font-size: 1rem !important;
-        }
-        
-        .detail-hero p {
-            font-size: 0.65rem !important;
-        }
-        
-        .badge-kategori {
-            padding: 4px 12px;
-            font-size: 0.6rem;
-        }
-        
-        .detail-card {
-            padding: 16px 14px;
-        }
-        
-        .poster-img {
-            max-height: 200px;
-        }
-        
-        .content-text {
-            font-size: 0.75rem;
-        }
-        
-        .btn-back {
-            padding: 8px 16px;
-            font-size: 0.7rem;
-            width: 100%;
-            text-align: center;
-        }
-        
-        .gallery-section h4 {
-            font-size: 0.8rem !important;
-        }
-        
-        .gallery-img {
-            height: 100px !important;
-        }
-    }
-
-    @media (max-width: 375px) {
-        .detail-hero h1 {
-            font-size: 0.9rem !important;
-        }
-        
-        .content-text {
-            font-size: 0.7rem;
-        }
-    }
-</style>
-
-<div class="container py-4">
-    {{-- HERO --}}
-    <div class="detail-hero text-center" data-aos="zoom-out">
-        <span class="badge-kategori mb-3 d-inline-block">{{ $informasi->kategori }}</span>
-        <h1 class="fw-bold display-5">{{ $informasi->judul }}</h1>
-        <p class="opacity-75 mb-0">
-            <i class="fas fa-calendar-alt me-2"></i>
-            {{ $informasi->updated_at->format('d F Y') }} • {{ $informasi->updated_at->format('H:i') }} WIB
-        </p>
-    </div>
-
-    {{-- CONTENT --}}
-    <div class="detail-card" data-aos="fade-up">
-        @if($informasi->gambar)
-            <div class="poster-wrapper">
-                <img src="{{ asset('storage/' . $informasi->gambar) }}" alt="{{ $informasi->judul }}" class="poster-img">
+{{-- HERO --}}
+<section class="relative overflow-hidden pt-3 sm:pt-6 pb-3 sm:pb-6">
+    <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="relative bg-slate-900 rounded-[1.5rem] lg:rounded-[3rem] px-4 sm:px-8 py-7 sm:py-10 lg:py-16 text-center overflow-hidden shadow-2xl animate-fade-up">
+            <!-- Decorative Background -->
+            <div class="absolute inset-0 z-0">
+                <div class="absolute inset-0 bg-[url('https://preline.co/assets/svg/examples/polygon-bg-element.svg')] bg-cover bg-center bg-no-repeat opacity-10 mix-blend-overlay"></div>
+                <div class="absolute -top-24 -right-24 w-80 h-80 bg-red-600/30 rounded-full blur-[80px] pointer-events-none"></div>
+                <div class="absolute -bottom-24 -left-24 w-80 h-80 bg-rose-600/20 rounded-full mix-blend-multiply blur-[80px] pointer-events-none"></div>
             </div>
+            
+            <div class="relative z-10 max-w-4xl mx-auto">
+                <span class="inline-flex items-center px-3 py-1 bg-red-500/10 backdrop-blur-md border border-red-500/30 rounded-full text-xs font-bold tracking-widest mb-3 sm:mb-6 text-red-200 uppercase">
+                    {{ $informasi->kategori }}
+                </span>
+                <h1 class="text-xl sm:text-4xl lg:text-5xl font-black mb-3 sm:mb-6 tracking-tight text-white leading-tight">
+                    {{ $informasi->judul }}
+                </h1>
+                <div class="flex items-center justify-center gap-4 text-slate-300 text-sm sm:text-base">
+                    <span class="flex items-center gap-1.5"><i class="fas fa-calendar-alt text-red-400"></i> {{ $informasi->updated_at->format('d F Y') }}</span>
+                    <span class="opacity-30">•</span>
+                    <span class="flex items-center gap-1.5"><i class="fas fa-clock text-red-400"></i> {{ $informasi->updated_at->format('H:i') }} WIB</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{{-- CONTENT --}}
+<section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 lg:pb-16">
+    <div class="bg-white rounded-3xl shadow-lg border border-slate-100 p-6 sm:p-8 lg:p-10">
+
+        @if($informasi->gambar)
+        <div class="text-center mb-8">
+            <img src="{{ asset('storage/' . $informasi->gambar) }}" alt="{{ $informasi->judul }}" class="max-w-full max-h-[500px] object-contain rounded-2xl shadow-lg mx-auto">
+        </div>
         @endif
 
-        <div class="content-text">
+        <div class="prose prose-slate max-w-3xl mx-auto text-slate-600 text-sm sm:text-base leading-relaxed sm:leading-loose">
             {!! nl2br(e($informasi->isi)) !!}
         </div>
 
         @if($informasi->galeri && count($informasi->galeri) > 0)
-        <div class="gallery-section mt-5">
-            <h4 class="fw-bold text-dark mb-4"><i class="fas fa-images me-2 text-danger"></i>Galeri Kegiatan</h4>
-            <div class="row g-3">
+        <div class="mt-10">
+            <h4 class="font-bold text-slate-900 mb-4 flex items-center gap-2">
+                <i class="fas fa-images text-red-500"></i> Galeri Kegiatan
+            </h4>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
                 @foreach($informasi->galeri as $foto)
-                <div class="col-6 col-md-4">
-                    <a href="{{ asset('storage/' . $foto) }}" target="_blank">
-                        <img src="{{ asset('storage/' . $foto) }}" alt="Gallery" class="gallery-img w-100 rounded-3" style="height: 200px; object-fit: cover; cursor: pointer; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                    </a>
-                </div>
+                <a href="{{ asset('storage/' . $foto) }}" target="_blank" class="block overflow-hidden rounded-xl group">
+                    <img src="{{ asset('storage/' . $foto) }}" alt="Gallery" class="w-full h-32 sm:h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+                </a>
                 @endforeach
             </div>
         </div>
         @endif
 
-        <hr class="my-4">
+        <hr class="my-6 border-slate-100">
 
-        <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
-            <a href="{{ route('informasi') }}" class="btn btn-back">
-                <i class="fas fa-arrow-left me-2"></i> Kembali ke Informasi
+        <div class="flex flex-col sm:flex-row justify-between items-center gap-3">
+            <a href="{{ route('informasi') }}" class="inline-flex items-center gap-2 px-5 py-2.5 bg-red-600 text-white rounded-xl text-sm font-bold shadow-lg shadow-red-600/20 hover:bg-red-700 hover:-translate-y-0.5 transition-all duration-300">
+                <i class="fas fa-arrow-left"></i> Kembali ke Informasi
             </a>
 
             @if($informasi->kategori == 'Pendaftaran')
-                <a href="{{ route('pendaftaran') }}" class="btn btn-back">
-                    <i class="fas fa-paper-plane me-2"></i> Daftar Sekarang
+                <a href="{{ route('pendaftaran') }}" class="inline-flex items-center gap-2 px-5 py-2.5 bg-red-600 text-white rounded-xl text-sm font-bold shadow-lg shadow-red-600/20 hover:bg-red-700 hover:-translate-y-0.5 transition-all duration-300">
+                    <i class="fas fa-paper-plane"></i> Daftar Sekarang
                 </a>
             @endif
         </div>
     </div>
-</div>
-
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        AOS.init({
-            duration: 800,
-            easing: 'ease-in-out',
-            once: true
-        });
-    });
-</script>
+</section>
 
 @endsection

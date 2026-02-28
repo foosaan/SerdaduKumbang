@@ -1,379 +1,108 @@
-@extends('layouts.app')
+@extends('layouts.public')
 
 @section('title', 'Informasi Pendaftaran')
 
 @section('content')
-<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
-<style>
-    body {
-        background-color: #ffffff;
-        color: #334155;
-        overflow-x: hidden;
-    }
+{{-- HERO SECTION --}}
+<section class="relative overflow-hidden bg-slate-900 pt-6 pb-10 lg:pt-24 lg:pb-28 rounded-b-[1.5rem] lg:rounded-b-[4rem] mb-6 lg:mb-12 shadow-2xl">
+    <!-- Decorative Background -->
+    <div class="absolute inset-0 z-0">
+        <div class="absolute inset-0 bg-[url('https://preline.co/assets/svg/examples/polygon-bg-element.svg')] bg-cover bg-center bg-no-repeat opacity-10 mix-blend-overlay"></div>
+        <div class="absolute -top-24 -left-24 w-96 h-96 bg-red-600/30 rounded-full blur-[100px] pointer-events-none"></div>
+        <div class="absolute bottom-0 right-0 w-3/4 h-3/4 bg-rose-600/20 rounded-full mix-blend-multiply filter blur-[100px] opacity-70 pointer-events-none"></div>
+    </div>
 
-    /* Hero Section Modernization - Tanpa Background Image */
-    .info-hero {
-        background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(185, 28, 28, 0.75) 100%);
-        color: white;
-        padding: 100px 20px;
-        border-radius: 32px;
-        position: relative;
-        overflow: hidden;
-        box-shadow: 0 20px 50px rgba(220, 38, 38, 0.15);
-        margin-bottom: 40px;
-    }
-
-    .info-badge {
-        background: rgba(255, 255, 255, 0.15);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.3);
-        color: white;
-        padding: 8px 24px;
-        border-radius: 50px;
-        font-size: 0.9rem;
-        font-weight: 600;
-        display: inline-block;
-        margin-bottom: 20px;
-    }
-
-    /* Info Cards - Disesuaikan Lebarnya agar sama dengan Hero */
-    .info-card {
-        background: white;
-        border-radius: 28px;
-        padding: 45px;
-        border: 1px solid #f1f5f9;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.03);
-        position: relative;
-        overflow: hidden;
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        width: 100%; /* Memastikan lebar penuh container */
-    }
-
-    .info-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 30px 60px rgba(220, 38, 38, 0.1);
-        border-color: #fecaca;
-    }
-
-    .info-card::before {
-        content: "";
-        position: absolute;
-        left: 0; top: 0; bottom: 0;
-        width: 8px;
-        background: #dc2626;
-    }
-
-    .info-title {
-        color: #7f1d1d;
-        font-weight: 800;
-        font-size: 1.85rem;
-        margin-bottom: 1.5rem;
-        display: block;
-    }
-
-    .info-content {
-        font-size: 1.1rem;
-        line-height: 1.8;
-        color: #64748b;
-        margin-bottom: 30px;
-    }
-
-    /* Meta & Buttons */
-    .info-meta {
-        background: #f8fafc;
-        padding: 12px 24px;
-        border-radius: 14px;
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        border: 1px solid #f1f5f9;
-    }
-
-    .info-meta-icon {
-        color: #dc2626;
-        font-size: 1.2rem;
-    }
-
-    .btn-blue-primary {
-        background: #dc2626;
-        color: white;
-        padding: 14px 36px;
-        border-radius: 14px;
-        font-weight: 700;
-        border: none;
-        transition: all 0.3s ease;
-        box-shadow: 0 10px 20px -5px rgba(220, 38, 38, 0.4);
-    }
-
-    .btn-blue-primary:hover {
-        background: #b91c1c;
-        transform: translateY(-3px);
-        box-shadow: 0 15px 30px -5px rgba(220, 38, 38, 0.5);
-        color: white;
-    }
-
-    .empty-state {
-        background: #f8faff;
-        border: 2px dashed #fecaca;
-        border-radius: 32px;
-        padding: 80px 40px;
-        text-align: center;
-    }
-
-    .empty-icon-circle {
-        width: 100px; height: 100px;
-        background: #eff6ff;
-        color: #dc2626;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 50%;
-        margin: 0 auto 30px;
-        font-size: 3rem;
-    }
-
-    .bg-decoration {
-        position: absolute;
-        z-index: 0;
-        opacity: 0.05;
-        pointer-events: none;
-    }
-
-    /* ========== MOBILE RESPONSIVE ========== */
-    @media (max-width: 768px) {
-        .info-hero {
-            padding: 40px 15px;
-            border-radius: 16px;
-            margin-bottom: 20px;
-        }
-        
-        .info-hero h1 {
-            font-size: 1.2rem !important;
-        }
-        
-        .info-hero .lead {
-            font-size: 0.75rem !important;
-            line-height: 1.4;
-        }
-        
-        .info-badge {
-            padding: 5px 14px;
-            font-size: 0.65rem;
-            margin-bottom: 12px;
-        }
-        
-        .info-card {
-            padding: 20px 16px;
-            border-radius: 16px;
-            margin-bottom: 12px !important;
-        }
-        
-        .info-card::before {
-            width: 4px;
-        }
-        
-        .info-title {
-            font-size: 1rem;
-            margin-bottom: 0.75rem;
-        }
-        
-        .info-content {
-            font-size: 0.75rem;
-            line-height: 1.5;
-            margin-bottom: 15px;
-        }
-        
-        .info-meta {
-            padding: 8px 12px;
-            border-radius: 10px;
-            gap: 8px;
-        }
-        
-        .info-meta-icon {
-            font-size: 0.9rem;
-        }
-        
-        .info-meta span {
-            font-size: 0.65rem !important;
-        }
-        
-        .btn-blue-primary {
-            padding: 10px 20px;
-            font-size: 0.75rem;
-            border-radius: 10px;
-        }
-        
-        .badge {
-            font-size: 0.6rem;
-            padding: 4px 10px;
-        }
-        
-        .bg-decoration {
-            font-size: 4rem !important;
-        }
-        
-        /* Category filter buttons */
-        .info-hero .btn {
-            padding: 6px 14px !important;
-            font-size: 0.65rem !important;
-        }
-    }
-
-    @media (max-width: 480px) {
-        .info-hero {
-            padding: 30px 12px;
-            border-radius: 14px;
-        }
-        
-        .info-hero h1 {
-            font-size: 1rem !important;
-        }
-        
-        .info-hero .lead {
-            font-size: 0.7rem !important;
-        }
-        
-        .info-badge {
-            padding: 4px 12px;
-            font-size: 0.6rem;
-        }
-        
-        .info-card {
-            padding: 16px 14px;
-            border-radius: 14px;
-        }
-        
-        .info-title {
-            font-size: 0.9rem;
-        }
-        
-        .info-content {
-            font-size: 0.7rem;
-        }
-        
-        .btn-blue-primary {
-            padding: 8px 16px;
-            font-size: 0.7rem;
-            width: 100%;
-            text-align: center;
-        }
-        
-        .info-hero .btn {
-            padding: 5px 12px !important;
-            font-size: 0.6rem !important;
-        }
-    }
-
-    @media (max-width: 375px) {
-        .info-hero h1 {
-            font-size: 0.9rem !important;
-        }
-        
-        .info-hero .lead {
-            font-size: 0.65rem !important;
-        }
-        
-        .info-title {
-            font-size: 0.85rem;
-        }
-        
-        .info-content {
-            font-size: 0.65rem;
-        }
-    }
-</style>
-
-<div class="container py-4">
-    {{-- HERO SECTION --}}
-    <div class="info-hero text-center" data-aos="zoom-out" data-aos-duration="1000">
-        <div class="position-relative" style="z-index: 2;">
-            <div class="info-badge" data-aos="fade-down" data-aos-delay="400">
-                <i class="fas fa-info-circle me-2"></i> Update Informasi SerdaduKumbang
+    <div class="relative z-10 max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl text-center mx-auto animate-fade-up">
+            <!-- Badge -->
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-red-500/30 bg-red-500/10 text-red-100 backdrop-blur-sm mb-4 sm:mb-6">
+                <i class="fas fa-bullhorn text-sm"></i>
+                <span class="text-xs sm:text-sm font-semibold tracking-wide uppercase">Pusat Informasi</span>
             </div>
-            <h1 class="fw-bold display-4" data-aos="fade-up" data-aos-delay="600">Update Informasi</h1>
-            <p class="lead opacity-90 mx-auto" style="max-width: 700px;" data-aos="fade-up" data-aos-delay="800">
-                Simak informasi terbaru mengenai jadwal seleksi, persyaratan dokumen, dan kegiatan resmi SerdaduKumbang secara berkala.
-            </p>
             
-            {{-- CATEGORY FILTER TABS --}}
-            <div class="d-flex justify-content-center gap-2 mt-4 flex-wrap" data-aos="fade-up" data-aos-delay="900">
+            <h1 class="block font-black text-white text-3xl sm:text-5xl lg:text-7xl tracking-tight text-balance mb-3 sm:mb-6">
+                Update <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-rose-500">Informasi</span>
+            </h1>
+            
+            <p class="text-sm sm:text-xl text-slate-300 text-balance leading-relaxed mx-auto max-w-2xl">
+                Simak update terbaru mengenai jadwal seleksi, persyaratan dokumen, dan pergerakan resmi SerdaduKumbang secara berkala.
+            </p>
+        </div>
+
+        {{-- Preline Segmented Control Filter --}}
+        <div class="mt-5 sm:mt-10 flex justify-center animate-fade-up" style="animation-delay: 200ms;">
+            <nav class="flex overflow-x-auto no-scrollbar gap-x-1 bg-slate-100/80 hover:bg-slate-200/50 p-1.5 rounded-full smooth-transition max-w-full" aria-label="Tabs">
                 @php
                     $categories = ['Semua', 'Pendaftaran', 'Kegiatan', 'Lainnya'];
+                    $selectedCategory = $selectedKategori ?? 'Semua';
                 @endphp
                 @foreach($categories as $cat)
                     <a href="{{ route('informasi', ['kategori' => $cat]) }}" 
-                       class="btn {{ ($selectedKategori ?? 'Semua') == $cat ? 'btn-light text-danger fw-bold' : 'btn-outline-light' }} rounded-pill px-4 py-2">
+                       class="py-2.5 px-6 inline-flex items-center gap-x-2 bg-transparent text-sm font-medium rounded-full whitespace-nowrap hover:text-gray-900 focus:outline-none focus:text-gray-900 transition-all {{ $selectedCategory == $cat ? 'bg-white text-gray-900 shadow-sm font-semibold' : 'text-gray-500 hover:bg-white/50' }}">
                         {{ $cat }}
                     </a>
                 @endforeach
-            </div>
+            </nav>
         </div>
     </div>
+</section>
 
-    {{-- CONTENT SECTION - Tanpa bungkus Row/Col agar lebarnya mengikuti container (sama dengan Hero) --}}
-    <div class="pb-5">
-        @if ($informasi->count())
+{{-- CONTENT --}}
+<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 lg:pb-16">
+    @if ($informasi->count())
+        <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-8">
             @foreach ($informasi as $index => $item)
-                <div class="info-card mb-4" data-aos="fade-up" data-aos-delay="{{ 100 * ($index + 1) }}">
-                    <i class="fas fa-quote-right bg-decoration" style="top: 20px; right: 20px; font-size: 8rem;"></i>
-                    
-                    <div class="position-relative" style="z-index: 1;">
-                        <span class="badge bg-danger mb-2">{{ $item->kategori }}</span>
-                        <h3 class="info-title">{{ $item->judul }}</h3>
-                        
-                        <div class="info-content">
-                            {!! nl2br(e($item->isi)) !!}
-                        </div>
-
-                        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-4 mt-4">
-                            <div class="info-meta">
-                                <i class="fas fa-calendar-alt info-meta-icon"></i>
-                                <span class="text-muted small fw-bold">
-                                    Rilis: {{ $item->updated_at->format('d F Y') }} • {{ $item->updated_at->format('H:i') }} WIB
-                                </span>
-                            </div>
-
-                            @if($item->kategori == 'Kegiatan' || $item->kategori == 'Lainnya')
-                                <a href="{{ route('informasi.show', $item->id) }}" class="btn btn-blue-primary">
-                                    <i class="fas fa-eye me-2"></i> Lihat Detail
-                                </a>
-                            @else
-                                <a href="{{ route('pendaftaran') }}" class="btn btn-blue-primary">
-                                    <i class="fas fa-paper-plane me-2"></i> Daftar Sekarang
-                                </a>
-                            @endif
-                        </div>
+            <!-- Preline Card -->
+            <div class="group flex flex-col h-full bg-white dark:bg-slate-800 premium-shadow border border-transparent dark:border-slate-700 hover:border-red-100 smooth-transition rounded-xl sm:rounded-2xl p-3 sm:p-8 animate-fade-up" style="animation-delay: {{ 300 + ($index * 100) }}ms;">
+                <div class="mb-2 sm:mb-5">
+                    <span class="inline-flex items-center gap-x-1 sm:gap-x-1.5 py-1 px-2 sm:py-1.5 sm:px-3 rounded-md text-[9px] sm:text-xs font-semibold bg-red-100 text-red-800">
+                        {{ $item->kategori }}
+                    </span>
+                </div>
+                <div class="my-auto">
+                    <h3 class="text-xs sm:text-xl font-bold text-slate-900 dark:text-white group-hover:text-red-600 smooth-transition tracking-tight line-clamp-2 sm:line-clamp-none">
+                        {{ $item->judul }}
+                    </h3>
+                    <p class="mt-2 sm:mt-4 text-slate-500 dark:text-slate-400 line-clamp-2 sm:line-clamp-3 leading-relaxed text-[10px] sm:text-base">
+                        {{ Str::limit(strip_tags($item->isi), 80) }}
+                    </p>
+                </div>
+                <div class="mt-auto pt-3 sm:mt-6 flex flex-col sm:flex-row sm:items-center justify-between gap-y-2">
+                    <div>
+                        <p class="text-[9px] sm:text-xs text-gray-500 uppercase tracking-wider font-semibold">Rilis</p>
+                        <p class="text-[10px] sm:text-sm text-gray-800">{{ $item->updated_at->format('d M y') }}</p>
                     </div>
+                    <a href="{{ route('informasi.show', $item->id) }}" class="inline-flex items-center gap-x-1 sm:gap-x-2 text-[10px] sm:text-sm font-medium text-red-600 hover:text-red-800 group-hover:-translate-y-1 transition-all">
+                        Detail
+                        <svg class="flex-shrink-0 size-3 sm:size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                    </a>
                 </div>
-            @endforeach
-        @else
-            <div class="empty-state" data-aos="fade-up">
-                <div class="empty-icon-circle">
-                    <i class="fas fa-bullhorn"></i>
-                </div>
-                <h3 class="fw-bold text-dark">Belum Ada Informasi</h3>
-                <p class="text-secondary mx-auto mb-4" style="max-width: 500px;">
-                    Saat ini pengumuman pendaftaran belum tersedia. Tim admin kami sedang mempersiapkan update terbaru untuk Anda.
-                </p>
-                <a href="{{ route('home') }}" class="btn btn-outline-primary px-4 py-2 rounded-pill fw-bold">
-                    <i class="fas fa-arrow-left me-2"></i> Kembali ke Beranda
-                </a>
             </div>
-        @endif
-    </div>
-</div>
+            <!-- End Preline Card -->
+            @endforeach
+        </div>
+    @else
+        <div class="text-center py-12 sm:py-24 bg-slate-50 dark:bg-slate-900 rounded-2xl sm:rounded-[2.5rem] border-2 border-dashed border-red-200 dark:border-slate-800 animate-fade-up">
+            <div class="w-24 h-24 mx-auto mb-6 bg-red-50 rounded-full flex items-center justify-center text-red-300 text-5xl">
+                <i class="fas fa-bullhorn"></i>
+            </div>
+            <h3 class="text-xl font-bold text-slate-800 dark:text-white mb-2">Belum Ada Informasi</h3>
+            <p class="text-slate-500 dark:text-slate-400 max-w-md mx-auto mb-6 text-sm">
+                Saat ini pengumuman pendaftaran belum tersedia. Tim admin kami sedang mempersiapkan update terbaru untuk Anda.
+            </p>
+            <a href="{{ route('home') }}" class="inline-flex items-center gap-2 px-5 py-2.5 border-2 border-red-200 text-red-600 rounded-full font-bold text-sm hover:bg-red-50 transition">
+                <i class="fas fa-arrow-left"></i> Kembali ke Beranda
+            </a>
+        </div>
+    @endif
 
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        AOS.init({
-            duration: 800,
-            easing: 'ease-in-out',
-            once: true,
-            mirror: false
-        });
-    });
-</script>
+    {{-- Pagination --}}
+    @if($informasi->hasPages())
+    <div class="mt-12 d-flex justify-content-center">
+        {{ $informasi->links('pagination::tailwind') }}
+    </div>
+    @endif
+</section>
 
 @endsection

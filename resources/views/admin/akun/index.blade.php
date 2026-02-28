@@ -2,6 +2,8 @@
 @section('title', 'Kelola Admin')
 
 @section('content')
+@section('page-title', 'Kelola Akun Admin')
+@section('breadcrumb-sub', 'Manajemen akun administrator')
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
 <style>

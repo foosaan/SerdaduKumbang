@@ -3,6 +3,8 @@
 @section('title', 'Kirim Notifikasi')
 
 @section('content')
+@section('page-title', 'Kirim Notifikasi')
+@section('breadcrumb-sub', 'Broadcast pesan ke pendaftar')
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
 <style>

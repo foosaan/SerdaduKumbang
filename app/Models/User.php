@@ -52,4 +52,12 @@ class User extends Authenticatable
     {
         return $this->hasOne(Pendaftaran::class);
     }
+
+    // Define relationship with Kegiatan model
+    public function kegiatans()
+    {
+        return $this->belongsToMany(Kegiatan::class, 'kegiatan_user')
+                    ->withPivot('status')
+                    ->withTimestamps();
+    }
 }

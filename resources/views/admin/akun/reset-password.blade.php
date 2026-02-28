@@ -2,6 +2,8 @@
 @section('title', 'Reset Password Admin')
 
 @section('content')
+@section('page-title', 'Reset Password')
+@section('breadcrumb-sub', 'Reset password akun admin')
 <div class="container py-5">
     <div class="row justify-content-center">
         <div class="col-lg-5">

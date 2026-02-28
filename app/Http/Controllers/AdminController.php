@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Http;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\PendaftarExport;
 use Barryvdh\DomPDF\Facade\Pdf;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
@@ -64,6 +63,15 @@ class AdminController extends Controller
         $total = (clone $baseQuery)->count();
         $menunggu = (clone $baseQuery)->where('status', 'Menunggu')->count();
 
+        // 🔥 GELOMBANG LIST dinamis dari database
+        $gelombangList = Pendaftaran::distinct()->orderBy('gelombang')->pluck('gelombang');
+
+        // 🔥 DIVISI STATS
+        $divisiStats = (clone $query)->reorder()->whereNotNull('pilihan_1')
+            ->groupBy('pilihan_1')
+            ->selectRaw('pilihan_1, count(*) as total')
+            ->pluck('total', 'pilihan_1');
+
         return view('admin.dashboard', compact(
             'total', 
             'menunggu',
@@ -72,7 +80,9 @@ class AdminController extends Controller
             'status',
             'gelombang',
             'lakiLaki',
-            'perempuan'
+            'perempuan',
+            'gelombangList',
+            'divisiStats'
         ));
     }
 
@@ -127,9 +137,11 @@ class AdminController extends Controller
     {
         $pendaftar = Pendaftaran::findOrFail($id);
 
-        // Hapus file berkas kalau ada
-        if ($pendaftar->berkas && \Storage::disk('public')->exists($pendaftar->berkas)) {
-            \Storage::disk('public')->delete($pendaftar->berkas);
+        // Hapus semua file dokumen terkait
+        foreach (['berkas', 'cv', 'follow_ig', 'follow_tiktok', 'portofolio'] as $field) {
+            if ($pendaftar->$field && Storage::disk('public')->exists($pendaftar->$field)) {
+                Storage::disk('public')->delete($pendaftar->$field);
+            }
         }
 
         // Hapus user terkait (optional, jika ingin ikut terhapus)
@@ -220,7 +232,7 @@ class AdminController extends Controller
         $today = date('Y-m-d');
 
         if ($statusForm->tanggal_buka && $statusForm->tanggal_tutup) {
-            if ($today >= $statusForm->tanggal_buka && $today < $statusForm->tanggal_tutup) {
+            if ($today >= $statusForm->tanggal_buka && $today <= $statusForm->tanggal_tutup) {
                 $statusForm->status = 'Buka';
             } else {
                 $statusForm->status = 'Tutup';
@@ -236,7 +248,7 @@ class AdminController extends Controller
         $request->validate([
             'tanggal_buka' => 'required|date',
             'tanggal_tutup' => 'required|date|after_or_equal:tanggal_buka',
-            'gelombang_aktif' => 'required|in:1,2',
+            'gelombang_aktif' => 'required|integer|min:1',
         ]);
 
         $statusForm = StatusForm::first();
@@ -260,105 +272,40 @@ class AdminController extends Controller
 
         return back()->with('success', 'Status formulir berhasil diperbarui!');
     }
-    
-    // ADMIN ACCOUNT MANAGEMENT
-    public function adminIndex()
-    {
-        $admins = User::where('role', 'admin')->paginate(10);
-        return view('admin.akun.index', compact('admins'));
-    }
 
-    public function adminCreate()
-    {
-        return view('admin.akun.create');
-    }
-
-    public function adminStore(Request $request)
+    public function bulkVerifikasi(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|min:6|confirmed',
+            'ids' => 'required|array',
+            'ids.*' => 'exists:pendaftarans,id',
+            'status' => 'required|string',
         ]);
 
-        User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'role' => 'admin',
-            'status' => 'active',
+        $count = Pendaftaran::whereIn('id', $request->ids)->update([
+            'status' => $request->status,
         ]);
 
-        return redirect()->route('admin.akun.index')->with('success', 'Admin berhasil ditambahkan');
+        return back()->with('success', "Status {$count} pendaftar berhasil diubah menjadi \"{$request->status}\".");
     }
 
-    public function adminEdit($id)
+    public function destroyAll(Request $request)
     {
-        $admin = User::where('role', 'admin')->findOrFail($id);
-        return view('admin.akun.edit', compact('admin'));
-    }
-
-    public function adminUpdate(Request $request, $id)
-    {
-        $admin = User::findOrFail($id);
-
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email,' . $admin->id,
-        ]);
-
-        $admin->update([
-            'name' => $request->name,
-            'email' => $request->email,
-        ]);
-
-        return redirect()->route('admin.akun.index')->with('success', 'Data admin diperbarui');
-    }
-
-    public function adminDestroy($id)
-    {
-        if ($id == auth()->id()) {
-            return back()->with('error', 'Tidak boleh menghapus akun sendiri');
+        // Verifikasi password admin
+        if (!$request->confirm_password || !\Hash::check($request->confirm_password, auth()->user()->password)) {
+            return back()->with('error', 'Password salah! Penghapusan dibatalkan.');
         }
 
-        User::where('id', $id)->where('role', 'admin')->delete();
-
-        return back()->with('success', 'Admin berhasil dihapus');
-    }
-
-    public function resetPasswordForm($id)
-    {
-        $admin = User::where('role', 'admin')->findOrFail($id);
-        return view('admin.akun.reset-password', compact('admin'));
-    }
-    
-    public function resetPasswordUpdate(Request $request, $id)
-    {
-        $request->validate([
-            'password' => 'required|min:8|confirmed'
-        ]);
-
-        $admin = User::where('role', 'admin')->findOrFail($id);
-
-        $admin->update([
-            'password' => Hash::make($request->password)
-        ]);
-
-        return redirect()->route('admin.akun.index')
-            ->with('success', 'Password admin berhasil direset');
-    }
-
-    public function destroyAll()
-    {
         DB::transaction(function () {
 
             $pendaftar = Pendaftaran::all();
 
             foreach ($pendaftar as $p) {
 
-                // Hapus berkas
-                if ($p->berkas && Storage::disk('public')->exists($p->berkas)) {
-                    Storage::disk('public')->delete($p->berkas);
+                // Hapus semua file dokumen terkait
+                foreach (['berkas', 'cv', 'follow_ig', 'follow_tiktok', 'portofolio'] as $field) {
+                    if ($p->$field && Storage::disk('public')->exists($p->$field)) {
+                        Storage::disk('public')->delete($p->$field);
+                    }
                 }
 
                 // Hapus user terkait
@@ -374,5 +321,51 @@ class AdminController extends Controller
         return redirect()->route('admin.dashboard')
             ->with('success', 'SEMUA data pendaftar berhasil dihapus.');
     }
+    
+    public function exportZip(Request $request)
+    {
+        $gelombang = $request->query('gelombang');
+        
+        $query = Pendaftaran::query();
+        if ($gelombang) {
+            $query->where('gelombang', $gelombang);
+        }
+        $pendaftars = $query->get();
 
+        $zip = new \ZipArchive;
+        $fileName = $gelombang ? "Berkas_Pendaftar_Gelombang_{$gelombang}.zip" : "Berkas_Semua_Pendaftar.zip";
+        $zipFilePath = storage_path("app/public/" . $fileName);
+
+        if ($zip->open($zipFilePath, \ZipArchive::CREATE | \ZipArchive::OVERWRITE) === TRUE) {
+            foreach ($pendaftars as $p) {
+                $folderName = str_replace(' ', '_', $p->nama_lengkap) . '_' . $p->id;
+                
+                // Array field berkas yang akan di loop
+                $berkasFields = [
+                    'cv' => 'CV',
+                    'follow_ig' => 'Bukti_IG',
+                    'follow_tiktok' => 'Bukti_TikTok',
+                    'portofolio' => 'Portofolio'
+                ];
+
+                foreach ($berkasFields as $field => $label) {
+                    if ($p->$field) {
+                        $absolutePath = storage_path('app/public/' . $p->$field);
+                        if (file_exists($absolutePath)) {
+                            // Ambil ekstensi aslinya
+                            $ext = pathinfo($absolutePath, PATHINFO_EXTENSION);
+                            $zip->addFile($absolutePath, $folderName . '/' . $label . '_' . $folderName . '.' . $ext);
+                        }
+                    }
+                }
+            }
+            $zip->close();
+        }
+
+        if (file_exists($zipFilePath)) {
+            return response()->download($zipFilePath)->deleteFileAfterSend(true);
+        }
+
+        return back()->with('error', 'Gagal membuat file ZIP berkas atau tidak ada berkas yang bisa diunduh.');
+    }
 }

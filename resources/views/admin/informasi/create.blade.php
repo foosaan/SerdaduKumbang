@@ -3,6 +3,8 @@
 @section('title', 'Tambah Informasi')
 
 @section('content')
+@section('page-title', 'Tambah Informasi')
+@section('breadcrumb-sub', 'Buat artikel baru')
 <style>
     body { background-color: #f4f7fa; }
     .form-card {

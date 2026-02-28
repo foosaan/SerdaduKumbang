@@ -2,6 +2,8 @@
 @section('title', 'Edit Admin')
 
 @section('content')
+@section('page-title', 'Edit Akun Admin')
+@section('breadcrumb-sub', 'Perbarui data akun')
 <div class="container py-5">
     <div class="row justify-content-center">
         <div class="col-lg-6">

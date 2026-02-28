@@ -1,324 +1,507 @@
 <x-guest-layout>
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <style>
-        /* Reset background default agar bisa full screen desain custom */
         .min-h-screen {
-            background-color: #f8fafc !important;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%) !important;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 0 !important;
-        }
-
-        /* Container Utama Desain Split */
-        .login-main-container {
-            background: white;
-            border-radius: 30px;
-            box-shadow: 0 25px 50px -12px rgba(220, 38, 38, 0.15);
-            display: flex;
-            width: 1000px;
-            max-width: 95%;
-            min-height: 600px;
+            padding: 1rem !important;
+            min-height: 100vh;
+            position: relative;
             overflow: hidden;
-            border: 1px solid #f1f5f9;
         }
 
-        /* Sisi Kiri: Form Login */
-        .login-left-side {
-            flex: 1;
+        /* Decorative orbs */
+        .min-h-screen::before {
+            content: '';
+            position: absolute;
+            top: -150px;
+            right: -150px;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(220,38,38,0.12) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        .min-h-screen::after {
+            content: '';
+            position: absolute;
+            bottom: -200px;
+            left: -100px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(220,38,38,0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        /* Main Container */
+        .login-container {
+            display: flex;
+            width: 960px;
+            max-width: 95vw;
+            min-height: 560px;
+            border-radius: 28px;
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 30px 60px -12px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.05);
+        }
+
+        /* Left Side - Form */
+        .login-form-side {
+            flex: 1.1;
+            background: rgba(255,255,255,0.03);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border-right: 1px solid rgba(255,255,255,0.06);
             padding: 3rem;
             display: flex;
             flex-direction: column;
             justify-content: center;
         }
 
-        /* Sisi Kanan: Panel Info (Biru sesuai gambar) */
-        .login-right-panel {
-            flex: 1;
-            background: linear-gradient(135deg, #dc2626 0%, #7f1d1d 100%);
-            color: white;
+        .brand-row {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .brand-icon {
+            width: 42px;
+            height: 42px;
+            background: linear-gradient(135deg, #dc2626, #991b1b);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 16px rgba(220,38,38,0.35);
+        }
+
+        .brand-icon img {
+            width: 26px;
+            height: 26px;
+            object-fit: contain;
+        }
+
+        .brand-name {
+            font-size: 1rem;
+            font-weight: 800;
+            color: #f1f5f9;
+            letter-spacing: -0.3px;
+        }
+
+        .form-heading {
+            color: #ffffff;
+            font-size: 1.75rem;
+            font-weight: 800;
+            margin-bottom: 0.35rem;
+            letter-spacing: -0.5px;
+        }
+
+        .form-subheading {
+            color: #64748b;
+            font-size: 0.875rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Alerts */
+        .alert-box {
+            border-radius: 12px;
+            padding: 0.75rem 1rem;
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+        }
+        .alert-error {
+            background: rgba(239,68,68,0.1);
+            border: 1px solid rgba(239,68,68,0.2);
+        }
+        .alert-error i { color: #ef4444; }
+        .alert-error span { color: #fca5a5; }
+        .alert-success {
+            background: rgba(34,197,94,0.1);
+            border: 1px solid rgba(34,197,94,0.2);
+        }
+        .alert-success i { color: #22c55e; }
+        .alert-success span { color: #86efac; }
+
+        /* Form Fields */
+        .field {
+            margin-bottom: 1.25rem;
+        }
+
+        .field label {
+            display: block;
+            color: #94a3b8;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .input-wrap {
+            position: relative;
+        }
+
+        .input-wrap .icon {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #475569;
+            font-size: 0.85rem;
+            pointer-events: none;
+            transition: color 0.3s;
+        }
+
+        .input-wrap input {
+            width: 100%;
+            background: rgba(255,255,255,0.05) !important;
+            border: 1.5px solid rgba(255,255,255,0.08) !important;
+            border-radius: 12px !important;
+            padding: 0.8rem 1rem 0.8rem 2.75rem !important;
+            color: #f1f5f9 !important;
+            font-size: 0.9rem !important;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        .input-wrap input::placeholder {
+            color: #3f4f63 !important;
+        }
+
+        .input-wrap input:focus {
+            border-color: rgba(220,38,38,0.5) !important;
+            background: rgba(255,255,255,0.07) !important;
+            box-shadow: 0 0 0 3px rgba(220,38,38,0.12) !important;
+        }
+
+        .input-wrap input:focus ~ .icon {
+            color: #dc2626;
+        }
+
+        .input-wrap input:-webkit-autofill {
+            -webkit-box-shadow: 0 0 0 100px #131c2e inset !important;
+            -webkit-text-fill-color: #f1f5f9 !important;
+        }
+
+        .toggle-pw {
+            position: absolute;
+            right: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #475569;
+            cursor: pointer;
+            padding: 4px;
+            font-size: 0.85rem;
+            transition: color 0.3s;
+        }
+        .toggle-pw:hover { color: #dc2626; }
+
+        /* Remember + Forgot */
+        .options-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.75rem;
+        }
+
+        .remember-label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #64748b;
+            font-size: 0.8rem;
+            cursor: pointer;
+        }
+
+        .remember-label input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            border-radius: 4px;
+            accent-color: #dc2626;
+        }
+
+        /* Submit Button */
+        .btn-submit {
+            width: 100%;
+            background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%) !important;
+            color: white !important;
+            border: none !important;
+            border-radius: 12px !important;
+            padding: 0.85rem !important;
+            font-weight: 700 !important;
+            font-size: 0.9rem !important;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            box-shadow: 0 6px 20px rgba(220,38,38,0.3);
+            letter-spacing: 0.3px;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 28px rgba(220,38,38,0.4) !important;
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%) !important;
+        }
+
+        .btn-submit:active { transform: translateY(0); }
+
+        /* Right Side - Info Panel */
+        .login-info-side {
+            flex: 0.9;
+            background: linear-gradient(160deg, #dc2626 0%, #991b1b 50%, #7f1d1d 100%);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 3rem;
-            border-radius: 150px 0 0 150px; /* Bentuk melengkung unik sesuai gambar */
+            padding: 3rem 2.5rem;
+            position: relative;
+            overflow: hidden;
         }
 
-        .login-title {
-            color: #0f172a;
+        .login-info-side::before {
+            content: '';
+            position: absolute;
+            top: -80px;
+            right: -80px;
+            width: 250px;
+            height: 250px;
+            background: rgba(255,255,255,0.06);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .login-info-side::after {
+            content: '';
+            position: absolute;
+            bottom: -60px;
+            left: -60px;
+            width: 200px;
+            height: 200px;
+            background: rgba(255,255,255,0.04);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .info-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .info-icon-circle {
+            width: 72px;
+            height: 72px;
+            border: 2px solid rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 1.8rem;
+            color: white;
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(10px);
+        }
+
+        .info-title {
+            font-size: 1.75rem;
             font-weight: 800;
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+            color: white;
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.5px;
+            line-height: 1.2;
         }
 
-        .input-hint {
-            color: #64748b;
+        .info-text {
             font-size: 0.9rem;
-            margin-bottom: 2rem;
-        }
-
-        /* Styling Input Field */
-        input[type="email"], input[type="password"] {
-            border-radius: 12px !important;
-            border: 1.5px solid #e2e8f0 !important;
-            padding: 0.85rem 1rem !important;
-            background-color: #f8fafc !important;
-            width: 100%;
-            margin-bottom: 0.5rem;
-        }
-
-        input:focus {
-            border-color: #dc2626 !important;
-            box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.1) !important;
-            background-color: white !important;
-        }
-
-        /* Tombol Login (Biru) */
-        .btn-custom-signin {
-            background-color: #dc2626 !important;
-            border-radius: 12px !important;
-            padding: 1rem !important;
-            font-weight: 700 !important;
-            text-transform: uppercase !important;
-            letter-spacing: 1px !important;
-            transition: all 0.3s ease !important;
-            width: 100%;
-            margin-top: 1.5rem;
-            border: none !important;
-            color: white !important;
-        }
-
-        .btn-custom-signin:hover {
-            background-color: #b91c1c !important;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 15px -3px rgba(220, 38, 38, 0.3) !important;
-        }
-
-        /* Teks Panel Kanan */
-        .right-panel-title {
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 1.5rem;
-        }
-
-        .right-panel-text {
-            font-size: 1.1rem;
-            opacity: 0.9;
+            color: rgba(255,255,255,0.75);
             line-height: 1.6;
             margin-bottom: 2rem;
+            max-width: 280px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        /* Mobile Responsive */
+        .btn-register {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 2rem;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 50px;
+            color: white;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-decoration: none;
+            transition: all 0.3s;
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-register:hover {
+            background: white;
+            color: #dc2626;
+            border-color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        /* Animations */
+        @keyframes slideFromLeft { from { opacity: 0; transform: translateX(-30px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes slideFromRight { from { opacity: 0; transform: translateX(30px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .login-form-side { animation: slideFromLeft 0.7s ease-out both; }
+        .login-info-side { animation: slideFromRight 0.7s ease-out 0.2s both; }
+        .anim-up-1 { animation: fadeUp 0.5s ease-out 0.3s both; }
+        .anim-up-2 { animation: fadeUp 0.5s ease-out 0.4s both; }
+        .anim-up-3 { animation: fadeUp 0.5s ease-out 0.5s both; }
+        .anim-up-4 { animation: fadeUp 0.5s ease-out 0.6s both; }
+        .anim-up-5 { animation: fadeUp 0.5s ease-out 0.7s both; }
+
+        /* Mobile */
         @media (max-width: 768px) {
-            .login-main-container { 
-                flex-direction: column-reverse; 
-                width: 92%;
+            .login-container {
+                flex-direction: column-reverse;
+                max-width: 420px;
                 min-height: auto;
-                margin: 0.5rem;
-                border-radius: 16px;
+                border-radius: 20px;
             }
-            .login-right-panel { 
-                border-radius: 0 0 16px 16px; 
-                padding: 1rem 0.75rem;
+            .login-info-side {
+                padding: 1.5rem 1.25rem;
+                border-radius: 0;
             }
-            .login-left-side {
-                padding: 1.25rem 1rem;
+            .login-form-side {
+                padding: 1.75rem 1.25rem;
+                border-right: none;
+                border-bottom: 1px solid rgba(255,255,255,0.06);
             }
-            .login-title {
-                font-size: 1.1rem;
-                margin-bottom: 0.5rem;
-            }
-            .login-left-side p {
-                font-size: 0.75rem;
-                margin-bottom: 1rem !important;
-            }
-            .right-panel-title {
-                font-size: 1rem;
-                margin-bottom: 0.5rem;
-            }
-            .right-panel-text {
-                font-size: 0.7rem;
-                margin-bottom: 0.75rem;
-                line-height: 1.4;
-            }
-            .btn-custom-signin {
-                padding: 0.6rem !important;
-                font-size: 0.75rem !important;
-                margin-top: 1rem;
-            }
-            .input-hint {
-                font-size: 0.7rem;
-            }
-            input[type="email"], input[type="password"] {
-                padding: 0.6rem 0.75rem !important;
-                font-size: 13px !important;
-                border-radius: 10px !important;
-            }
-            .btn-register-outline {
-                padding: 8px 20px !important;
-                font-size: 0.7rem !important;
-            }
-            label {
-                font-size: 0.75rem !important;
-            }
-            .text-sm {
-                font-size: 0.7rem !important;
-            }
+            .info-icon-circle { width: 48px; height: 48px; font-size: 1.2rem; margin-bottom: 0.75rem; }
+            .info-title { font-size: 1.1rem; margin-bottom: 0.35rem; }
+            .info-text { font-size: 0.75rem; margin-bottom: 1rem; max-width: none; }
+            .btn-register { padding: 0.5rem 1.5rem; font-size: 0.75rem; }
+            .form-heading { font-size: 1.3rem; }
+            .form-subheading { font-size: 0.8rem; margin-bottom: 1.5rem; }
+            .brand-row { margin-bottom: 1.5rem; }
         }
 
         @media (max-width: 480px) {
-            .login-main-container {
-                margin: 0.25rem;
-                border-radius: 14px;
-                width: 95%;
-            }
-            .login-left-side {
-                padding: 1rem 0.75rem;
-            }
-            .login-right-panel {
-                padding: 0.875rem 0.75rem;
-            }
-            .login-title {
-                font-size: 1rem;
-            }
-            .login-left-side p {
-                font-size: 0.7rem;
-            }
-            .right-panel-title {
-                font-size: 0.9rem;
-            }
-            .right-panel-text {
-                font-size: 0.65rem;
-                margin-bottom: 0.5rem;
-            }
-            input[type="email"], input[type="password"] {
-                padding: 0.55rem 0.65rem !important;
-                font-size: 12px !important;
-            }
-            .btn-custom-signin {
-                padding: 0.5rem !important;
-                font-size: 0.7rem !important;
-            }
-            .btn-register-outline {
-                padding: 6px 16px !important;
-                font-size: 0.65rem !important;
-            }
-            label {
-                font-size: 0.7rem !important;
-            }
-        }
-
-        @media (max-width: 375px) {
-            .login-title {
-                font-size: 0.9rem;
-            }
-            .right-panel-title {
-                font-size: 0.85rem;
-            }
-            .right-panel-text {
-                font-size: 0.6rem;
-            }
-            .login-left-side, .login-right-panel {
-                padding: 0.75rem 0.625rem;
-            }
-            input[type="email"], input[type="password"] {
-                padding: 0.5rem 0.6rem !important;
-                font-size: 11px !important;
-            }
-            .btn-custom-signin {
-                font-size: 0.65rem !important;
-            }
-            .btn-register-outline {
-                padding: 5px 14px !important;
-                font-size: 0.6rem !important;
-            }
-        }
-        /* Custom Register Button to fix Deploy issues */
-        .btn-register-outline {
-            border: 2px solid #ffffff !important;
-            color: #ffffff !important;
-            padding: 12px 32px !important;
-            border-radius: 50px !important;
-            font-weight: 700 !important;
-            text-decoration: none !important;
-            transition: all 0.3s ease !important;
-            display: inline-block;
-            background: transparent !important;
-        }
-        
-        .btn-register-outline:hover {
-            background-color: #ffffff !important;
-            color: #dc2626 !important;
+            .login-container { border-radius: 16px; }
+            .login-form-side { padding: 1.5rem 1rem; }
+            .login-info-side { padding: 1.25rem 1rem; }
+            .form-heading { font-size: 1.15rem; }
+            .input-wrap input { padding: 0.7rem 0.9rem 0.7rem 2.5rem !important; font-size: 0.85rem !important; }
+            .btn-submit { padding: 0.75rem !important; font-size: 0.85rem !important; }
         }
     </style>
 
-    <div class="login-main-container shadow-2xl overflow-hidden bg-white" data-aos="zoom-in" data-aos-duration="1000">
-        
-        <div class="login-left-side relative">
-            <div class="text-center">
-                <h2 class="login-title mb-2 text-gray-800" data-aos="fade-right">Sign In</h2>
-                <p class="text-gray-500 mb-8" data-aos="fade-right" data-aos-delay="100">Gunakan email dan password akun Anda</p>
+    <div class="login-container">
+        {{-- Left Side: Form --}}
+        <div class="login-form-side">
+            <div class="brand-row anim-up-1">
+                <div class="brand-icon">
+                    <img src="{{ asset('images/logo.png') }}" alt="Logo" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-graduation-cap\' style=\'color:white;font-size:1rem\'></i>';">
+                </div>
+                <span class="brand-name">SerdaduKumbang</span>
             </div>
 
-            
+            <h1 class="form-heading anim-up-1">Masuk ke Akun</h1>
+            <p class="form-subheading anim-up-2">Gunakan email dan password yang kamu terima saat pendaftaran</p>
+
+            {{-- Alerts --}}
             @if (session('success'))
-                <div class="p-3 mb-4 text-sm text-green-700 bg-green-100 rounded-lg" role="alert">
-                    {{ session('success') }}
+                <div class="alert-box alert-success anim-up-2">
+                    <i class="fas fa-check-circle"></i>
+                    <span>{{ session('success') }}</span>
                 </div>
             @endif
 
-            <form method="POST" action="{{ route('login') }}">
+            @if ($errors->any())
+                <div class="alert-box alert-error anim-up-2">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <span>{{ $errors->first() }}</span>
+                </div>
+            @endif
+
+            <form method="POST" action="{{ route('login') }}" data-turbo="false">
                 @csrf
 
-                <div class="mb-4">
-                    <x-input-label for="email" class="font-bold text-gray-700" :value="__('Email')" />
-                    <x-text-input id="email" type="email" name="email" :value="old('email')" required autofocus placeholder="Masukkan email" />
-                    <x-input-error :messages="$errors->get('email')" class="mt-1" />
-                </div>
-
-                <div class="mb-4">
-                    <div class="flex justify-between">
-                        <x-input-label for="password" class="font-bold text-gray-700" :value="__('Password')" />
-                        @if (Route::has('password.request'))
-                            <!-- <a class="text-xs text-blue-600 hover:underline" href="{{ route('password.request') }}">Lupa Password?</a> -->
-                        @endif
+                <div class="field anim-up-3">
+                    <label for="email">Email</label>
+                    <div class="input-wrap">
+                        <i class="fas fa-envelope icon"></i>
+                        <input id="email" type="email" name="email" value="{{ old('email') }}" required autofocus placeholder="nama@email.com" autocomplete="email">
                     </div>
-                    <x-text-input id="password" type="password" name="password" required placeholder="Masukkan password" />
-                    <x-input-error :messages="$errors->get('password')" class="mt-1" />
                 </div>
 
-                <div class="flex items-center">
-                    <input id="remember_me" type="checkbox" name="remember" class="rounded border-gray-300 text-blue-600 shadow-sm focus:ring-blue-500">
-                    <span class="ml-2 text-sm text-gray-600">{{ __('Ingat saya') }}</span>
+                <div class="field anim-up-3">
+                    <label for="password">Password</label>
+                    <div class="input-wrap">
+                        <i class="fas fa-lock icon"></i>
+                        <input id="password" type="password" name="password" required placeholder="Masukkan password" autocomplete="current-password">
+                        <button type="button" class="toggle-pw" onclick="togglePassword()" aria-label="Tampilkan password">
+                            <i class="fas fa-eye" id="toggleIcon"></i>
+                        </button>
+                    </div>
                 </div>
 
-                <button type="submit" class="btn-custom-signin text-white shadow-lg transform hover:scale-105" data-aos="fade-up" data-aos-delay="200">
-                    SIGN IN <i class="fas fa-sign-in-alt ms-2"></i>
+                <div class="options-row anim-up-4">
+                    <label class="remember-label">
+                        <input type="checkbox" name="remember" id="remember_me">
+                        Ingat saya
+                    </label>
+                </div>
+
+                <button type="submit" class="btn-submit anim-up-5">
+                    <i class="fas fa-sign-in-alt"></i>
+                    Masuk
                 </button>
             </form>
         </div>
 
-        <div class="login-right-panel">
-            <h2 class="right-panel-title" data-aos="fade-left" data-aos-delay="300">Halo SerKum Muda</h2>
-            <p class="right-panel-text" data-aos="fade-left" data-aos-delay="500">
-                Belum mendaftarkan diri? Mari bergabung bersama kami 
-            </p>
-            <a href="{{ route('pendaftaran') }}" 
-               class="btn-register-outline"
-               data-aos="fade-up" data-aos-delay="700">
-                DAFTAR SEKARANG
-            </a>
+        {{-- Right Side: Info Panel --}}
+        <div class="login-info-side">
+            <div class="info-content">
+                <div class="info-icon-circle">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h2 class="info-title">Halo, SerKum Muda!</h2>
+                <p class="info-text">
+                    Belum mendaftarkan diri? Mari bergabung bersama kami dan jadilah bagian dari perubahan.
+                </p>
+                <a href="{{ route('pendaftaran') }}" class="btn-register">
+                    DAFTAR SEKARANG
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
         </div>
-
     </div>
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            AOS.init({ once: true });
-        });
+        function togglePassword() {
+            const input = document.getElementById('password');
+            const icon = document.getElementById('toggleIcon');
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                input.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        }
     </script>
+
 </x-guest-layout>

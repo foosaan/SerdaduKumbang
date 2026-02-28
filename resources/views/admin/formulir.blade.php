@@ -3,6 +3,8 @@
 @section('title', 'Status Formulir Pendaftaran')
 
 @section('content')
+@section('page-title', 'Status Formulir')
+@section('breadcrumb-sub', 'Kelola jadwal buka & tutup pendaftaran')
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
 <style>
@@ -140,11 +142,33 @@
                             @php 
                                 $isOpen = strtolower($statusForm->status) == 'buka';
                             @endphp
-                            <div class="status-indicator {{ $isOpen ? 'indicator-open' : 'indicator-closed' }}">
+                            <div class="status-indicator {{ $isOpen ? 'indicator-open' : 'indicator-closed' }} mb-3">
                                 <i class="fas {{ $isOpen ? 'fa-door-open' : 'fa-door-closed' }} me-2"></i>
-                                {{ strtoupper($statusForm->status) }}
+                                FORMULIR {{ strtoupper($statusForm->status) }}
                             </div>
-                            <input type="hidden" class="form-control" value="{{ $statusForm->status }}" disabled>
+                            @if($isOpen)
+                            <div class="alert alert-success border-0 rounded-4 p-3 mt-3 text-start d-flex align-items-start gap-3" style="background: rgba(34,197,94,0.08); border-left: 4px solid #22c55e !important;">
+                                <i class="fas fa-layer-group text-success mt-1"></i>
+                                <div>
+                                    <div class="fw-bold text-success" style="font-size: 0.85rem;">Gelombang Sedang Dibuka</div>
+                                    <div class="fw-black" style="font-size: 1.4rem;">Gelombang {{ $statusForm->gelombang_aktif ?? 1 }}</div>
+                                    <div class="text-muted" style="font-size: 0.8rem;">
+                                        <i class="fas fa-calendar-alt me-1"></i>
+                                        {{ \Carbon\Carbon::parse($statusForm->tanggal_buka)->format('d M Y') }}
+                                        &nbsp;—&nbsp;
+                                        {{ \Carbon\Carbon::parse($statusForm->tanggal_tutup)->format('d M Y') }}
+                                    </div>
+                                </div>
+                            </div>
+                            @else
+                            <div class="alert alert-secondary border-0 rounded-4 p-3 mt-3 text-start d-flex align-items-start gap-3" style="background: rgba(100,116,139,0.08); border-left: 4px solid #94a3b8 !important;">
+                                <i class="fas fa-door-closed text-secondary mt-1"></i>
+                                <div>
+                                    <div class="fw-bold text-secondary" style="font-size: 0.85rem;">Formulir Sedang Ditutup</div>
+                                    <div class="text-muted" style="font-size: 0.82rem;">Gelombang {{ $statusForm->gelombang_aktif ?? 1 }} — Tidak ada pendaftaran aktif saat ini.</div>
+                                </div>
+                            </div>
+                            @endif
                         </div>
 
                         <div class="row g-4">

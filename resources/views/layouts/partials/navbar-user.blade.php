@@ -1,27 +1,30 @@
 <nav class="navbar navbar-expand-lg sticky-top navbar-custom">
     <div class="container">
-        <a class="navbar-brand fw-bold d-flex align-items-center" href="{{ route('home') }}">
+        <a class="navbar-brand fw-bold d-flex align-items-center" href="{{ route('home') }}" data-turbo="false">
             <img src="{{ asset('assets/img/serkum logo.png') }}" alt="Logo" width="40" height="40" class="me-2 rounded-circle object-fit-cover">
             <span class="brand-accent">SerdaduKumbang</span>
         </a>
 
-        <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <button class="navbar-toggler border-0 shadow-none position-relative" style="z-index: 1060; pointer-events: auto;" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <i class="fas fa-bars text-primary"></i>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto align-items-center">
                 <li class="nav-item px-2">
-                    <a class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('home') }}">Home</a>
+                    <a class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('home') }}" data-turbo="false">Home</a>
                 </li>
                 <li class="nav-item px-2">
-                    <a class="nav-link {{ request()->routeIs('informasi') ? 'active' : '' }}" href="{{ route('informasi') }}">Informasi</a>
+                    <a class="nav-link {{ request()->routeIs('informasi') ? 'active' : '' }}" href="{{ route('informasi') }}" data-turbo="false">Informasi</a>
                 </li>
                 <li class="nav-item px-2">
-                    <a class="nav-link {{ request()->routeIs('pendaftaran') ? 'active' : '' }}" href="{{ route('pendaftaran') }}">Pendaftaran</a>
+                    <a class="nav-link {{ request()->routeIs('kegiatan*') ? 'active' : '' }}" href="{{ route('kegiatan') }}" data-turbo="false">Kegiatan</a>
                 </li>
                 <li class="nav-item px-2">
-                    <a class="nav-link {{ request()->routeIs('contact') ? 'active' : '' }}" href="{{ route('contact') }}">Kontak</a>
+                    <a class="nav-link {{ request()->routeIs('pendaftaran') ? 'active' : '' }}" href="{{ route('pendaftaran') }}" data-turbo="false">Pendaftaran</a>
+                </li>
+                <li class="nav-item px-2">
+                    <a class="nav-link {{ request()->routeIs('contact') ? 'active' : '' }}" href="{{ route('contact') }}" data-turbo="false">Kontak</a>
                 </li>
 
                 <div class="nav-divider d-none d-lg-block mx-3"></div>
@@ -40,7 +43,7 @@
                             </li>
                             <li><hr class="dropdown-divider opacity-50"></li>
                             <li>
-                                <form action="{{ route('logout') }}" method="POST" class="m-0 p-0">
+                                <form action="{{ route('logout') }}" method="POST" class="m-0 p-0" data-turbo="false">
                                     @csrf
                                     <button type="submit" class="dropdown-item text-danger rounded-3 d-flex align-items-center">
                                         <i class="fas fa-sign-out-alt me-2"></i> Logout
@@ -62,130 +65,173 @@
 </nav>
 
 <style>
-    /* Styling Dasar Navbar */
+    /* Mobile-First Navbar Styling */
     .navbar-custom {
-        background: rgba(255, 255, 255, 0.9);
+        background: rgba(255, 255, 255, 0.95);
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
-        padding: 12px 0;
+        padding: clamp(0.5rem, 1.5vw, 1rem) 0;
         transition: all 0.3s ease;
-        border-bottom: 1px solid rgba(226, 232, 240, 0.5);
-        z-index: 1050; /* Pastikan di atas konten lain */
+        border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+        z-index: 1050;
     }
 
-    .navbar-brand { font-size: 1.5rem; color: #0f172a !important; letter-spacing: -1px; }
+    .navbar-brand { 
+        font-size: clamp(1.1rem, 2.5vw, 1.5rem); 
+        color: #0f172a !important; 
+        letter-spacing: -0.5px; 
+    }
+    
+    .navbar-brand img {
+        width: clamp(32px, 5vw, 40px);
+        height: clamp(32px, 5vw, 40px);
+        object-fit: contain;
+    }
+    
     .brand-accent { color: #dc2626; }
 
     .nav-link {
         color: #64748b !important;
         font-weight: 600;
-        font-size: 0.95rem;
+        font-size: clamp(0.9rem, 1.5vw, 1rem);
         transition: all 0.2s ease;
         position: relative;
+        padding: 0.5rem 1rem !important;
     }
+    
     .nav-link:hover, .nav-link.active { color: #dc2626 !important; }
     
-    /* Underline animation */
-    .nav-link::after {
-        content: ''; position: absolute; width: 0; height: 2px;
-        bottom: -2px; left: 8px; background: #dc2626; transition: width 0.3s;
+    @media (min-width: 992px) {
+        .nav-link::after {
+            content: ''; position: absolute; width: 0; height: 2px;
+            bottom: 0; left: 1rem; background: #dc2626; transition: width 0.3s;
+        }
+        .nav-link:hover::after, .nav-link.active::after { width: calc(100% - 2rem); }
+        .nav-divider { width: 1px; height: 1.5rem; background: #e2e8f0; }
     }
-    .nav-link:hover::after, .nav-link.active::after { width: calc(100% - 16px); }
-
-    .nav-divider { width: 1px; height: 24px; background: #e2e8f0; }
 
     .btn-login-nav {
         background: #dc2626;
         color: white !important;
         border-radius: 50px;
         font-weight: 700;
-        font-size: 0.9rem;
+        font-size: clamp(0.85rem, 1.5vw, 0.95rem);
+        padding: 0.5rem 1.5rem;
         box-shadow: 0 4px 10px rgba(220, 38, 38, 0.2);
         transition: all 0.3s ease;
         border: none;
+        width: 100%;
+        text-align: center;
+        margin-top: 0.5rem;
     }
+    @media (min-width: 992px) {
+        .btn-login-nav {
+            width: auto;
+            margin-top: 0;
+        }
+    }
+    
     .btn-login-nav:hover {
         background: #b91c1c;
         transform: translateY(-2px);
         box-shadow: 0 6px 15px rgba(220, 38, 38, 0.3);
     }
 
-    /* Perbaikan User Profile Dropdown */
     .user-profile-link {
         color: #1e293b !important;
-        background: #f1f5f9;
-        padding: 6px 16px !important;
+        background: transparent;
+        padding: 0.5rem 0 !important;
         border-radius: 50px;
     }
-    .user-profile-link::after { display: none; } /* Hilangkan panah default bootstrap jika diinginkan */
+    @media (min-width: 992px) {
+        .user-profile-link {
+            background: #f1f5f9;
+            padding: 0.375rem 1rem !important;
+        }
+    }
+    .user-profile-link::after { display: none; }
 
     .dropdown-menu {
-        border-radius: 16px;
+        border-radius: 1rem;
         min-width: 180px;
         z-index: 1100;
+        border: 1px solid rgba(0,0,0,0.05);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.08);
     }
     .dropdown-item {
         font-weight: 600;
-        padding: 10px 15px;
+        padding: 0.6rem 1rem;
         color: #64748b;
         transition: 0.2s;
     }
     .dropdown-item:hover {
-        background-color: #f1f7ff;
+        background-color: #fef2f2;
         color: #dc2626;
+        border-radius: 0.5rem;
     }
 
+    /* Mobile Navbar Collapse Container */
     @media (max-width: 991.98px) {
         .navbar-collapse {
-            background: white; margin-top: 10px; padding: 15px;
-            border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            background: white; 
+            margin-top: 0.75rem; 
+            padding: 1rem;
+            border-radius: 1rem; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
         }
-        .nav-link::after { display: none; }
-        .navbar-nav .nav-item { margin-bottom: 5px; width: 100%; }
-        .nav-link { font-size: 0.9rem !important; padding: 8px 10px !important; }
-        .user-profile-link { background: transparent; padding: 8px 0 !important; }
-        .btn-login-nav { width: 100%; margin-top: 8px; font-size: 0.85rem !important; padding: 10px !important; }
+        .navbar-nav .nav-item { margin-bottom: 0.25rem; }
     }
 
-    @media (max-width: 576px) {
-        .navbar-brand img {
-            width: 32px !important;
-            height: 32px !important;
-            object-fit: contain;
-        }
-        .brand-accent {
-            font-size: 0.9rem !important;
-        }
-        .navbar-brand {
-            font-size: 1.1rem !important;
-        }
-        .navbar-custom {
-            padding: 8px 0;
-        }
-        .navbar-collapse {
-            padding: 12px;
-            margin-top: 8px;
-        }
-        .nav-link { font-size: 0.85rem !important; padding: 6px 8px !important; }
-        .navbar-nav .nav-item { margin-bottom: 3px; }
-        .btn-login-nav { font-size: 0.8rem !important; padding: 8px !important; }
+    /* ===== DARK MODE ===== */
+    html.dark .navbar-custom {
+        background: rgba(15, 23, 42, 0.95);
+        border-bottom-color: rgba(51, 65, 85, 0.8);
     }
-
-    @media (max-width: 400px) {
-        .navbar-brand img {
-            width: 28px !important;
-            height: 28px !important;
+    html.dark .navbar-brand {
+        color: #f1f5f9 !important;
+    }
+    html.dark .nav-link {
+        color: #94a3b8 !important;
+    }
+    html.dark .nav-link:hover,
+    html.dark .nav-link.active {
+        color: #ef4444 !important;
+    }
+    html.dark .nav-divider {
+        background: #334155;
+    }
+    html.dark .user-profile-link {
+        color: #e2e8f0 !important;
+    }
+    @media (min-width: 992px) {
+        html.dark .user-profile-link {
+            background: #1e293b;
         }
-        .brand-accent {
-            font-size: 0.8rem !important;
+    }
+    html.dark .dropdown-menu {
+        background: #1e293b;
+        border-color: #334155;
+    }
+    html.dark .dropdown-item {
+        color: #94a3b8;
+    }
+    html.dark .dropdown-item:hover {
+        background-color: #334155;
+        color: #ef4444;
+    }
+    html.dark .dropdown-divider {
+        border-color: #334155;
+    }
+    @media (max-width: 991.98px) {
+        html.dark .navbar-collapse {
+            background: #1e293b;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
-        .navbar-brand {
-            font-size: 1rem !important;
-        }
-        .navbar-collapse {
-            padding: 10px;
-        }
-        .nav-link { font-size: 0.8rem !important; padding: 5px 6px !important; }
-        .btn-login-nav { font-size: 0.75rem !important; padding: 7px !important; }
+    }
+    html.dark .navbar-toggler {
+        border-color: #334155;
+    }
+    html.dark .navbar-toggler .fa-bars {
+        color: #94a3b8 !important;
     }
 </style>

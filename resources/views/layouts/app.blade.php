@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
+    <script>
+        (function() {
+            var t = localStorage.getItem('theme');
+            if (t === 'dark') {
+                document.documentElement.classList.add('dark');
+            }
+        })();
+    </script>
+    <meta name="turbo-visit-control" content="reload">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -15,13 +24,16 @@
     
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <style>
         /* Perbaikan Global agar tidak ada scroll horizontal akibat animasi */
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: #ffffff;
+            background-color: var(--bg-body, #f1f5f9);
+            color: var(--text-body, #334155);
             overflow-x: hidden; 
             width: 100%;
         }
@@ -43,9 +55,37 @@
             min-height: 80vh;
         }
 
+        /* Global Admin Topbar */
+        .admin-topbar-global {
+            background: var(--bg-card, white);
+            border-bottom: 1px solid var(--border-color, #e2e8f0);
+            padding: 0.875rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+        }
+        .admin-topbar-global .topbar-title { font-size: 1rem; font-weight: 800; color: var(--text-heading, #0f172a); margin: 0; }
+        .admin-topbar-global .topbar-sub { font-size: 0.72rem; color: var(--text-muted, #94a3b8); font-weight: 500; margin-top: 1px; }
+        .admin-topbar-global .user-chip {
+            display: flex; align-items: center; gap: 0.5rem;
+            background: var(--bg-muted, #f8fafc); border: 1px solid var(--border-color, #e2e8f0);
+            border-radius: 100px; padding: 0.3rem 0.75rem 0.3rem 0.3rem;
+        }
+        .admin-topbar-global .user-avatar {
+            width: 26px; height: 26px; border-radius: 50%;
+            background: linear-gradient(135deg, #dc2626, #9f1239);
+            display: flex; align-items: center; justify-content: center;
+            color: white; font-size: 0.65rem; font-weight: 800;
+        }
+        .admin-topbar-global .user-name { font-size: 0.78rem; font-weight: 700; color: var(--text-body, #334155); }
+
         /* Efek transisi antar halaman */
         .page-transition {
-            animation: fadeIn 0.5s ease-in-out;
+            animation: fadeIn 0.3s ease-out;
         }
         @keyframes fadeIn {
             from { opacity: 0; }
@@ -152,32 +192,60 @@
     </div>
     @endif
 
-    {{-- NAVBAR USER --}}
+    {{-- NAVBAR PUBLIC (Tailwind - Unified) --}}
     @auth
         @if (auth()->user()->role !== 'admin')
-            @include('layouts.partials.navbar-user')
+            @include('layouts.partials.navbar-public')
         @endif
     @else
-        @include('layouts.partials.navbar-user')
+        @include('layouts.partials.navbar-public')
     @endauth
 
-    <div class="d-flex main-content">
-        {{-- SIDEBAR ADMIN --}}
+    <div class="d-flex flex-column flex-lg-row main-content">
+        {{-- SIDEBAR ADMIN / MOBILE HEADER --}}
         @auth
             @if (auth()->user()->role === 'admin')
+                <!-- Header khusus mobile untuk trigger Offcanvas -->
+                <div class="d-lg-none d-flex justify-content-between align-items-center text-white px-3 py-3 w-100 shadow-sm" style="background: linear-gradient(90deg, #0f172a 0%, #7f1d1d 100%);">
+                    <div class="d-flex align-items-center gap-2">
+                        <div class="bg-white bg-opacity-10 p-2 rounded-2 d-flex align-items-center justify-content-center">
+                            <i class="fas fa-user-shield text-white fs-6"></i>
+                        </div>
+                        <h6 class="m-0 pe-2 fw-bold text-white letter-spacing-1">Admin SERKUM</h6>
+                    </div>
+                    <button class="btn btn-sm btn-outline-light border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarAdmin" aria-controls="sidebarAdmin">
+                        <i class="fas fa-bars fs-5"></i>
+                    </button>
+                </div>
+                
                 @include('layouts.partials.sidebar-admin')
             @endif
         @endauth
 
         {{-- CONTENT --}}
-        <div class="flex-grow-1 p-0 p-md-0 page-transition"> {{-- Ubah p-4 menjadi 0 agar hero/carousel bisa full width --}}
+        <div class="flex-grow-1 page-transition w-100" style="background: var(--bg-body, #f1f5f9); min-height: 100vh;">
+            @auth
+                @if(auth()->user()->role === 'admin')
+                    {{-- Sticky Admin Topbar --}}
+                    <div class="admin-topbar-global d-none d-lg-flex">
+                        <div>
+                            <p class="topbar-title">@yield('page-title', 'Admin Panel')</p>
+                            <p class="topbar-sub">@yield('breadcrumb-sub', 'SerdaduKumbang Admin')</p>
+                        </div>
+                        <div class="user-chip">
+                            <div class="user-avatar">{{ strtoupper(substr(auth()->user()->name, 0, 1)) }}</div>
+                            <span class="user-name">{{ auth()->user()->name }}</span>
+                        </div>
+                    </div>
+                @endif
+            @endauth
             @yield('content')
         </div>
     </div>
 
-    {{-- FOOTER --}}
+    {{-- FOOTER (Unified Tailwind) --}}
     @if (!str_starts_with(Route::currentRouteName(), 'admin.'))
-        @include('layouts.partials.footer')
+        @include('layouts.partials.footer-public')
     @endif
     
     {{-- PERBAIKAN: Cukup panggil Bootstrap Bundle satu kali di akhir body --}}
@@ -185,22 +253,24 @@
     
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Inisialisasi AOS Global
-        AOS.init({
-            duration: 800,
-            easing: 'ease-in-out',
-            once: true,
-            mirror: false
-        });
+        document.addEventListener('DOMContentLoaded', function() {
+            // Inisialisasi AOS Global
+            AOS.init({
+                duration: 400,
+                easing: 'ease-out',
+                once: true,
+                mirror: false
+            });
 
-        // Auto close alert setelah 5 detik
-        window.setTimeout(function() {
-            var alert = document.querySelector(".global-alert");
-            if (alert) {
-                var bsAlert = new bootstrap.Alert(alert);
-                bsAlert.close();
-            }
-        }, 5000);
+            // Auto close alert setelah 5 detik
+            window.setTimeout(function() {
+                var alert = document.querySelector(".global-alert");
+                if (alert && typeof bootstrap !== 'undefined') {
+                    var bsAlert = new bootstrap.Alert(alert);
+                    bsAlert.close();
+                }
+            }, 5000);
+        });
     </script>
 </body>
 </html>
